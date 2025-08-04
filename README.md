@@ -1,73 +1,107 @@
-# Welcome to your Lovable project
+# Happy Family Game
 
-## Project info
+A modern digital implementation of the classic card game "Happy Families" built with React, TypeScript, and Vite.
 
-**URL**: https://lovable.dev/projects/6f268ec8-b8cc-4357-9833-f01c94336a27
+![Happy Family Game](public/placeholder.svg)
 
-## How can I edit this code?
+## 🎮 About the Game
 
-There are several ways of editing your application.
+Happy Family Game is a digital adaptation of the traditional card game where players collect sets of cards to form complete families. The goal is to collect as many complete families as possible by asking other players for specific cards.
 
-**Use Lovable**
+### Game Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6f268ec8-b8cc-4357-9833-f01c94336a27) and start prompting.
+- Interactive game board with intuitive UI
+- Support for multiple players
+- Beautiful card designs
+- Responsive design for desktop and mobile play
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## 🚀 Tech Stack
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **React** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework
+- **Radix UI** - Accessible UI components
+- **pnpm** - Fast, disk space efficient package manager
 
-## How can I deploy this project?
+## 📋 Prerequisites
 
-Simply open [Lovable](https://lovable.dev/projects/6f268ec8-b8cc-4357-9833-f01c94336a27) and click on Share -> Publish.
+- Node.js (v18 or higher)
+- pnpm (v8 or higher)
 
-## Can I connect a custom domain to my Lovable project?
+## 🛠️ Installation
 
-Yes, you can!
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/happy-family-game.git
+   cd happy-family-game
+   ```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+2. Install dependencies using pnpm:
+   ```bash
+   pnpm install
+   ```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+3. Start the development server:
+   ```bash
+   pnpm dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## 📝 Available Scripts
+
+- `pnpm dev` - Start the development server
+- `pnpm build` - Build for production
+- `pnpm build:dev` - Build for development
+- `pnpm lint` - Run ESLint
+- `pnpm preview` - Preview the production build locally
+
+## 🧩 Project Structure
+
+```
+happy-family-game/
+├── public/              # Static assets
+├── src/
+│   ├── components/      # React components
+│   │   └── ui/          # UI components
+│   ├── data/            # Game data
+│   ├── hooks/           # Custom React hooks
+│   ├── lib/             # Utility functions
+│   ├── pages/           # Page components
+│   ├── types/           # TypeScript type definitions
+│   ├── App.tsx          # Main App component
+│   └── main.tsx         # Entry point
+├── .eslintrc.js         # ESLint configuration
+├── index.html           # HTML template
+├── package.json         # Project dependencies and scripts
+├── tailwind.config.ts   # Tailwind CSS configuration
+├── tsconfig.json        # TypeScript configuration
+└── vite.config.ts       # Vite configuration
+```
+
+## 📦 Why pnpm?
+
+This project uses [pnpm](https://pnpm.io/) as the package manager for several reasons:
+
+- **Disk space efficiency**: pnpm uses a content-addressable store which saves disk space by avoiding duplication of packages
+- **Faster installation**: pnpm is significantly faster than npm and yarn
+- **Strict dependency management**: pnpm creates a non-flat node_modules structure that correctly represents your dependency graph
+- **Workspace support**: pnpm has built-in support for monorepos
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgements
+
+- [Shadcn UI](https://ui.shadcn.com/) - UI component collection
+- [Radix UI](https://www.radix-ui.com/) - Headless UI components
+- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
+- [Vite](https://vitejs.dev/) - Frontend tooling
