@@ -178,9 +178,19 @@ export function useGameLogic() {
     
     if (incompleteCards.length > 0) {
       const randomCard = incompleteCards[Math.floor(Math.random() * incompleteCards.length)];
+      console.log('AI is requesting card:', randomCard);
       setTimeout(() => {
         askForCard(1 - gameState.currentPlayer, randomCard);
       }, 1500); // Délai pour simuler la réflexion
+    } else {
+      // Si l'IA n'a pas de cartes à demander, passer le tour
+      console.log('AI has no cards to ask, passing turn');
+      setTimeout(() => {
+        setGameState(prev => prev ? {
+          ...prev,
+          currentPlayer: (prev.currentPlayer + 1) % 2
+        } : null);
+      }, 1500);
     }
   }, [gameState, askForCard]);
 

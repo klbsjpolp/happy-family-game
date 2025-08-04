@@ -20,7 +20,52 @@ export function PlayerHand({
   onCardSelect,
   selectedCard 
 }: PlayerHandProps) {
-  // Organiser les cartes par famille
+  // Pour l'IA, ne pas révéler les cartes - juste afficher des cartes face cachée
+  if (player.isAI) {
+    return (
+      <Card className={`
+        border-2 transition-all duration-300
+        ${isCurrentPlayer ? 'border-primary shadow-glow bg-primary/5' : 'border-border'}
+        ${isMyTurn ? 'ring-2 ring-accent' : ''}
+      `}>
+        <CardHeader className="pb-4">
+          <div className="flex items-center justify-between">
+            <CardTitle className="flex items-center gap-2 text-lg">
+              {player.isAI ? '🤖' : '👤'} {player.name}
+              {isCurrentPlayer && (
+                <Badge variant="default" className="bg-primary">À son tour !</Badge>
+              )}
+            </CardTitle>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <span>Cartes: {player.cards.length}</span>
+              <span>Familles: {player.families.length}</span>
+            </div>
+          </div>
+        </CardHeader>
+
+        <CardContent>
+          {player.cards.length === 0 ? (
+            <div className="text-center text-muted-foreground py-8">
+              Aucune carte
+            </div>
+          ) : (
+            <div className="flex gap-1 flex-wrap justify-center">
+              {player.cards.map((_, index) => (
+                <div
+                  key={index}
+                  className="w-12 h-16 bg-gradient-to-br from-primary to-primary-glow rounded-lg border-2 border-primary/20 flex items-center justify-center text-white font-bold text-xs shadow-md"
+                >
+                  🎴
+                </div>
+              ))}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    );
+  }
+
+  // Organiser les cartes par famille pour les joueurs humains
   const cardsByFamily = player.cards.reduce((acc, cardId) => {
     for (const family of families) {
       const member = family.members.find(m => m.id === cardId);
