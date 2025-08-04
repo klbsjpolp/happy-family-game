@@ -2,39 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Jeu des Familles - Design system thématique 
+Toutes les couleurs DOIVENT être en HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Thème par défaut - Animaux */
+    --background: 45 100% 96%;
+    --foreground: 25 95% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 25 95% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 25 95% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 35 85% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 45 75% 85%;
+    --secondary-foreground: 25 95% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 45 50% 90%;
+    --muted-foreground: 25 40% 40%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 15 85% 65%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 45 30% 85%;
+    --input: 45 30% 85%;
+    --ring: 35 85% 55%;
+
+    /* Gradients pour les thèmes */
+    --gradient-primary: linear-gradient(135deg, hsl(35 85% 55%), hsl(15 85% 65%));
+    --gradient-background: linear-gradient(180deg, hsl(45 100% 96%), hsl(35 80% 92%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(45 30% 97%));
+    
+    /* Ombres thématiques */
+    --shadow-card: 0 4px 12px -2px hsl(35 85% 55% / 0.15);
+    --shadow-hover: 0 8px 24px -4px hsl(35 85% 55% / 0.25);
+    --shadow-glow: 0 0 20px hsl(35 85% 55% / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --radius: 0.5rem;
 
@@ -100,6 +115,86 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    background: var(--gradient-background);
+    color: hsl(var(--foreground));
+    min-height: 100vh;
+  }
+}
+
+/* Thèmes spécifiques */
+@layer base {
+  .theme-animals {
+    --primary: 35 85% 55%;
+    --accent: 15 85% 65%;
+    --background: 45 100% 96%;
+    --gradient-primary: linear-gradient(135deg, hsl(35 85% 55%), hsl(15 85% 65%));
+    --gradient-background: linear-gradient(180deg, hsl(45 100% 96%), hsl(35 80% 92%));
+  }
+
+  .theme-vehicles {
+    --primary: 220 85% 55%;
+    --accent: 200 85% 65%;
+    --background: 210 100% 96%;
+    --gradient-primary: linear-gradient(135deg, hsl(220 85% 55%), hsl(200 85% 65%));
+    --gradient-background: linear-gradient(180deg, hsl(210 100% 96%), hsl(220 80% 92%));
+  }
+
+  .theme-jobs {
+    --primary: 280 85% 55%;
+    --accent: 260 85% 65%;
+    --background: 270 100% 96%;
+    --gradient-primary: linear-gradient(135deg, hsl(280 85% 55%), hsl(260 85% 65%));
+    --gradient-background: linear-gradient(180deg, hsl(270 100% 96%), hsl(280 80% 92%));
+  }
+
+  .theme-nature {
+    --primary: 140 85% 45%;
+    --accent: 120 85% 55%;
+    --background: 130 100% 96%;
+    --gradient-primary: linear-gradient(135deg, hsl(140 85% 45%), hsl(120 85% 55%));
+    --gradient-background: linear-gradient(180deg, hsl(130 100% 96%), hsl(140 80% 92%));
+  }
+}
+
+/* Animations de cartes */
+@layer utilities {
+  .card-hover {
+    transition: var(--transition-smooth);
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .card-flip {
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+  }
+
+  .card-flip.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .bounce-in {
+    animation: bounceIn 0.6s ease-out;
+  }
+
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 }

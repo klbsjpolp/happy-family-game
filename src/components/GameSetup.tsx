@@ -1,0 +1,128 @@
+import { useState } from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Slider } from '@/components/ui/slider';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
+import { GameConfig, Theme, GameMode, THEMES } from '@/types/game';
+
+interface GameSetupProps {
+  onStartGame: (config: GameConfig) => void;
+}
+
+export function GameSetup({ onStartGame }: GameSetupProps) {
+  const [theme, setTheme] = useState<Theme>('animals');
+  const [familyCount, setFamilyCount] = useState([4]);
+  const [gameMode, setGameMode] = useState<GameMode>('human-vs-human');
+
+  const handleStartGame = () => {
+    onStartGame({
+      theme,
+      familyCount: familyCount[0],
+      gameMode
+    });
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-background">
+      <Card className="w-full max-w-2xl shadow-card border-2 border-primary/20 bg-gradient-card">
+        <CardHeader className="text-center space-y-4">
+          <CardTitle className="text-4xl font-bold text-primary">
+            🎯 Jeu des Familles
+          </CardTitle>
+          <CardDescription className="text-lg text-muted-foreground">
+            Configurez votre partie et amusez-vous !
+          </CardDescription>
+        </CardHeader>
+        
+        <CardContent className="space-y-8">
+          {/* Sélection du thème */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-foreground">Choisissez un thème</h3>
+            <div className="grid grid-cols-2 gap-4">
+              {Object.entries(THEMES).map(([key, themeInfo]) => (
+                <Card
+                  key={key}
+                  className={`cursor-pointer transition-all duration-300 border-2 card-hover ${
+                    theme === key 
+                      ? 'border-primary bg-primary/10 shadow-glow' 
+                      : 'border-border hover:border-primary/50'
+                  }`}
+                  onClick={() => setTheme(key as Theme)}
+                >
+                  <CardContent className="p-6 text-center">
+                    <div className="text-4xl mb-2">{themeInfo.emoji}</div>
+                    <h4 className="font-semibold text-foreground">{themeInfo.name}</h4>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Nombre de familles */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xl font-semibold text-foreground">Nombre de familles</h3>
+              <Badge variant="secondary" className="text-lg px-3 py-1">
+                {familyCount[0]}
+              </Badge>
+            </div>
+            <Slider
+              value={familyCount}
+              onValueChange={setFamilyCount}
+              max={6}
+              min={2}
+              step={1}
+              className="w-full"
+            />
+            <div className="flex justify-between text-sm text-muted-foreground">
+              <span>2 familles</span>
+              <span>6 familles</span>
+            </div>
+          </div>
+
+          {/* Mode de jeu */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-foreground">Mode de jeu</h3>
+            <RadioGroup value={gameMode} onValueChange={(value) => setGameMode(value as GameMode)}>
+              <div className="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-muted/50 transition-colors">
+                <RadioGroupItem value="human-vs-human" id="human-vs-human" />
+                <Label htmlFor="human-vs-human" className="flex-1 cursor-pointer">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">👥</span>
+                    <div>
+                      <div className="font-medium">2 Joueurs humains</div>
+                      <div className="text-sm text-muted-foreground">Jouez avec un ami</div>
+                    </div>
+                  </div>
+                </Label>
+              </div>
+              
+              <div className="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-muted/50 transition-colors">
+                <RadioGroupItem value="human-vs-ai" id="human-vs-ai" />
+                <Label htmlFor="human-vs-ai" className="flex-1 cursor-pointer">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">🤖</span>
+                    <div>
+                      <div className="font-medium">Joueur contre IA</div>
+                      <div className="text-sm text-muted-foreground">Affrontez l'ordinateur</div>
+                    </div>
+                  </div>
+                </Label>
+              </div>
+            </RadioGroup>
+          </div>
+
+          {/* Bouton de démarrage */}
+          <Button 
+            onClick={handleStartGame}
+            className="w-full text-lg py-6 bg-gradient-primary hover:scale-105 transition-all duration-300 shadow-card hover:shadow-hover"
+          >
+            🚀 Commencer la partie
+          </Button>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
