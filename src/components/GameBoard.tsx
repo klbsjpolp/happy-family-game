@@ -26,9 +26,12 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
   // Auto-play IA turn
   useEffect(() => {
     if (currentPlayer.isAI && gameState.gamePhase === 'playing') {
-      onPlayAITurn();
+      const timer = setTimeout(() => {
+        onPlayAITurn();
+      }, 1000);
+      return () => clearTimeout(timer);
     }
-  }, [currentPlayer.isAI, gameState.gamePhase, onPlayAITurn]);
+  }, [gameState.currentPlayer, gameState.gamePhase]);
 
   const handleAskCard = () => {
     if (!selectedCard) return;
@@ -211,18 +214,17 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
                     </Badge>
                   </div>
                   
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {missingCards.map(member => (
-                      <GameCard
-                        key={member.id}
-                        member={member}
-                        family={family}
-                        size="medium"
-                        isSelected={selectedCard === member.id}
-                        onClick={() => setSelectedCard(member.id)}
-                      />
-                    ))}
-                  </div>
+                  <Button
+                    variant={selectedFamily === family.id ? "default" : "outline"}
+                    onClick={() => {
+                      setSelectedFamily(family.id);
+                      // Sélectionner automatiquement la première carte manquante
+                      setSelectedCard(missingCards[0].id);
+                    }}
+                    className="w-full justify-start"
+                  >
+                    Demander une carte de cette famille
+                  </Button>
                 </div>
               );
             })}
