@@ -153,7 +153,11 @@ export function useGameLogic() {
   }, [gameState, toast]);
 
   const playAITurn = useCallback(() => {
-    if (!gameState || gameState.players[gameState.currentPlayer].isAI === false) return;
+    console.log('playAITurn called, checking conditions...');
+    if (!gameState || gameState.players[gameState.currentPlayer].isAI === false) {
+      console.log('Early return - no gameState or current player is not AI');
+      return;
+    }
 
     const aiPlayer = gameState.players[gameState.currentPlayer];
     const humanPlayer = gameState.players[1 - gameState.currentPlayer];
