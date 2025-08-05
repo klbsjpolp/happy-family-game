@@ -24,17 +24,8 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
 
   // Auto-play IA turn
   useEffect(() => {
-    console.log('GameBoard useEffect triggered:', {
-      isAI: currentPlayer.isAI,
-      gamePhase: gameState.gamePhase,
-      currentPlayerIndex: gameState.currentPlayer,
-      playerName: currentPlayer.name
-    });
-    
     if (currentPlayer.isAI && gameState.gamePhase === 'playing') {
-      console.log('Triggering AI turn...');
       const timer = setTimeout(() => {
-        console.log('Calling onPlayAITurn...');
         onPlayAITurn();
       }, animationConfig.aiThinkingTime);
       return () => clearTimeout(timer);

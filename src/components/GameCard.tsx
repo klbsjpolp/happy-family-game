@@ -17,9 +17,9 @@ export function GameCard({
   member,
   family,
   isInHand = false,
-  isSelected = false, 
-  onClick, 
-  size = 'medium' 
+  isSelected = false,
+  onClick,
+  size = 'medium'
 }: GameCardProps) {
   const sizeClasses = {
     small: 'w-16 h-20',
