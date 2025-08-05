@@ -25,6 +25,9 @@ This project is built with:
 - **Tailwind CSS** - Utility-first CSS framework
 - **Radix UI** - Accessible UI components
 - **pnpm** - Fast, disk space efficient package manager
+- **Vitest** - Testing framework
+- **React Testing Library** - Component testing utilities
+- **JSDOM** - Browser environment simulation for tests
 
 ## 📋 Prerequisites
 
@@ -58,6 +61,32 @@ This project is built with:
 - `pnpm build:dev` - Build for development
 - `pnpm lint` - Run ESLint
 - `pnpm preview` - Preview the production build locally
+- `pnpm test` - Run tests
+- `pnpm test:watch` - Run tests in watch mode
+- `pnpm test:coverage` - Run tests with coverage report
+
+## 🧪 Testing
+
+This project uses Vitest and React Testing Library for testing. Tests are located in the `src/__tests__` directory.
+
+- **Unit Tests**: Test individual hooks and utility functions
+- **Component Tests**: Test React components in isolation
+- **Integration Tests**: Test component interactions
+
+To run tests:
+
+```bash
+# Run all tests
+pnpm test
+
+# Run tests in watch mode
+pnpm test:watch
+
+# Generate test coverage report
+pnpm test:coverage
+```
+
+For more details about the testing approach, see [TESTING.md](TESTING.md).
 
 ## 🧩 Project Structure
 
@@ -72,6 +101,7 @@ happy-family-game/
 │   ├── lib/             # Utility functions
 │   ├── pages/           # Page components
 │   ├── types/           # TypeScript type definitions
+│   ├── __tests__/       # Test files
 │   ├── App.tsx          # Main App component
 │   └── main.tsx         # Entry point
 ├── .eslintrc.js         # ESLint configuration
@@ -79,6 +109,7 @@ happy-family-game/
 ├── package.json         # Project dependencies and scripts
 ├── tailwind.config.ts   # Tailwind CSS configuration
 ├── tsconfig.json        # TypeScript configuration
+├── vitest.config.ts     # Vitest configuration
 └── vite.config.ts       # Vite configuration
 ```
 
@@ -90,14 +121,6 @@ This project uses [pnpm](https://pnpm.io/) as the package manager for several re
 - **Faster installation**: pnpm is significantly faster than npm and yarn
 - **Strict dependency management**: pnpm creates a non-flat node_modules structure that correctly represents your dependency graph
 - **Workspace support**: pnpm has built-in support for monorepos
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🙏 Acknowledgements
 

@@ -2,10 +2,14 @@ import { useState, useCallback } from 'react';
 import { GameState, GameConfig, Player, Family } from '@/types/game';
 import {COMPLETE_FAMILY_COUNT, FAMILIES_DATA} from '@/data/families';
 import { useToast } from '@/hooks/use-toast';
+import { useCardAnimation } from '@/contexts/CardAnimationContext';
+import { getCardPosition, getHandPosition, getDeckPosition, getFamilyCountPosition } from '@/lib/animationUtils';
+import { animationConfig } from '@/config/animationConfig';
 
 export function useGameLogic() {
   const [gameState, setGameState] = useState<GameState | null>(null);
   const { toast } = useToast();
+  const { startAnimation: startCardAnimation } = useCardAnimation();
 
   const shuffleArray = <T,>(array: T[]): T[] => {
     const shuffled = [...array];
@@ -15,6 +19,33 @@ export function useGameLogic() {
     }
     return shuffled;
   };
+
+  const checkCompleteFamilies = useCallback((player: Player, families: Family[]) => {
+    const completedFamilies: Family[] = [];
+    families.forEach(family => {
+      const playerFamilyCards = player.cards.filter(cardId =>
+        family.members.some(member => member.id === cardId)
+      );
+      if (playerFamilyCards.length === COMPLETE_FAMILY_COUNT && !player.families.includes(family.id)) {
+        // Animate cards moving to family count
+        const targetPos = getFamilyCountPosition();
+        family.members.forEach(member => {
+          if (player.cards.includes(member.id)) {
+            const sourcePos = getCardPosition(player.id === 'player1' ? 0 : 1, member.id);
+            startCardAnimation(member.id, sourcePos, targetPos, 'complete');
+          }
+        });
+        setTimeout(() => {
+          completedFamilies.push(family);
+          player.families.push(family.id);
+          player.cards = player.cards.filter(cardId =>
+            !family.members.some(member => member.id === cardId)
+          );
+        }, animationConfig.cardComplete + 100);
+      }
+    });
+    return completedFamilies;
+  }, [startCardAnimation]);
 
   const startGame = useCallback((config: GameConfig) => {
     // Sélectionner les familles selon le thème et le nombre choisi
@@ -75,99 +106,119 @@ export function useGameLogic() {
     };
 
     setGameState(newGameState);
-    
     toast({
       title: "🎮 Partie commencée !",
       description: `Thème: ${config.theme} | ${config.familyCount} familles`,
     });
-  }, [toast]);
+    // Trigger initial deal animation after state is set
+    setTimeout(() => {
+      const deckPos = getDeckPosition();
+      (async () => {
+        for (let i = 0; i < players[0].cards.length; i++) {
+          const cardId = players[0].cards[i];
+          const targetPos = getHandPosition(0);
+          startCardAnimation(cardId, deckPos, targetPos, 'draw');
+          await new Promise(resolve => setTimeout(resolve, animationConfig.initialDealStagger));
+        }
+        for (let i = 0; i < players[1].cards.length; i++) {
+          const cardId = players[1].cards[i];
+          const targetPos = getHandPosition(1);
+          startCardAnimation(cardId, deckPos, targetPos, 'draw');
+          await new Promise(resolve => setTimeout(resolve, animationConfig.initialDealStagger));
+        }
+      })();
+    }, 100);
+  }, [toast, checkCompleteFamilies, startCardAnimation]);
 
-  const checkCompleteFamilies = (player: Player, families: Family[]) => {
-    const completedFamilies: Family[] = [];
-    families.forEach(family => {
-      const playerFamilyCards = player.cards.filter(cardId =>
-        family.members.some(member => member.id === cardId)
-      );
-      
-      if (playerFamilyCards.length === COMPLETE_FAMILY_COUNT && !player.families.includes(family.id)) {
-        // Famille complète trouvée !
-        completedFamilies.push(family);
-        player.families.push(family.id);
-        // Retirer les cartes de la main
-        player.cards = player.cards.filter(cardId =>
-          !family.members.some(member => member.id === cardId)
-        );
+  // Helper to handle empty hand rule
+  const handleEmptyHandRule = useCallback(() => {
+    if (!gameState) return false;
+    const currentPlayerObj = gameState.players[gameState.currentPlayer];
+    if (currentPlayerObj.cards.length === 0) {
+      if (gameState.deck.length > 0) {
+        // Draw one card from the deck
+        const drawnCard = gameState.deck[0];
+        setGameState(prev => prev ? {
+          ...prev,
+          players: prev.players.map((p, idx) => idx === prev.currentPlayer
+            ? { ...p, cards: [...p.cards, drawnCard] }
+            : p
+          ),
+          deck: prev.deck.slice(1)
+        } : null);
+        toast({
+          title: 'Main vide',
+          description: `${currentPlayerObj.name} pioche une carte du deck.`
+        });
+        return true; // Drew a card
+      } else {
+        // Deck is empty, skip turn
+        setGameState(prev => prev ? {
+          ...prev,
+          currentPlayer: (prev.currentPlayer + 1) % prev.players.length
+        } : null);
+        toast({
+          title: 'Main vide',
+          description: `${currentPlayerObj.name} saute son tour (deck vide).`
+        });
+        return true; // Skipped turn
       }
-    });
-    return completedFamilies;
-  };
+    }
+    return false; // No action needed
+  }, [gameState, toast]);
 
   const askForCard = useCallback((targetPlayer: number, requestedFamily: Family) => {
     if (!gameState) return;
-
     const currentPlayerObj = gameState.players[gameState.currentPlayer];
     const targetPlayerObj = gameState.players[targetPlayer];
-
     toast({
       title: "🔍 Demande de carte",
       description: `Vous demandez une carte de la famille ${requestedFamily.name} à ${targetPlayerObj.name}.`,
     });
-    
-    // Vérifier si le joueur cible des cartes
     const cards = requestedFamily.members.map(m => m.id).filter(id => targetPlayerObj.cards.includes(id));
-    
     if (cards.length) {
-      // Transférer les cartes
-      targetPlayerObj.cards = targetPlayerObj.cards.filter(id => !cards.includes(id));
-      currentPlayerObj.cards.push(...cards);
-      
-      // Vérifier les familles complètes
-      checkCompleteFamilies(currentPlayerObj, gameState.families);
-      checkCompleteFamilies(targetPlayerObj, gameState.families);
-      
-      toast({
-        title: "✅ Carte obtenue !",
-        description: `${targetPlayerObj.name} avait ${cards.length} carte${cards.length > 1 ? 's' : ''} demandée${cards.length > 1 ? 's' : ''}.`,
-      });
-      
-      // Le joueur peut rejouer
-    } else {
-      // Si le deck n'est pas vide, piger une carte
-      if (gameState.deck.length > 0) {
-        // Prendre la première carte du deck
-        const drawnCard = gameState.deck[0];
-        const newDeck = gameState.deck.slice(1);
-        
-        // Ajouter la carte à la main du joueur
-        currentPlayerObj.cards.push(drawnCard);
-        
-        // Si le joueur humain a pigé et a gardé la carte, vider askedCards de l'IA
-        const otherPlayer = gameState.players[1 - gameState.currentPlayer];
-        if (!currentPlayerObj.isAI && otherPlayer.isAI && otherPlayer.askedFamilies) {
-          otherPlayer.askedFamilies = [];
-        }
-        
-        // Vérifier si cette carte complète une famille
-        const completedFamilies = checkCompleteFamilies(currentPlayerObj, gameState.families);
-        
-        // Mettre à jour le deck
-        setGameState(prev => prev ? {
-          ...prev,
-          deck: newDeck,
-          currentPlayer: (prev.currentPlayer + 1) % 2 // Changer de joueur même si une famille est complétée
-        } : null);
-        
+      const sourcePos = getCardPosition(targetPlayer, cards[0]);
+      const targetPos = getHandPosition(gameState.currentPlayer);
+      startCardAnimation(cards[0], sourcePos, targetPos, 'transfer');
+      setTimeout(() => {
+        targetPlayerObj.cards = targetPlayerObj.cards.filter(id => !cards.includes(id));
+        currentPlayerObj.cards.push(...cards);
+        checkCompleteFamilies(currentPlayerObj, gameState.families);
+        checkCompleteFamilies(targetPlayerObj, gameState.families);
         toast({
-          title: "🎴 Carte pigée !",
-          description: `Vous avez pigé une carte du deck.${completedFamilies.length ? ` Vous avez complété une famille: ${completedFamilies.map(f=>f.name).join(', ')} !` : ""}`,
+          title: "✅ Carte obtenue !",
+          description: `${targetPlayerObj.name} avait ${cards.length} carte${cards.length > 1 ? 's' : ''} demandée${cards.length > 1 ? 's' : ''}.`,
         });
+      }, animationConfig.stateUpdateDelay);
+    } else {
+      if (gameState.deck.length > 0) {
+        const drawnCard = gameState.deck[0];
+        const sourcePos = getDeckPosition();
+        const targetPos = getHandPosition(gameState.currentPlayer);
+        startCardAnimation(drawnCard, sourcePos, targetPos, 'draw');
+        setTimeout(() => {
+          const newDeck = gameState.deck.slice(1);
+          currentPlayerObj.cards.push(drawnCard);
+          const otherPlayer = gameState.players[1 - gameState.currentPlayer];
+          if (!currentPlayerObj.isAI && otherPlayer.isAI && otherPlayer.askedFamilies) {
+            otherPlayer.askedFamilies = [];
+          }
+          const completedFamilies = checkCompleteFamilies(currentPlayerObj, gameState.families);
+          setGameState(prev => prev ? {
+            ...prev,
+            deck: newDeck,
+            currentPlayer: (prev.currentPlayer + 1) % 2
+          } : null);
+          toast({
+            title: "🎴 Carte pigée !",
+            description: `Vous avez pigé une carte du deck.${completedFamilies.length ? ` Vous avez complété une famille: ${completedFamilies.map(f=>f.name).join(', ')} !` : ""}`,
+          });
+        }, animationConfig.stateUpdateDelay);
       } else {
         toast({
           title: "❌ Pas de chance !",
           description: `${targetPlayerObj.name} n'a pas cette carte et le deck est vide.`,
         });
-        
-        // Changer de joueur
         setGameState(prev => prev ? {
           ...prev,
           currentPlayer: (prev.currentPlayer + 1) % 2
@@ -176,7 +227,7 @@ export function useGameLogic() {
     }
 
     // Vérifier les conditions de victoire
-    const winner = gameState.players.find(player => 
+    const winner = gameState.players.find(player =>
       player.families.length >= Math.floor(gameState.config.familyCount / 2) + 1
     );
     
@@ -194,21 +245,24 @@ export function useGameLogic() {
     }
 
     setGameState(prev => prev ? { ...prev } : null);
-  }, [gameState, toast]);
+  }, [gameState, toast, startCardAnimation, checkCompleteFamilies]);
 
+  // Update AI turn logic to use empty hand rule
   const playAITurn = useCallback(() => {
-    console.log('playAITurn called, checking conditions...');
-    if (!gameState || gameState.players[gameState.currentPlayer].isAI === false) {
+    if (!gameState || !gameState.players[gameState.currentPlayer].isAI) {
       console.log('Early return - no gameState or current player is not AI');
       return;
     }
-
+    // Check empty hand rule for AI
+    if (handleEmptyHandRule()) {
+      return;
+    }
     const aiPlayer = gameState.players[gameState.currentPlayer];
 // Initialiser le tableau des cartes demandées si nécessaire
     if (!aiPlayer.askedFamilies) {
       aiPlayer.askedFamilies = [];
     }
-    
+
     // IA améliorée : demander une carte en tenant compte des cartes déjà demandées
     const incompleteCards: { cardId: string; familySize: number }[] = [];
     
@@ -291,7 +345,7 @@ export function useGameLogic() {
       }, 1500);
     }
 
-  }, [gameState, askForCard]);
+  }, [gameState, handleEmptyHandRule, askForCard]);
 
   const resetGame = useCallback(() => {
     setGameState(null);

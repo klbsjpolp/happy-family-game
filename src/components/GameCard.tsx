@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
 interface GameCardProps {
+  id?: string;
   member: FamilyMember;
   family: Family;
   isInHand?: boolean;
@@ -12,9 +13,10 @@ interface GameCardProps {
 }
 
 export function GameCard({ 
-  member, 
-  family, 
-  isInHand = false, 
+  id,
+  member,
+  family,
+  isInHand = false,
   isSelected = false, 
   onClick, 
   size = 'medium' 
@@ -33,6 +35,7 @@ export function GameCard({
 
   return (
     <Card
+      id={id}
       className={`
         ${sizeClasses[size]} 
         cursor-pointer card-hover relative overflow-hidden

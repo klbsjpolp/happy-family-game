@@ -1,4 +1,4 @@
-export type Theme = 'animals' | 'vehicles' | 'jobs' | 'nature' | 'original';
+export type Theme = 'animals' | 'vehicles' | 'jobs' | 'nature' | 'original' | 'fantasy';
 
 export type GameMode = 'human-vs-human' | 'human-vs-ai';
 
@@ -12,7 +12,6 @@ export interface FamilyMember {
   id: string;
   name: string;
   emoji: string;
-  description: string;
 }
 
 export interface Family {
@@ -46,5 +45,6 @@ export const THEMES: Record<Theme, { name: string; emoji: string; className: str
   vehicles: { name: 'Véhicules', emoji: '🚗', className: 'theme-vehicles' },
   jobs: { name: 'Métiers', emoji: '👨‍⚕️', className: 'theme-jobs' },
   nature: { name: 'Nature', emoji: '🌳', className: 'theme-nature' },
-  original: { name: 'Classique', emoji: '👪', className: 'theme-original' }
+  original: { name: 'Classique', emoji: '👪', className: 'theme-original' },
+  fantasy: { name: 'Fantaisie', emoji: '🧙‍♂️', className: 'theme-fantasy' }
 };

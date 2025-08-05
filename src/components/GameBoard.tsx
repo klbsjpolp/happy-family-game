@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group.tsx";
+import { AnimationOverlay } from './AnimationOverlay';
+import { animationConfig } from '@/config/animationConfig';
 
 interface GameBoardProps {
   gameState: GameState;
@@ -30,17 +32,18 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
     });
     
     if (currentPlayer.isAI && gameState.gamePhase === 'playing') {
-      console.log('Triggering AI turn in 1 second...');
+      console.log('Triggering AI turn...');
       const timer = setTimeout(() => {
         console.log('Calling onPlayAITurn...');
         onPlayAITurn();
-      }, 1000);
+      }, animationConfig.aiThinkingTime);
       return () => clearTimeout(timer);
     }
   }, [currentPlayer.isAI, currentPlayer.name, gameState.currentPlayer, gameState.gamePhase, onPlayAITurn]);
 
   const handleAskCard = () => {
     if (!selectedFamily) return;
+    console.log(gameState.players[gameState.currentPlayer].cards);
     
     onAskForCard(1 - gameState.currentPlayer, selectedFamily);
     setSelectedFamily(undefined);
@@ -87,6 +90,7 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
 
   return (
     <div className="min-h-screen p-4 bg-gradient-background">
+      <AnimationOverlay gameState={gameState} />
       <div className="max-w-6xl mx-auto space-y-6">
         {/* En-tête de jeu */}
         <Card className="shadow-card border-2 border-primary/20">
@@ -118,7 +122,7 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
               isMyTurn={isHumanTurn && gameState.currentPlayer === 0}
             />
           </div>
-          
+
           {/* Colonne centrale - 1 colonne */}
           <div className="col-span-1 flex flex-col items-center gap-4">
             {/* Deck de cartes */}
@@ -144,7 +148,7 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
               <Button onClick={handleAskCard} disabled={!isHumanTurn || !selectedFamily}>Demander</Button>
             </ToggleGroup>
           </div>
-          
+
           {/* Joueur 2 - 3 colonnes */}
           <div className="col-span-3">
             <PlayerHand

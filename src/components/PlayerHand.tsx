@@ -24,7 +24,8 @@ export function PlayerHand({
   // Pour l'IA, ne pas révéler les cartes - juste afficher des cartes face cachée
   if (player.isAI) {
     return (
-      <Card className={`
+      <Card id={`player-hand-${player.id === 'player1' ? 0 : 1}`}
+        className={`
         border-2 transition-all duration-300
         ${isCurrentPlayer ? 'border-primary shadow-glow bg-primary/5' : 'border-border'}
         ${isMyTurn ? 'ring-2 ring-accent' : ''}
@@ -51,9 +52,10 @@ export function PlayerHand({
             </div>
           ) : (
             <div className="flex gap-1 flex-wrap justify-center">
-              {player.cards.map((_, index) => (
+              {player.cards.map((id, index) => (
                 <div
                   key={index}
+                  data-card-id={id}
                   className="w-12 h-16 bg-linear-to-br from-primary to-primary-glow rounded-lg border-2 border-primary/20 flex items-center justify-center text-white font-bold text-xs shadow-md"
                 >
                   🎴
@@ -82,11 +84,13 @@ export function PlayerHand({
   }, {} as Record<string, { family: Family; members: FamilyMember[] }>);
 
   return (
-    <Card className={`
+    <Card id={`player-hand-${player.id === 'player1' ? 0 : 1}`}
+      className={`
       border-2 transition-all duration-300
       ${isCurrentPlayer ? 'border-primary shadow-glow bg-primary/5' : 'border-border'}
       ${isMyTurn ? 'ring-2 ring-accent' : ''}
-    `}>
+    `}
+    >
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2 text-lg">
@@ -130,6 +134,7 @@ export function PlayerHand({
                     {members.map((member) => (
                       <GameCard
                         key={member.id}
+                        id={`card-${member.id}`}
                         member={member}
                         family={family}
                         size="small"
