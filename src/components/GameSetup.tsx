@@ -6,15 +6,18 @@ import { Slider } from '@/components/ui/slider';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { GameConfig, Theme, GameMode, THEMES } from '@/types/game';
+import {MAX_FAMILIES} from "@/data/families.ts";
 
 interface GameSetupProps {
   onStartGame: (config: GameConfig) => void;
 }
 
+const MIN = 4;
+
 export function GameSetup({ onStartGame }: GameSetupProps) {
   const [theme, setTheme] = useState<Theme>('animals');
-  const [familyCount, setFamilyCount] = useState([4]);
-  const [gameMode, setGameMode] = useState<GameMode>('human-vs-human');
+  const [familyCount, setFamilyCount] = useState([7]);
+  const [gameMode, setGameMode] = useState<GameMode>('human-vs-ai');
 
   const handleStartGame = () => {
     onStartGame({
@@ -40,7 +43,7 @@ export function GameSetup({ onStartGame }: GameSetupProps) {
           {/* Sélection du thème */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-foreground">Choisissez un thème</h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid gap-4 md:grid-cols-5 sm:grid-cols-4 grid-cols-2">
               {Object.entries(THEMES).map(([key, themeInfo]) => (
                 <Card
                   key={key}
@@ -71,34 +74,21 @@ export function GameSetup({ onStartGame }: GameSetupProps) {
             <Slider
               value={familyCount}
               onValueChange={setFamilyCount}
-              max={6}
-              min={2}
+              max={MAX_FAMILIES}
+              min={MIN}
               step={1}
               className="w-full"
             />
             <div className="flex justify-between text-sm text-muted-foreground">
-              <span>2 familles</span>
-              <span>6 familles</span>
+              <span>{MIN} familles</span>
+              <span>{MAX_FAMILIES} familles</span>
             </div>
           </div>
 
           {/* Mode de jeu */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-foreground">Mode de jeu</h3>
-            <RadioGroup value={gameMode} onValueChange={(value) => setGameMode(value as GameMode)}>
-              <div className="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-muted/50 transition-colors">
-                <RadioGroupItem value="human-vs-human" id="human-vs-human" />
-                <Label htmlFor="human-vs-human" className="flex-1 cursor-pointer">
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">👥</span>
-                    <div>
-                      <div className="font-medium">2 Joueurs humains</div>
-                      <div className="text-sm text-muted-foreground">Jouez avec un ami</div>
-                    </div>
-                  </div>
-                </Label>
-              </div>
-              
+            <RadioGroup className="grid sm:grid-cols-2 grid-cols-1" value={gameMode} onValueChange={(value) => setGameMode(value as GameMode)}>
               <div className="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-muted/50 transition-colors">
                 <RadioGroupItem value="human-vs-ai" id="human-vs-ai" />
                 <Label htmlFor="human-vs-ai" className="flex-1 cursor-pointer">
@@ -107,6 +97,18 @@ export function GameSetup({ onStartGame }: GameSetupProps) {
                     <div>
                       <div className="font-medium">Joueur contre IA</div>
                       <div className="text-sm text-muted-foreground">Affrontez l'ordinateur</div>
+                    </div>
+                  </div>
+                </Label>
+              </div>
+              <div className="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-muted/50 transition-colors">
+                <RadioGroupItem value="human-vs-human" id="human-vs-human" />
+                <Label htmlFor="human-vs-human" className="flex-1 cursor-pointer">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">👥</span>
+                    <div>
+                      <div className="font-medium">2 Joueurs humains</div>
+                      <div className="text-sm text-muted-foreground">Jouez avec un ami</div>
                     </div>
                   </div>
                 </Label>

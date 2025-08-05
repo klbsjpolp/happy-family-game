@@ -2,6 +2,7 @@ import { Player, Family, FamilyMember } from '@/types/game';
 import { GameCard } from './GameCard';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import {COMPLETE_FAMILY_COUNT} from "@/data/families.ts";
 
 interface PlayerHandProps {
   player: Player;
@@ -53,7 +54,7 @@ export function PlayerHand({
               {player.cards.map((_, index) => (
                 <div
                   key={index}
-                  className="w-12 h-16 bg-gradient-to-br from-primary to-primary-glow rounded-lg border-2 border-primary/20 flex items-center justify-center text-white font-bold text-xs shadow-md"
+                  className="w-12 h-16 bg-linear-to-br from-primary to-primary-glow rounded-lg border-2 border-primary/20 flex items-center justify-center text-white font-bold text-xs shadow-md"
                 >
                   🎴
                 </div>
@@ -108,35 +109,38 @@ export function PlayerHand({
           </div>
         ) : (
           <div className="space-y-4">
-            {Object.entries(cardsByFamily).map(([familyId, { family, members }]) => (
-              <div key={familyId} className="space-y-2">
-                <div className="flex items-center gap-2">
-                  <div 
-                    className="w-3 h-3 rounded-full" 
-                    style={{ backgroundColor: family.color }}
-                  />
-                  <span className="text-sm font-medium text-foreground">
-                    {family.name} ({members.length}/4)
-                  </span>
-                  {members.length === 4 && (
-                    <Badge variant="secondary" className="text-xs">Complète !</Badge>
-                  )}
-                </div>
-                <div className="flex gap-2 flex-wrap">
-                  {members.map((member) => (
-                    <GameCard
-                      key={member.id}
-                      member={member}
-                      family={family}
-                      size="small"
-                      isInHand
-                      isSelected={selectedCard === member.id}
-                      onClick={() => onCardSelect?.(member.id)}
+            {families
+              .map(f => [f.id, cardsByFamily[f.id]] as const)
+              .filter(([, value]) => value !== undefined)
+              .map(([familyId, { family, members }]) => (
+                <div key={familyId} className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="w-3 h-3 rounded-full"
+                      style={{ backgroundColor: family.color }}
                     />
-                  ))}
+                    <span className="text-sm font-medium text-foreground">
+                      {family.name} ({members.length}/{COMPLETE_FAMILY_COUNT})
+                    </span>
+                    {members.length === COMPLETE_FAMILY_COUNT && (
+                      <Badge variant="secondary" className="text-xs">Complète !</Badge>
+                    )}
+                  </div>
+                  <div className="flex gap-2 flex-wrap">
+                    {members.map((member) => (
+                      <GameCard
+                        key={member.id}
+                        member={member}
+                        family={family}
+                        size="small"
+                        isInHand
+                        isSelected={selectedCard === member.id}
+                        onClick={() => onCardSelect?.(member.id)}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         )}
       </CardContent>

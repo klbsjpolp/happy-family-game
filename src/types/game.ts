@@ -1,4 +1,4 @@
-export type Theme = 'animals' | 'vehicles' | 'jobs' | 'nature';
+export type Theme = 'animals' | 'vehicles' | 'jobs' | 'nature' | 'original';
 
 export type GameMode = 'human-vs-human' | 'human-vs-ai';
 
@@ -28,6 +28,7 @@ export interface Player {
   isAI: boolean;
   cards: string[];
   families: string[];
+  askedFamilies?: Family[]; // Cartes déjà demandées
 }
 
 export interface GameState {
@@ -37,11 +38,13 @@ export interface GameState {
   currentPlayer: number;
   gamePhase: 'setup' | 'playing' | 'ended';
   winner?: string;
+  deck: string[]; // Cartes restantes dans le deck
 }
 
 export const THEMES: Record<Theme, { name: string; emoji: string; className: string }> = {
   animals: { name: 'Animaux', emoji: '🦁', className: 'theme-animals' },
   vehicles: { name: 'Véhicules', emoji: '🚗', className: 'theme-vehicles' },
   jobs: { name: 'Métiers', emoji: '👨‍⚕️', className: 'theme-jobs' },
-  nature: { name: 'Nature', emoji: '🌳', className: 'theme-nature' }
+  nature: { name: 'Nature', emoji: '🌳', className: 'theme-nature' },
+  original: { name: 'Classique', emoji: '👪', className: 'theme-original' }
 };

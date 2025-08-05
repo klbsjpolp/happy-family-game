@@ -1,23 +1,20 @@
 import { useState, useEffect } from 'react';
-import { GameState, FamilyMember } from '@/types/game';
+import {Family, GameState} from '@/types/game';
 import { PlayerHand } from './PlayerHand';
-import { GameCard } from './GameCard';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group.tsx";
 
 interface GameBoardProps {
   gameState: GameState;
-  onAskForCard: (targetPlayer: number, memberId: string) => void;
+  onAskForCard: (targetPlayer: number, family: Family) => void;
   onPlayAITurn: () => void;
   onResetGame: () => void;
 }
 
 export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }: GameBoardProps) {
-  const [selectedCard, setSelectedCard] = useState<string>('');
-  const [showCardSelection, setShowCardSelection] = useState(false);
-  const [selectedFamily, setSelectedFamily] = useState('');
+  const [selectedFamily, setSelectedFamily] = useState<Family>();
 
   const currentPlayer = gameState.players[gameState.currentPlayer];
   const otherPlayer = gameState.players[1 - gameState.currentPlayer];
@@ -40,40 +37,19 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [gameState.currentPlayer, gameState.gamePhase]);
+  }, [currentPlayer.isAI, currentPlayer.name, gameState.currentPlayer, gameState.gamePhase, onPlayAITurn]);
 
   const handleAskCard = () => {
-    if (!selectedCard) return;
+    if (!selectedFamily) return;
     
-    onAskForCard(1 - gameState.currentPlayer, selectedCard);
-    setSelectedCard('');
-    setShowCardSelection(false);
+    onAskForCard(1 - gameState.currentPlayer, selectedFamily);
+    setSelectedFamily(undefined);
   };
 
-  const getAvailableCardsToAsk = () => {
-    const myCards = currentPlayer.cards;
-    const availableCards: { member: FamilyMember; family: any }[] = [];
-
-    // Pour chaque famille où j'ai au moins une carte
-    gameState.families.forEach(family => {
-      const myFamilyCards = myCards.filter(cardId =>
-        family.members.some(member => member.id === cardId)
-      );
-
-      if (myFamilyCards.length > 0) {
-        // Ajouter les cartes manquantes de cette famille
-        family.members.forEach(member => {
-          if (!myCards.includes(member.id)) {
-            availableCards.push({ member, family });
-          }
-        });
-      }
-    });
-
-    return availableCards;
+  const handleSelectFamily = (newFamilyId: string) => {
+    const family = gameState.families.find(f => f.id === newFamilyId);
+    setSelectedFamily(family);
   };
-
-  const availableCards = getAvailableCardsToAsk();
 
   if (gameState.gamePhase === 'ended') {
     const winner = gameState.players.find(p => p.id === gameState.winner);
@@ -132,25 +108,55 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
         </Card>
 
         {/* Zone de jeu principale */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Joueur 1 */}
-          <PlayerHand
-            player={gameState.players[0]}
-            families={gameState.families}
-            isCurrentPlayer={gameState.currentPlayer === 0}
-            isMyTurn={isHumanTurn && gameState.currentPlayer === 0}
-          />
-
-          {/* Joueur 2 */}
-          <PlayerHand
-            player={gameState.players[1]}
-            families={gameState.families}
-            isCurrentPlayer={gameState.currentPlayer === 1}
-            isMyTurn={isHumanTurn && gameState.currentPlayer === 1}
-          />
+        <div className="grid grid-cols-7 gap-6">
+          {/* Joueur 1 - 3 colonnes */}
+          <div className="col-span-3">
+            <PlayerHand
+              player={gameState.players[0]}
+              families={gameState.families}
+              isCurrentPlayer={gameState.currentPlayer === 0}
+              isMyTurn={isHumanTurn && gameState.currentPlayer === 0}
+            />
+          </div>
+          
+          {/* Colonne centrale - 1 colonne */}
+          <div className="col-span-1 flex flex-col items-center gap-4">
+            {/* Deck de cartes */}
+            <div className="relative w-24 h-32 bg-primary/10 rounded-lg border-2 border-primary/20 flex items-center justify-center">
+              <span className="text-2xl">🎴</span>
+              <Badge className="absolute -top-2 -right-2">
+                {gameState.deck.length}
+              </Badge>
+            </div>
+            {/* Sélecteur de familles */}
+            <ToggleGroup className="grid space-y-2 w-full" type="single" value={selectedFamily?.id ?? 'none'} onValueChange={handleSelectFamily}>
+              {gameState.families.map(family => (
+                <ToggleGroupItem
+                  key={family.id}
+                  value={family.id}
+                  className="w-full p-2 rounded-md flex items-center gap-2 hover:bg-primary/10"
+                  style={{ backgroundColor: family.color + '20' }}
+                  disabled={!isHumanTurn || !currentPlayer.cards.find(c => family.members.find(m => m.id === c))}>
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: family.color }} />
+                  <span className="text-xs truncate">{family.name}</span>
+                </ToggleGroupItem>
+              ))}
+              <Button onClick={handleAskCard} disabled={!isHumanTurn || !selectedFamily}>Demander</Button>
+            </ToggleGroup>
+          </div>
+          
+          {/* Joueur 2 - 3 colonnes */}
+          <div className="col-span-3">
+            <PlayerHand
+              player={gameState.players[1]}
+              families={gameState.families}
+              isCurrentPlayer={gameState.currentPlayer === 1}
+              isMyTurn={isHumanTurn && gameState.currentPlayer === 1}
+            />
+          </div>
         </div>
 
-        {/* Actions du joueur actuel */}
+        {/* Message du tour actuel */}
         {isHumanTurn && (
           <Card className="shadow-card border-2 border-accent">
             <CardHeader>
@@ -158,17 +164,10 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
                 À votre tour, {currentPlayer.name} !
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-center space-y-4">
+            <CardContent className="text-center">
               <p className="text-muted-foreground">
-                Demandez une carte à {otherPlayer.name}
+                Sélectionnez une famille dans la colonne centrale pour demander une carte à {otherPlayer.name}
               </p>
-              <Button
-                onClick={() => setShowCardSelection(true)}
-                disabled={availableCards.length === 0}
-                className="bg-gradient-primary hover:scale-105 transition-all duration-300"
-              >
-                {availableCards.length === 0 ? 'Aucune carte à demander' : 'Demander une carte'}
-              </Button>
             </CardContent>
           </Card>
         )}
@@ -185,80 +184,6 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
           </Card>
         )}
       </div>
-
-      {/* Dialog de sélection de carte */}
-      <Dialog open={showCardSelection} onOpenChange={setShowCardSelection}>
-        <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>Choisissez une carte à demander</DialogTitle>
-            <DialogDescription>
-              Sélectionnez une carte d'une famille où vous avez déjà au moins une carte
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div className="space-y-6">
-            {gameState.families.map(family => {
-              const myFamilyCards = currentPlayer.cards.filter(cardId =>
-                family.members.some(member => member.id === cardId)
-              );
-              
-              if (myFamilyCards.length === 0) return null;
-
-              const missingCards = family.members.filter(member =>
-                !currentPlayer.cards.includes(member.id)
-              );
-
-              if (missingCards.length === 0) return null;
-
-              return (
-                <div key={family.id} className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <div
-                      className="w-4 h-4 rounded-full"
-                      style={{ backgroundColor: family.color }}
-                    />
-                    <h4 className="font-semibold text-foreground">{family.name}</h4>
-                    <Badge variant="secondary">
-                      {myFamilyCards.length}/4 cartes
-                    </Badge>
-                  </div>
-                  
-                  <Button
-                    variant={selectedFamily === family.id ? "default" : "outline"}
-                    onClick={() => {
-                      setSelectedFamily(family.id);
-                      // Sélectionner automatiquement la première carte manquante
-                      setSelectedCard(missingCards[0].id);
-                    }}
-                    className="w-full justify-start"
-                  >
-                    Demander une carte de cette famille
-                  </Button>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="flex justify-end gap-2 pt-4">
-            <Button
-              variant="outline"
-              onClick={() => {
-                setShowCardSelection(false);
-                setSelectedCard('');
-              }}
-            >
-              Annuler
-            </Button>
-            <Button
-              onClick={handleAskCard}
-              disabled={!selectedCard}
-              className="bg-gradient-primary"
-            >
-              Demander cette carte
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }

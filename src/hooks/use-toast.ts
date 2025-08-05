@@ -161,6 +161,8 @@ function toast({ ...props }: Toast) {
     },
   })
 
+  console.log('TOAST', props.title, props.description)
+
   return {
     id: id,
     dismiss,
