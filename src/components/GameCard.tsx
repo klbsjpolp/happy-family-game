@@ -48,7 +48,7 @@ export function GameCard({
     >
       <CardContent className="p-2 h-full flex flex-col items-center justify-between relative">
         {/* Badge famille */}
-        <Badge 
+        <Badge
           className="absolute -top-1 -right-1 text-xs px-1 py-0 h-5"
           style={{ backgroundColor: family.color, color: 'white' }}
         >
@@ -66,13 +66,6 @@ export function GameCard({
             {member.name}
           </h4>
         </div>
-
-        {/* Description (pour les grandes cartes) */}
-        {size === 'large' && (
-          <p className={`${textSizes[size].desc} text-muted-foreground text-center leading-tight`}>
-            {member.description}
-          </p>
-        )}
 
         {/* Effet de sélection */}
         {isSelected && (
