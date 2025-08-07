@@ -82,6 +82,8 @@
 
   :root[data-theme="animals"] {
     --color-primary: hsl(35 85% 55%);
+    --color-secondary: hsl(40 75% 85%);
+    --color-secondary-foreground: hsl(25 95% 15%);
     --color-accent: hsl(15 85% 65%);
     --background: hsl(45 100% 96%);
     --gradient-primary: linear-gradient(135deg, hsl(35 85% 55%), hsl(15 85% 65%));
@@ -90,6 +92,8 @@
 
   :root[data-theme="vehicles"] {
     --color-primary: hsl(220 85% 55%);
+    --color-secondary: hsl(210 75% 85%);
+    --color-secondary-foreground: hsl(220 95% 15%);
     --color-accent: hsl(200 85% 65%);
     --background: hsl(210 100% 96%);
     --gradient-primary: linear-gradient(135deg, hsl(220 85% 55%), hsl(200 85% 65%));
@@ -98,6 +102,8 @@
 
   :root[data-theme="jobs"] {
     --color-primary: hsl(280 85% 55%);
+    --color-secondary: hsl(270 75% 85%);
+    --color-secondary-foreground: hsl(280 95% 15%);
     --color-accent: hsl(260 85% 65%);
     --background: hsl(270 100% 96%);
     --gradient-primary: linear-gradient(135deg, hsl(280 85% 55%), hsl(260 85% 65%));
@@ -106,6 +112,8 @@
 
   :root[data-theme="nature"] {
     --color-primary: hsl(140 85% 45%);
+    --color-secondary: hsl(135 75% 85%);
+    --color-secondary-foreground: hsl(140 95% 15%);
     --color-accent: hsl(120 85% 55%);
     --background: hsl(130 100% 96%);
     --gradient-primary: linear-gradient(135deg, hsl(140 85% 45%), hsl(120 85% 55%));
@@ -114,6 +122,8 @@
 
   :root[data-theme="original"] {
     --color-primary: hsl(35 85% 55%);
+    --color-secondary: hsl(40 75% 85%);
+    --color-secondary-foreground: hsl(25 95% 15%);
     --color-accent: hsl(15 85% 65%);
     --background: hsl(45 100% 96%);
     --gradient-primary: linear-gradient(135deg, hsl(35 85% 55%), hsl(15 85% 65%));
@@ -122,6 +132,8 @@
 
   :root[data-theme="fantasy"] {
     --color-primary: hsl(200 85% 65%);
+    --color-secondary: hsl(215 75% 85%);
+    --color-secondary-foreground: hsl(200 95% 15%);
     --color-accent: hsl(220 85% 55%);
     --background: hsl(210 100% 96%);
     --gradient-primary: linear-gradient(135deg, hsl(200 85% 65%), hsl(220 85% 55%));

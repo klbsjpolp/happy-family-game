@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import {Family, GameState} from '@/types/game';
 import { PlayerHand } from './PlayerHand';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group.tsx";
 import { AnimationOverlay } from './AnimationOverlay';
 import { animationConfig } from '@/config/animationConfig';
 import {GameCardBack} from "@/components/GameCardBack.tsx";
@@ -17,8 +16,6 @@ interface GameBoardProps {
 }
 
 export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }: GameBoardProps) {
-  const [selectedFamily, setSelectedFamily] = useState<Family>();
-
   const currentPlayer = gameState.players[gameState.currentPlayer];
   const otherPlayer = gameState.players[1 - gameState.currentPlayer];
   const isHumanTurn = !currentPlayer.isAI;
@@ -32,19 +29,6 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
       return () => clearTimeout(timer);
     }
   }, [currentPlayer.isAI, currentPlayer.name, gameState.currentPlayer, gameState.gamePhase, onPlayAITurn]);
-
-  const handleAskCard = () => {
-    if (!selectedFamily) return;
-    console.log(gameState.players[gameState.currentPlayer].cards);
-    
-    onAskForCard(1 - gameState.currentPlayer, selectedFamily);
-    setSelectedFamily(undefined);
-  };
-
-  const handleSelectFamily = (newFamilyId: string) => {
-    const family = gameState.families.find(f => f.id === newFamilyId);
-    setSelectedFamily(family);
-  };
 
   if (gameState.gamePhase === 'ended') {
     const winner = gameState.players.find(p => p.id === gameState.winner);
@@ -112,38 +96,18 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
               families={gameState.families}
               isCurrentPlayer={gameState.currentPlayer === 0}
               isMyTurn={isHumanTurn && gameState.currentPlayer === 0}
+              askForCard={(f: Family) => onAskForCard(1, f)}
             />
           </div>
 
           {/* Colonne centrale - 1 colonne */}
-          <div className="col-span-1 flex flex-col items-center gap-4">
-            {/* Deck de cartes */}
+          {/* Deck de cartes */}
+          <div className="col-span-1 flex items-center justify-center">
             <GameCardBack id="deck">
               <Badge className="absolute -top-2 -right-2">
                 {gameState.deck.length}
               </Badge>
             </GameCardBack>
-            {/* <div className="relative w-24 h-32 bg-primary/10 rounded-lg border-2 border-primary/20 flex items-center justify-center">
-              <span className="text-2xl">🎴</span>
-              <Badge className="absolute -top-2 -right-2">
-                {gameState.deck.length}
-              </Badge>
-            </div>*/}
-            {/* Sélecteur de familles */}
-            <ToggleGroup className="grid space-y-2 w-full" type="single" value={selectedFamily?.id ?? 'none'} onValueChange={handleSelectFamily}>
-              {gameState.families.map(family => (
-                <ToggleGroupItem
-                  key={family.id}
-                  value={family.id}
-                  className="w-full p-2 rounded-md flex items-center gap-2 hover:bg-primary/10"
-                  style={{ backgroundColor: family.color + '20' }}
-                  disabled={!isHumanTurn || !currentPlayer.cards.find(c => family.members.find(m => m.id === c))}>
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: family.color }} />
-                  <span className="text-xs truncate">{family.name}</span>
-                </ToggleGroupItem>
-              ))}
-              <Button onClick={handleAskCard} disabled={!isHumanTurn || !selectedFamily}>Demander</Button>
-            </ToggleGroup>
           </div>
 
           {/* Joueur 2 - 3 colonnes */}
@@ -153,6 +117,7 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
               families={gameState.families}
               isCurrentPlayer={gameState.currentPlayer === 1}
               isMyTurn={isHumanTurn && gameState.currentPlayer === 1}
+              askForCard={(f: Family) => onAskForCard(0, f)}
             />
           </div>
         </div>

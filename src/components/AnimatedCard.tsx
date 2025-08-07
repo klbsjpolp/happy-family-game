@@ -77,23 +77,6 @@ export function AnimatedCard({ member, family, size = 'medium', isRevealed = tru
               size={size}
             />
           ) : (
-            /*
-            <div 
-              className={`
-                game-card border-2 border-gray-400 bg-blue-900 
-                ${size === 'small' ? 'w-16 h-20' : size === 'medium' ? 'w-24 h-32' : 'w-32 h-44'}
-                flex items-center justify-center rounded-lg
-              `}
-            >
-              <div className="text-white text-center">
-                <div className={`${size === 'small' ? 'text-lg' : size === 'medium' ? 'text-2xl' : 'text-4xl'}`}>
-                  🎴
-                </div>
-                <div className={`${size === 'small' ? 'text-xs' : 'text-sm'} font-medium`}>
-                  Carte
-                </div>
-              </div>
-            </div>*/
             <GameCardBack id={member.id} />
           )}
         </motion.div>
