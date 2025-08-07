@@ -9,7 +9,7 @@ const Index = () => {
   const [theme, setTheme] = useState<Theme>('original');
 
   const applyTheme = useCallback((theme: Theme) => {
-    document.body.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
   }, [])
 
   const onStartGame = useCallback((config: GameConfig) => {
