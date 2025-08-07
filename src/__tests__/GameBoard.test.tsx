@@ -114,7 +114,7 @@ describe('GameBoard', () => {
     expect(screen.getByRole('radio', { name: 'Rabbits' })).toBeInTheDocument();
     
     // Check for the ask button
-    expect(screen.getByText('Demander')).toBeInTheDocument();
+    expect(screen.getByRole('button', {name:'Demander'})).toBeInTheDocument();
     expect(screen.getByText('Demander')).toBeDisabled(); // Should be disabled initially
   });
   

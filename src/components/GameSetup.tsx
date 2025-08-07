@@ -1,21 +1,22 @@
-import { useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Slider } from '@/components/ui/slider';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Label } from '@/components/ui/label';
-import { GameConfig, Theme, GameMode, THEMES } from '@/types/game';
+import {Dispatch, useState} from 'react';
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card';
+import {Button} from '@/components/ui/button';
+import {Badge} from '@/components/ui/badge';
+import {Slider} from '@/components/ui/slider';
+import {RadioGroup, RadioGroupItem} from '@/components/ui/radio-group';
+import {Label} from '@/components/ui/label';
+import {GameConfig, Theme, GameMode, THEMES} from '@/types/game';
 import {MAX_FAMILIES} from "@/data/families.ts";
 
 interface GameSetupProps {
-  onStartGame: (config: GameConfig) => void;
+  onStartGame: (config: GameConfig) => void,
+  theme: Theme,
+  setTheme: Dispatch<Theme>,
 }
 
 const MIN = 4;
 
-export function GameSetup({ onStartGame }: GameSetupProps) {
-  const [theme, setTheme] = useState<Theme>('animals');
+export function GameSetup({onStartGame, theme, setTheme}: GameSetupProps) {
   const [familyCount, setFamilyCount] = useState([7]);
   const [gameMode, setGameMode] = useState<GameMode>('human-vs-ai');
 
@@ -38,7 +39,7 @@ export function GameSetup({ onStartGame }: GameSetupProps) {
             Configurez votre partie et amusez-vous !
           </CardDescription>
         </CardHeader>
-        
+
         <CardContent className="space-y-8">
           {/* Sélection du thème */}
           <div className="space-y-4">
@@ -48,8 +49,8 @@ export function GameSetup({ onStartGame }: GameSetupProps) {
                 <Card
                   key={key}
                   className={`cursor-pointer transition-all duration-300 border-2 card-hover ${
-                    theme === key 
-                      ? 'border-primary bg-primary/10 shadow-glow' 
+                    theme === key
+                      ? 'border-primary bg-primary/10 shadow-glow'
                       : 'border-border hover:border-primary/50'
                   }`}
                   onClick={() => setTheme(key as Theme)}
@@ -88,9 +89,11 @@ export function GameSetup({ onStartGame }: GameSetupProps) {
           {/* Mode de jeu */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-foreground">Mode de jeu</h3>
-            <RadioGroup className="grid sm:grid-cols-2 grid-cols-1" value={gameMode} onValueChange={(value) => setGameMode(value as GameMode)}>
-              <div className="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-muted/50 transition-colors">
-                <RadioGroupItem value="human-vs-ai" id="human-vs-ai" />
+            <RadioGroup className="grid sm:grid-cols-2 grid-cols-1" value={gameMode}
+                        onValueChange={(value) => setGameMode(value as GameMode)}>
+              <div
+                className="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-muted/50 transition-colors">
+                <RadioGroupItem value="human-vs-ai" id="human-vs-ai"/>
                 <Label htmlFor="human-vs-ai" className="flex-1 cursor-pointer">
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">🤖</span>
@@ -101,8 +104,9 @@ export function GameSetup({ onStartGame }: GameSetupProps) {
                   </div>
                 </Label>
               </div>
-              <div className="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-muted/50 transition-colors">
-                <RadioGroupItem value="human-vs-human" id="human-vs-human" />
+              <div
+                className="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-muted/50 transition-colors">
+                <RadioGroupItem value="human-vs-human" id="human-vs-human"/>
                 <Label htmlFor="human-vs-human" className="flex-1 cursor-pointer">
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">👥</span>
@@ -117,7 +121,7 @@ export function GameSetup({ onStartGame }: GameSetupProps) {
           </div>
 
           {/* Bouton de démarrage */}
-          <Button 
+          <Button
             onClick={handleStartGame}
             className="w-full text-lg py-6 bg-gradient-primary hover:scale-105 transition-all duration-300 shadow-card hover:shadow-hover"
           >

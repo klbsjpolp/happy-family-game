@@ -40,11 +40,11 @@ export interface GameState {
   deck: string[]; // Cartes restantes dans le deck
 }
 
-export const THEMES: Record<Theme, { name: string; emoji: string; className: string }> = {
-  animals: { name: 'Animaux', emoji: '🦁', className: 'theme-animals' },
-  vehicles: { name: 'Véhicules', emoji: '🚗', className: 'theme-vehicles' },
-  jobs: { name: 'Métiers', emoji: '👨‍⚕️', className: 'theme-jobs' },
-  nature: { name: 'Nature', emoji: '🌳', className: 'theme-nature' },
-  original: { name: 'Classique', emoji: '👪', className: 'theme-original' },
-  fantasy: { name: 'Fantaisie', emoji: '🧙‍♂️', className: 'theme-fantasy' }
+export const THEMES: Record<Theme, { name: string; emoji: string; }> = {
+  animals: { name: 'Animaux', emoji: '🦁' },
+  vehicles: { name: 'Véhicules', emoji: '🚗' },
+  jobs: { name: 'Métiers', emoji: '👨‍⚕️' },
+  nature: { name: 'Nature', emoji: '🌳' },
+  original: { name: 'Classique', emoji: '👪' },
+  fantasy: { name: 'Fantaisie', emoji: '🧙‍♂️' }
 };

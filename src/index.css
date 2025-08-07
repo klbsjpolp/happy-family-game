@@ -2,44 +2,44 @@
 
 @plugin 'tailwindcss-animate';
 
-@custom-variant dark (&:is(.dark *));
-
 @theme {
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
+  --color-border: var(--border);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
 
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
 
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
 
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
 
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
 
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
 
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-card-background: var(--card-background);
+  --color-card-border: var(--card-border);
 
-  --color-sidebar: hsl(var(--sidebar-background));
-  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
-  --color-sidebar-primary: hsl(var(--sidebar-primary));
-  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
-  --color-sidebar-accent: hsl(var(--sidebar-accent));
-  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
-  --color-sidebar-border: hsl(var(--sidebar-border));
-  --color-sidebar-ring: hsl(var(--sidebar-ring));
+  --color-sidebar: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -58,29 +58,12 @@
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
-
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
-  }
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
-  }
 }
 
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
-  @media (width >= --theme(--breakpoint-sm)) {
+  @media (min-width: theme('screens.sm')) {
     max-width: none;
   }
   @media (width >= 1400px) {
@@ -88,14 +71,6 @@
   }
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
@@ -104,16 +79,125 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
   }
-}
 
-@utility card-hover {
-  transition: var(--transition-smooth);
+  :root[data-theme="animals"] {
+    --color-primary: hsl(35 85% 55%);
+    --color-accent: hsl(15 85% 65%);
+    --background: hsl(45 100% 96%);
+    --gradient-primary: linear-gradient(135deg, hsl(35 85% 55%), hsl(15 85% 65%));
+    --gradient-background: linear-gradient(180deg, hsl(45 100% 96%), hsl(35 80% 92%));
+  }
 
-  &:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: var(--shadow-hover);
+  :root[data-theme="vehicles"] {
+    --color-primary: hsl(220 85% 55%);
+    --color-accent: hsl(200 85% 65%);
+    --background: hsl(210 100% 96%);
+    --gradient-primary: linear-gradient(135deg, hsl(220 85% 55%), hsl(200 85% 65%));
+    --gradient-background: linear-gradient(180deg, hsl(210 100% 96%), hsl(220 80% 92%));
+  }
+
+  :root[data-theme="jobs"] {
+    --color-primary: hsl(280 85% 55%);
+    --color-accent: hsl(260 85% 65%);
+    --background: hsl(270 100% 96%);
+    --gradient-primary: linear-gradient(135deg, hsl(280 85% 55%), hsl(260 85% 65%));
+    --gradient-background: linear-gradient(180deg, hsl(270 100% 96%), hsl(280 80% 92%));
+  }
+
+  :root[data-theme="nature"] {
+    --color-primary: hsl(140 85% 45%);
+    --color-accent: hsl(120 85% 55%);
+    --background: hsl(130 100% 96%);
+    --gradient-primary: linear-gradient(135deg, hsl(140 85% 45%), hsl(120 85% 55%));
+    --gradient-background: linear-gradient(180deg, hsl(130 100% 96%), hsl(140 80% 92%));
+  }
+
+  :root[data-theme="original"] {
+    --color-primary: hsl(35 85% 55%);
+    --color-accent: hsl(15 85% 65%);
+    --background: hsl(45 100% 96%);
+    --gradient-primary: linear-gradient(135deg, hsl(35 85% 55%), hsl(15 85% 65%));
+    --gradient-background: linear-gradient(180deg, hsl(45 100% 96%), hsl(35 80% 92%));
+  }
+
+  :root[data-theme="fantasy"] {
+    --color-primary: hsl(200 85% 65%);
+    --color-accent: hsl(220 85% 55%);
+    --background: hsl(210 100% 96%);
+    --gradient-primary: linear-gradient(135deg, hsl(200 85% 65%), hsl(220 85% 55%));
+    --gradient-background: linear-gradient(180deg, hsl(210 100% 96%), hsl(200 80% 92%));
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground min-h-[100vh];
+  }
+
+  :root {
+    --border: hsl(45 30% 85%);
+    --background: hsl(45 100% 96%);
+    --foreground: hsl(25 95% 15%);
+
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(25 95% 15%);
+    --card-background: hsl(45 30% 97%);
+    --card-border: hsl(45 30% 85%);
+
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(25 95% 15%);
+
+    --primary: hsl(35 85% 55%);
+    --primary-foreground: hsl(0 0% 100%);
+
+    --secondary: hsl(45 75% 85%);
+    --secondary-foreground: hsl(25 95% 15%);
+
+    --muted: hsl(45 50% 90%);
+    --muted-foreground: hsl(25 40% 40%);
+
+    --accent: hsl(15 85% 65%);
+    --accent-foreground: hsl(0 0% 100%);
+
+    --destructive: hsl(0 84% 60%);
+    --destructive-foreground: hsl(0 0% 100%);
+
+    --input: hsl(45 30% 85%);
+    --ring: hsl(35 85% 55%);
+
+    --gradient-primary: linear-gradient(135deg, hsl(35 85% 55%), hsl(15 85% 65%));
+    --gradient-background: linear-gradient(180deg, hsl(45 100% 96%), hsl(35 80% 92%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(45 30% 97%));
+
+    --shadow-card: 0 4px 12px -2px hsl(35 85% 55% / 0.15);
+    --shadow-hover: 0 8px 24px -4px hsl(35 85% 55% / 0.25);
+    --shadow-glow: 0 0 20px hsl(35 85% 55% / 0.3);
+
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: hsl(0 0% 98%);
+
+    --sidebar-foreground: hsl(240 5.3% 26.1%);
+
+    --sidebar-primary: hsl(240 5.9% 10%);
+
+    --sidebar-primary-foreground: hsl(0 0% 98%);
+
+    --sidebar-accent: hsl(240 4.8% 95.9%);
+
+    --sidebar-accent-foreground: hsl(240 5.9% 10%);
+
+    --sidebar-border: hsl(220 13% 91%);
+
+    --sidebar-ring: hsl(217.2 91.2% 59.8%);
   }
 }
+
 @utility card-flip {
   transform-style: preserve-3d;
   transition: transform 0.6s;
@@ -129,160 +213,6 @@
 }
 @utility bounce-in {
   animation: bounceIn 0.6s ease-out;
-}
-
-/* Jeu des Familles - Design system thématique 
-Toutes les couleurs DOIVENT être en HSL.
-*/
-
-@layer base {
-  :root {
-    /* Thème par défaut - Animaux */
-    --background: 45 100% 96%;
-    --foreground: 25 95% 15%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 25 95% 15%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 25 95% 15%;
-
-    --primary: 35 85% 55%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 45 75% 85%;
-    --secondary-foreground: 25 95% 15%;
-
-    --muted: 45 50% 90%;
-    --muted-foreground: 25 40% 40%;
-
-    --accent: 15 85% 65%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 45 30% 85%;
-    --input: 45 30% 85%;
-    --ring: 35 85% 55%;
-
-    /* Gradients pour les thèmes */
-    --gradient-primary: linear-gradient(135deg, hsl(35 85% 55%), hsl(15 85% 65%));
-    --gradient-background: linear-gradient(180deg, hsl(45 100% 96%), hsl(35 80% 92%));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(45 30% 97%));
-    
-    /* Ombres thématiques */
-    --shadow-card: 0 4px 12px -2px hsl(35 85% 55% / 0.15);
-    --shadow-hover: 0 8px 24px -4px hsl(35 85% 55% / 0.25);
-    --shadow-glow: 0 0 20px hsl(35 85% 55% / 0.3);
-
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    background: var(--gradient-background);
-    color: hsl(var(--foreground));
-    min-height: 100vh;
-  }
-}
-
-/* Thèmes spécifiques */
-@layer base {
-  .theme-animals {
-    --primary: 35 85% 55%;
-    --accent: 15 85% 65%;
-    --background: 45 100% 96%;
-    --gradient-primary: linear-gradient(135deg, hsl(35 85% 55%), hsl(15 85% 65%));
-    --gradient-background: linear-gradient(180deg, hsl(45 100% 96%), hsl(35 80% 92%));
-  }
-
-  .theme-vehicles {
-    --primary: 220 85% 55%;
-    --accent: 200 85% 65%;
-    --background: 210 100% 96%;
-    --gradient-primary: linear-gradient(135deg, hsl(220 85% 55%), hsl(200 85% 65%));
-    --gradient-background: linear-gradient(180deg, hsl(210 100% 96%), hsl(220 80% 92%));
-  }
-
-  .theme-jobs {
-    --primary: 280 85% 55%;
-    --accent: 260 85% 65%;
-    --background: 270 100% 96%;
-    --gradient-primary: linear-gradient(135deg, hsl(280 85% 55%), hsl(260 85% 65%));
-    --gradient-background: linear-gradient(180deg, hsl(270 100% 96%), hsl(280 80% 92%));
-  }
-
-  .theme-nature {
-    --primary: 140 85% 45%;
-    --accent: 120 85% 55%;
-    --background: 130 100% 96%;
-    --gradient-primary: linear-gradient(135deg, hsl(140 85% 45%), hsl(120 85% 55%));
-    --gradient-background: linear-gradient(180deg, hsl(130 100% 96%), hsl(140 80% 92%));
-  }
 }
 
 /* Animations de cartes */

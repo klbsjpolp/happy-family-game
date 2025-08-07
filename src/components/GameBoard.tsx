@@ -80,7 +80,7 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
   }
 
   return (
-    <div className="min-h-screen p-4 bg-gradient-background">
+    <div className="min-h-screen p-4 bg-background">
       <AnimationOverlay gameState={gameState} />
       <div className="max-w-6xl mx-auto space-y-6">
         {/* En-tête de jeu */}

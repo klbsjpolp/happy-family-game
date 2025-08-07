@@ -18,8 +18,7 @@ export function PlayerHand({
   families, 
   isCurrentPlayer, 
   isMyTurn = false,
-  onCardSelect,
-  selectedCard 
+  onCardSelect
 }: PlayerHandProps) {
   // Pour l'IA, ne pas révéler les cartes - juste afficher des cartes face cachée
   if (player.isAI) {
@@ -138,8 +137,6 @@ export function PlayerHand({
                         member={member}
                         family={family}
                         size="small"
-                        isInHand
-                        isSelected={selectedCard === member.id}
                         onClick={() => onCardSelect?.(member.id)}
                       />
                     ))}

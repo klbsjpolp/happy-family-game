@@ -1,29 +1,27 @@
-import { useState, useEffect } from 'react';
+import {useCallback, useState} from 'react';
 import { GameSetup } from '@/components/GameSetup';
 import { GameBoard } from '@/components/GameBoard';
 import { useGameLogic } from '@/hooks/useGameLogic';
-import { THEMES } from '@/types/game';
+import {GameConfig, Theme} from '@/types/game';
 
 const Index = () => {
   const { gameState, startGame, askForCard, playAITurn, resetGame } = useGameLogic();
-  const [currentTheme, setCurrentTheme] = useState('animals');
+  const [theme, setTheme] = useState<Theme>('original');
 
-  // Appliquer le thème à l'élément body
-  useEffect(() => {
-    if (gameState) {
-      setCurrentTheme(gameState.config.theme);
-      document.body.className = THEMES[gameState.config.theme].className;
-    } else {
-      document.body.className = THEMES[currentTheme as keyof typeof THEMES].className;
-    }
-    
-    return () => {
-      document.body.className = '';
-    };
-  }, [gameState, currentTheme]);
+  const applyTheme = useCallback((theme: Theme) => {
+    document.body.setAttribute('data-theme', theme);
+  }, [])
+
+  const onStartGame = useCallback((config: GameConfig) => {
+    applyTheme(config.theme)
+    startGame(config)
+  }, [startGame, applyTheme])
 
   if (!gameState) {
-    return <GameSetup onStartGame={startGame} />;
+    return <GameSetup onStartGame={onStartGame} theme={theme} setTheme={t => {
+      applyTheme(t);
+      setTheme(t);
+    }} />;
   }
 
   return (
