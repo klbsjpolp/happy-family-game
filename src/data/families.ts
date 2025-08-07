@@ -795,5 +795,401 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
         {id: 'mystic-bicycle', name: 'Vélo mystique', emoji: '🚲'}
       ]
     }
+  ],
+  space: [
+    {
+      id: 'planets',
+      name: 'Les Planètes',
+      color: 'hsl(240 90% 60%)',
+      members: [
+        {id: 'mercury', name: 'Mercure', emoji: '☿️'},
+        {id: 'venus', name: 'Vénus', emoji: '♀️'},
+        {id: 'earth', name: 'Terre', emoji: '🌍'},
+        {id: 'mars', name: 'Mars', emoji: '♂️'},
+        {id: 'jupiter', name: 'Jupiter', emoji: '♃'},
+        {id: 'saturn', name: 'Saturne', emoji: '🪐'}
+      ]
+    },
+    {
+      id: 'constellations',
+      name: 'Les Constellations',
+      color: 'hsl(280 85% 65%)',
+      members: [
+        {id: 'orion', name: 'Orion', emoji: '⭐'},
+        {id: 'ursa-major', name: 'Grande Ourse', emoji: '🐻'},
+        {id: 'cassiopeia', name: 'Cassiopée', emoji: '👑'},
+        {id: 'leo', name: 'Lion', emoji: '🦁'},
+        {id: 'scorpius', name: 'Scorpion', emoji: '🦂'},
+        {id: 'cygnus', name: 'Cygne', emoji: '🦢'}
+      ]
+    },
+    {
+      id: 'spacecraft',
+      name: 'Les Vaisseaux Spatiaux',
+      color: 'hsl(260 85% 55%)',
+      members: [
+        {id: 'rocket', name: 'Fusée', emoji: '🚀'},
+        {id: 'shuttle', name: 'Navette', emoji: '🛸'},
+        {id: 'satellite', name: 'Satellite', emoji: '🛰️'},
+        {id: 'space-station', name: 'Station spatiale', emoji: '🛰️'},
+        {id: 'rover', name: 'Rover', emoji: '🚙'},
+        {id: 'probe', name: 'Sonde', emoji: '📡'}
+      ]
+    },
+    {
+      id: 'astronauts',
+      name: 'Les Astronautes',
+      color: 'hsl(220 85% 60%)',
+      members: [
+        {id: 'commander', name: 'Commandant', emoji: '👨‍🚀'},
+        {id: 'pilot', name: 'Pilote', emoji: '👩‍🚀'},
+        {id: 'engineer', name: 'Ingénieur', emoji: '🔧'},
+        {id: 'scientist', name: 'Scientifique', emoji: '🔬'},
+        {id: 'medic', name: 'Médecin', emoji: '⚕️'},
+        {id: 'specialist', name: 'Spécialiste', emoji: '🧑‍💻'}
+      ]
+    },
+    {
+      id: 'galaxies',
+      name: 'Les Galaxies',
+      color: 'hsl(300 85% 55%)',
+      members: [
+        {id: 'milky-way', name: 'Voie Lactée', emoji: '🌌'},
+        {id: 'andromeda', name: 'Andromède', emoji: '🌠'},
+        {id: 'whirlpool', name: 'Tourbillon', emoji: '🌪️'},
+        {id: 'sombrero', name: 'Sombrero', emoji: '👒'},
+        {id: 'cartwheel', name: 'Roue de chariot', emoji: '🎡'},
+        {id: 'pinwheel', name: 'Moulinet', emoji: '🎯'}
+      ]
+    },
+    {
+      id: 'space-phenomena',
+      name: 'Phénomènes Spatiaux',
+      color: 'hsl(180 85% 55%)',
+      members: [
+        {id: 'black-hole', name: 'Trou noir', emoji: '⚫'},
+        {id: 'supernova', name: 'Supernova', emoji: '💥'},
+        {id: 'nebula', name: 'Nébuleuse', emoji: '☁️'},
+        {id: 'pulsar', name: 'Pulsar', emoji: '📡'},
+        {id: 'quasar', name: 'Quasar', emoji: '⚡'},
+        {id: 'asteroid', name: 'Astéroïde', emoji: '☄️'}
+      ]
+    },
+    {
+      id: 'space-missions',
+      name: 'Missions Spatiales',
+      color: 'hsl(120 85% 50%)',
+      members: [
+        {id: 'apollo', name: 'Apollo', emoji: '🌙'},
+        {id: 'voyager', name: 'Voyager', emoji: '🛰️'},
+        {id: 'hubble', name: 'Hubble', emoji: '🔭'},
+        {id: 'cassini', name: 'Cassini', emoji: '🪐'},
+        {id: 'curiosity', name: 'Curiosity', emoji: '🤖'},
+        {id: 'perseverance', name: 'Perseverance', emoji: '🚗'}
+      ]
+    },
+    {
+      id: 'alien-species',
+      name: 'Espèces Extraterrestres',
+      color: 'hsl(160 85% 55%)',
+      members: [
+        {id: 'martian', name: 'Martien', emoji: '👽'},
+        {id: 'gray', name: 'Petit Gris', emoji: '👾'},
+        {id: 'reptilian', name: 'Reptilien', emoji: '🦎'},
+        {id: 'nordic', name: 'Nordique', emoji: '👼'},
+        {id: 'insectoid', name: 'Insectoïde', emoji: '🐛'},
+        {id: 'energy-being', name: 'Être d\'énergie', emoji: '⚡'}
+      ]
+    },
+    {
+      id: 'space-tools',
+      name: 'Outils Spatiaux',
+      color: 'hsl(340 85% 55%)',
+      members: [
+        {id: 'telescope', name: 'Télescope', emoji: '🔭'},
+        {id: 'space-suit', name: 'Combinaison', emoji: '🧑‍🚀'},
+        {id: 'oxygen-tank', name: 'Réservoir d\'oxygène', emoji: '⚗️'},
+        {id: 'laser', name: 'Laser', emoji: '🔦'},
+        {id: 'communicator', name: 'Communicateur', emoji: '📻'},
+        {id: 'scanner', name: 'Scanner', emoji: '📱'}
+      ]
+    },
+    {
+      id: 'space-colonies',
+      name: 'Colonies Spatiales',
+      color: 'hsl(60 85% 50%)',
+      members: [
+        {id: 'moon-base', name: 'Base lunaire', emoji: '🌙'},
+        {id: 'mars-colony', name: 'Colonie martienne', emoji: '🏠'},
+        {id: 'space-city', name: 'Cité spatiale', emoji: '🏙️'},
+        {id: 'mining-station', name: 'Station minière', emoji: '⛏️'},
+        {id: 'research-outpost', name: 'Avant-poste de recherche', emoji: '🔬'},
+        {id: 'trade-hub', name: 'Hub commercial', emoji: '🏪'}
+      ]
+    }
+  ],
+  food: [
+    {
+      id: 'fruits',
+      name: 'Les Fruits',
+      color: 'hsl(25 90% 55%)',
+      members: [
+        {id: 'apple', name: 'Pomme', emoji: '🍎'},
+        {id: 'banana', name: 'Banane', emoji: '🍌'},
+        {id: 'orange', name: 'Orange', emoji: '🍊'},
+        {id: 'strawberry', name: 'Fraise', emoji: '🍓'},
+        {id: 'grapes', name: 'Raisins', emoji: '🍇'},
+        {id: 'watermelon', name: 'Pastèque', emoji: '🍉'}
+      ]
+    },
+    {
+      id: 'vegetables',
+      name: 'Les Légumes',
+      color: 'hsl(120 85% 45%)',
+      members: [
+        {id: 'carrot', name: 'Carotte', emoji: '🥕'},
+        {id: 'broccoli', name: 'Brocoli', emoji: '🥦'},
+        {id: 'tomato', name: 'Tomate', emoji: '🍅'},
+        {id: 'corn', name: 'Maïs', emoji: '🌽'},
+        {id: 'potato', name: 'Pomme de terre', emoji: '🥔'},
+        {id: 'bell-pepper', name: 'Poivron', emoji: '🫑'}
+      ]
+    },
+    {
+      id: 'desserts',
+      name: 'Les Desserts',
+      color: 'hsl(300 85% 60%)',
+      members: [
+        {id: 'cake', name: 'Gâteau', emoji: '🍰'},
+        {id: 'ice-cream', name: 'Glace', emoji: '🍦'},
+        {id: 'cookie', name: 'Cookie', emoji: '🍪'},
+        {id: 'donut', name: 'Donut', emoji: '🍩'},
+        {id: 'chocolate', name: 'Chocolat', emoji: '🍫'},
+        {id: 'pie', name: 'Tarte', emoji: '🥧'}
+      ]
+    },
+    {
+      id: 'fast-food',
+      name: 'Fast Food',
+      color: 'hsl(0 85% 55%)',
+      members: [
+        {id: 'hamburger', name: 'Hamburger', emoji: '🍔'},
+        {id: 'pizza', name: 'Pizza', emoji: '🍕'},
+        {id: 'hot-dog', name: 'Hot-dog', emoji: '🌭'},
+        {id: 'fries', name: 'Frites', emoji: '🍟'},
+        {id: 'taco', name: 'Taco', emoji: '🌮'},
+        {id: 'burrito', name: 'Burrito', emoji: '🌯'}
+      ]
+    },
+    {
+      id: 'breakfast',
+      name: 'Petit Déjeuner',
+      color: 'hsl(40 85% 55%)',
+      members: [
+        {id: 'croissant', name: 'Croissant', emoji: '🥐'},
+        {id: 'pancake', name: 'Pancake', emoji: '🥞'},
+        {id: 'bacon', name: 'Bacon', emoji: '🥓'},
+        {id: 'egg', name: 'Œuf', emoji: '🍳'},
+        {id: 'toast', name: 'Toast', emoji: '🍞'},
+        {id: 'cereal', name: 'Céréales', emoji: '🥣'}
+      ]
+    },
+    {
+      id: 'seafood',
+      name: 'Fruits de Mer',
+      color: 'hsl(200 85% 55%)',
+      members: [
+        {id: 'fish', name: 'Poisson', emoji: '🐟'},
+        {id: 'shrimp', name: 'Crevette', emoji: '🦐'},
+        {id: 'crab', name: 'Crabe', emoji: '🦀'},
+        {id: 'lobster', name: 'Homard', emoji: '🦞'},
+        {id: 'oyster', name: 'Huître', emoji: '🦪'},
+        {id: 'squid', name: 'Calmar', emoji: '🦑'}
+      ]
+    },
+    {
+      id: 'beverages',
+      name: 'Les Boissons',
+      color: 'hsl(240 85% 60%)',
+      members: [
+        {id: 'coffee', name: 'Café', emoji: '☕'},
+        {id: 'tea', name: 'Thé', emoji: '🍵'},
+        {id: 'juice', name: 'Jus', emoji: '🧃'},
+        {id: 'soda', name: 'Soda', emoji: '🥤'},
+        {id: 'wine', name: 'Vin', emoji: '🍷'},
+        {id: 'beer', name: 'Bière', emoji: '🍺'}
+      ]
+    },
+    {
+      id: 'dairy',
+      name: 'Produits Laitiers',
+      color: 'hsl(60 85% 75%)',
+      members: [
+        {id: 'milk', name: 'Lait', emoji: '🥛'},
+        {id: 'cheese', name: 'Fromage', emoji: '🧀'},
+        {id: 'yogurt', name: 'Yaourt', emoji: '🥛'},
+        {id: 'butter', name: 'Beurre', emoji: '🧈'},
+        {id: 'cream', name: 'Crème', emoji: '🥛'},
+        {id: 'ice-cream', name: 'Glace', emoji: '🍨'}
+      ]
+    },
+    {
+      id: 'spices',
+      name: 'Les Épices',
+      color: 'hsl(30 85% 50%)',
+      members: [
+        {id: 'salt', name: 'Sel', emoji: '🧂'},
+        {id: 'pepper', name: 'Poivre', emoji: '🫚'},
+        {id: 'garlic', name: 'Ail', emoji: '🧄'},
+        {id: 'ginger', name: 'Gingembre', emoji: '🫚'},
+        {id: 'basil', name: 'Basilic', emoji: '🌿'},
+        {id: 'oregano', name: 'Origan', emoji: '🌿'}
+      ]
+    },
+    {
+      id: 'grains',
+      name: 'Les Céréales',
+      color: 'hsl(45 85% 50%)',
+      members: [
+        {id: 'rice', name: 'Riz', emoji: '🍚'},
+        {id: 'wheat', name: 'Blé', emoji: '🌾'},
+        {id: 'oats', name: 'Avoine', emoji: '🥣'},
+        {id: 'quinoa', name: 'Quinoa', emoji: '🌾'},
+        {id: 'barley', name: 'Orge', emoji: '🌾'},
+        {id: 'pasta', name: 'Pâtes', emoji: '🍝'}
+      ]
+    }
+  ],
+  sports: [
+    {
+      id: 'ball-sports',
+      name: 'Sports de Balle',
+      color: 'hsl(100 85% 50%)',
+      members: [
+        {id: 'soccer', name: 'Football', emoji: '⚽'},
+        {id: 'basketball', name: 'Basketball', emoji: '🏀'},
+        {id: 'tennis', name: 'Tennis', emoji: '🎾'},
+        {id: 'volleyball', name: 'Volleyball', emoji: '🏐'},
+        {id: 'rugby', name: 'Rugby', emoji: '🏈'},
+        {id: 'ping-pong', name: 'Ping-pong', emoji: '🏓'}
+      ]
+    },
+    {
+      id: 'water-sports',
+      name: 'Sports Aquatiques',
+      color: 'hsl(200 85% 55%)',
+      members: [
+        {id: 'swimming', name: 'Natation', emoji: '🏊'},
+        {id: 'surfing', name: 'Surf', emoji: '🏄'},
+        {id: 'diving', name: 'Plongée', emoji: '🤿'},
+        {id: 'water-polo', name: 'Water-polo', emoji: '🤽'},
+        {id: 'sailing', name: 'Voile', emoji: '⛵'},
+        {id: 'rowing', name: 'Aviron', emoji: '🚣'}
+      ]
+    },
+    {
+      id: 'winter-sports',
+      name: 'Sports d\'Hiver',
+      color: 'hsl(240 85% 65%)',
+      members: [
+        {id: 'skiing', name: 'Ski', emoji: '⛷️'},
+        {id: 'snowboarding', name: 'Snowboard', emoji: '🏂'},
+        {id: 'ice-hockey', name: 'Hockey sur glace', emoji: '🏒'},
+        {id: 'figure-skating', name: 'Patinage artistique', emoji: '⛸️'},
+        {id: 'curling', name: 'Curling', emoji: '🥌'},
+        {id: 'bobsled', name: 'Bobsleigh', emoji: '🛷'}
+      ]
+    },
+    {
+      id: 'track-field',
+      name: 'Athlétisme',
+      color: 'hsl(50 85% 50%)',
+      members: [
+        {id: 'running', name: 'Course', emoji: '🏃'},
+        {id: 'jumping', name: 'Saut', emoji: '🏃‍♂️'},
+        {id: 'throwing', name: 'Lancer', emoji: '🤾'},
+        {id: 'marathon', name: 'Marathon', emoji: '🏃‍♀️'},
+        {id: 'hurdles', name: 'Haies', emoji: '🤸'},
+        {id: 'pole-vault', name: 'Saut à la perche', emoji: '🤸‍♂️'}
+      ]
+    },
+    {
+      id: 'combat-sports',
+      name: 'Sports de Combat',
+      color: 'hsl(0 85% 55%)',
+      members: [
+        {id: 'boxing', name: 'Boxe', emoji: '🥊'},
+        {id: 'karate', name: 'Karaté', emoji: '🥋'},
+        {id: 'judo', name: 'Judo', emoji: '🤼'},
+        {id: 'wrestling', name: 'Lutte', emoji: '🤼‍♀️'},
+        {id: 'taekwondo', name: 'Taekwondo', emoji: '🦵'},
+        {id: 'fencing', name: 'Escrime', emoji: '🤺'}
+      ]
+    },
+    {
+      id: 'gymnastics',
+      name: 'Gymnastique',
+      color: 'hsl(300 85% 55%)',
+      members: [
+        {id: 'floor-exercise', name: 'Sol', emoji: '🤸'},
+        {id: 'balance-beam', name: 'Poutre', emoji: '🤸‍♀️'},
+        {id: 'uneven-bars', name: 'Barres asymétriques', emoji: '🤸‍♂️'},
+        {id: 'vault', name: 'Saut de cheval', emoji: '🤸'},
+        {id: 'rings', name: 'Anneaux', emoji: '💍'},
+        {id: 'parallel-bars', name: 'Barres parallèles', emoji: '🤸‍♂️'}
+      ]
+    },
+    {
+      id: 'cycling-sports',
+      name: 'Sports Cyclistes',
+      color: 'hsl(140 85% 45%)',
+      members: [
+        {id: 'road-cycling', name: 'Cyclisme sur route', emoji: '🚴'},
+        {id: 'mountain-biking', name: 'VTT', emoji: '🚵'},
+        {id: 'bmx', name: 'BMX', emoji: '🚴‍♂️'},
+        {id: 'track-cycling', name: 'Cyclisme sur piste', emoji: '🚴‍♀️'},
+        {id: 'cyclocross', name: 'Cyclo-cross', emoji: '🚵‍♂️'},
+        {id: 'triathlon', name: 'Triathlon', emoji: '🏊‍♂️'}
+      ]
+    },
+    {
+      id: 'racquet-sports',
+      name: 'Sports de Raquette',
+      color: 'hsl(280 85% 60%)',
+      members: [
+        {id: 'tennis', name: 'Tennis', emoji: '🎾'},
+        {id: 'badminton', name: 'Badminton', emoji: '🏸'},
+        {id: 'squash', name: 'Squash', emoji: '🎾'},
+        {id: 'table-tennis', name: 'Tennis de table', emoji: '🏓'},
+        {id: 'racquetball', name: 'Racquetball', emoji: '🎾'},
+        {id: 'padel', name: 'Padel', emoji: '🎾'}
+      ]
+    },
+    {
+      id: 'extreme-sports',
+      name: 'Sports Extrêmes',
+      color: 'hsl(20 85% 55%)',
+      members: [
+        {id: 'skateboarding', name: 'Skateboard', emoji: '🛹'},
+        {id: 'rock-climbing', name: 'Escalade', emoji: '🧗'},
+        {id: 'bungee-jumping', name: 'Saut à l\'élastique', emoji: '🪂'},
+        {id: 'paragliding', name: 'Parapente', emoji: '🪂'},
+        {id: 'base-jumping', name: 'Base jump', emoji: '🪂'},
+        {id: 'wingsuit', name: 'Combinaison ailée', emoji: '🪂'}
+      ]
+    },
+    {
+      id: 'team-sports',
+      name: 'Sports d\'Équipe',
+      color: 'hsl(160 85% 50%)',
+      members: [
+        {id: 'soccer-team', name: 'Équipe de football', emoji: '⚽'},
+        {id: 'basketball-team', name: 'Équipe de basket', emoji: '🏀'},
+        {id: 'volleyball-team', name: 'Équipe de volley', emoji: '🏐'},
+        {id: 'rugby-team', name: 'Équipe de rugby', emoji: '🏈'},
+        {id: 'hockey-team', name: 'Équipe de hockey', emoji: '🏒'},
+        {id: 'baseball-team', name: 'Équipe de baseball', emoji: '⚾'}
+      ]
+    }
   ]
 };

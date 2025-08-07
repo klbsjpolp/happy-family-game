@@ -1,4 +1,4 @@
-export type Theme = 'animals' | 'vehicles' | 'jobs' | 'nature' | 'original' | 'fantasy';
+export type Theme = 'animals' | 'vehicles' | 'jobs' | 'nature' | 'original' | 'fantasy' | 'space' | 'food' | 'sports';
 
 export type GameMode = 'human-vs-human' | 'human-vs-ai';
 
@@ -41,10 +41,13 @@ export interface GameState {
 }
 
 export const THEMES: Record<Theme, { name: string; emoji: string; }> = {
+  original: { name: 'Classique', emoji: '👪' },
   animals: { name: 'Animaux', emoji: '🦁' },
   vehicles: { name: 'Véhicules', emoji: '🚗' },
   jobs: { name: 'Métiers', emoji: '👨‍⚕️' },
   nature: { name: 'Nature', emoji: '🌳' },
-  original: { name: 'Classique', emoji: '👪' },
-  fantasy: { name: 'Fantaisie', emoji: '🧙‍♂️' }
+  fantasy: { name: 'Fantaisie', emoji: '🧙‍♂️' },
+  space: { name: 'Espace', emoji: '🚀' },
+  food: { name: 'Cuisine', emoji: '🍕' },
+  sports: { name: 'Sports', emoji: '⚽' },
 };

@@ -80,7 +80,7 @@
     border-color: var(--color-gray-200, currentcolor);
   }
 
-  :root[data-theme="animals"] {
+  :root[data-theme="original"] {
     --color-primary: hsl(35 85% 55%);
     --color-secondary: hsl(40 75% 85%);
     --color-secondary-foreground: hsl(25 95% 15%);
@@ -88,6 +88,16 @@
     --background: hsl(45 100% 96%);
     --gradient-primary: linear-gradient(135deg, hsl(35 85% 55%), hsl(15 85% 65%));
     --gradient-background: linear-gradient(180deg, hsl(45 100% 96%), hsl(35 80% 92%));
+  }
+
+  :root[data-theme="animals"] {
+    --color-primary: hsl(0 85% 55%);
+    --color-secondary: hsl(10 75% 85%);
+    --color-secondary-foreground: hsl(0 95% 15%);
+    --color-accent: hsl(20 85% 65%);
+    --background: hsl(15 100% 96%);
+    --gradient-primary: linear-gradient(135deg, hsl(0 85% 55%), hsl(20 85% 65%));
+    --gradient-background: linear-gradient(180deg, hsl(15 100% 96%), hsl(0 80% 92%));
   }
 
   :root[data-theme="vehicles"] {
@@ -120,16 +130,6 @@
     --gradient-background: linear-gradient(180deg, hsl(130 100% 96%), hsl(140 80% 92%));
   }
 
-  :root[data-theme="original"] {
-    --color-primary: hsl(35 85% 55%);
-    --color-secondary: hsl(40 75% 85%);
-    --color-secondary-foreground: hsl(25 95% 15%);
-    --color-accent: hsl(15 85% 65%);
-    --background: hsl(45 100% 96%);
-    --gradient-primary: linear-gradient(135deg, hsl(35 85% 55%), hsl(15 85% 65%));
-    --gradient-background: linear-gradient(180deg, hsl(45 100% 96%), hsl(35 80% 92%));
-  }
-
   :root[data-theme="fantasy"] {
     --color-primary: hsl(200 85% 65%);
     --color-secondary: hsl(215 75% 85%);
@@ -138,6 +138,36 @@
     --background: hsl(210 100% 96%);
     --gradient-primary: linear-gradient(135deg, hsl(200 85% 65%), hsl(220 85% 55%));
     --gradient-background: linear-gradient(180deg, hsl(210 100% 96%), hsl(200 80% 92%));
+  }
+
+  :root[data-theme="space"] {
+    --color-primary: hsl(240 90% 60%);
+    --color-secondary: hsl(260 75% 85%);
+    --color-secondary-foreground: hsl(240 95% 15%);
+    --color-accent: hsl(280 85% 65%);
+    --background: hsl(250 100% 96%);
+    --gradient-primary: linear-gradient(135deg, hsl(240 90% 60%), hsl(280 85% 65%));
+    --gradient-background: linear-gradient(180deg, hsl(250 100% 96%), hsl(240 80% 92%));
+  }
+
+  :root[data-theme="food"] {
+    --color-primary: hsl(25 90% 55%);
+    --color-secondary: hsl(40 80% 85%);
+    --color-secondary-foreground: hsl(25 95% 15%);
+    --color-accent: hsl(10 85% 60%);
+    --background: hsl(35 100% 96%);
+    --gradient-primary: linear-gradient(135deg, hsl(25 90% 55%), hsl(10 85% 60%));
+    --gradient-background: linear-gradient(180deg, hsl(35 100% 96%), hsl(25 80% 92%));
+  }
+
+  :root[data-theme="sports"] {
+    --color-primary: hsl(100 85% 50%);
+    --color-secondary: hsl(120 75% 85%);
+    --color-secondary-foreground: hsl(100 95% 15%);
+    --color-accent: hsl(80 85% 55%);
+    --background: hsl(110 100% 96%);
+    --gradient-primary: linear-gradient(135deg, hsl(100 85% 50%), hsl(80 85% 55%));
+    --gradient-background: linear-gradient(180deg, hsl(110 100% 96%), hsl(100 80% 92%));
   }
 
   * {
