@@ -25,12 +25,17 @@ export function AnimationOverlay({ gameState }:{ gameState: GameState }) {
     return null;
   }
 
+  // Determine if the card should be revealed based on the drawing player
+  const isDrawingPlayerAI = animationState.animationType === 'draw' 
+    ? gameState.players[gameState.currentPlayer].isAI
+    : false;
+  
   return (
     <div className="fixed inset-0 pointer-events-none z-50">
       <AnimatedCard
         member={cardMember}
         family={cardFamily}
-        isRevealed={animationState.animationType !== 'draw' || !gameState.players[1].isAI}
+        isRevealed={animationState.animationType !== 'draw' || !isDrawingPlayerAI}
       />
     </div>
   );

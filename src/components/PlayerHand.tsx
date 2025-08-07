@@ -3,6 +3,7 @@ import { GameCard } from './GameCard';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {COMPLETE_FAMILY_COUNT} from "@/data/families.ts";
+import {GameCardBack} from "@/components/GameCardBack.tsx";
 
 interface PlayerHandProps {
   player: Player;
@@ -18,7 +19,8 @@ export function PlayerHand({
   families, 
   isCurrentPlayer, 
   isMyTurn = false,
-  onCardSelect
+  onCardSelect,
+  selectedCard
 }: PlayerHandProps) {
   // Pour l'IA, ne pas révéler les cartes - juste afficher des cartes face cachée
   if (player.isAI) {
@@ -52,13 +54,7 @@ export function PlayerHand({
           ) : (
             <div className="flex gap-1 flex-wrap justify-center">
               {player.cards.map((id, index) => (
-                <div
-                  key={index}
-                  data-card-id={id}
-                  className="w-12 h-16 bg-linear-to-br from-primary to-primary-glow rounded-lg border-2 border-primary/20 flex items-center justify-center text-white font-bold text-xs shadow-md"
-                >
-                  🎴
-                </div>
+                <GameCardBack key={index} id={id} />
               ))}
             </div>
           )}
@@ -137,6 +133,7 @@ export function PlayerHand({
                         member={member}
                         family={family}
                         size="small"
+                        isSelected={selectedCard === member.id}
                         onClick={() => onCardSelect?.(member.id)}
                       />
                     ))}

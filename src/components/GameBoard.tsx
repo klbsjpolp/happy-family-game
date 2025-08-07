@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group.tsx";
 import { AnimationOverlay } from './AnimationOverlay';
 import { animationConfig } from '@/config/animationConfig';
+import {GameCardBack} from "@/components/GameCardBack.tsx";
 
 interface GameBoardProps {
   gameState: GameState;
@@ -117,12 +118,17 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
           {/* Colonne centrale - 1 colonne */}
           <div className="col-span-1 flex flex-col items-center gap-4">
             {/* Deck de cartes */}
-            <div className="relative w-24 h-32 bg-primary/10 rounded-lg border-2 border-primary/20 flex items-center justify-center">
+            <GameCardBack id="deck">
+              <Badge className="absolute -top-2 -right-2">
+                {gameState.deck.length}
+              </Badge>
+            </GameCardBack>
+            {/* <div className="relative w-24 h-32 bg-primary/10 rounded-lg border-2 border-primary/20 flex items-center justify-center">
               <span className="text-2xl">🎴</span>
               <Badge className="absolute -top-2 -right-2">
                 {gameState.deck.length}
               </Badge>
-            </div>
+            </div>*/}
             {/* Sélecteur de familles */}
             <ToggleGroup className="grid space-y-2 w-full" type="single" value={selectedFamily?.id ?? 'none'} onValueChange={handleSelectFamily}>
               {gameState.families.map(family => (

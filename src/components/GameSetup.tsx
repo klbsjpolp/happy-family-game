@@ -10,15 +10,20 @@ import {MAX_FAMILIES} from "@/data/families.ts";
 
 interface GameSetupProps {
   onStartGame: (config: GameConfig) => void,
-  theme: Theme,
-  setTheme: Dispatch<Theme>,
+  theme?: Theme,
+  setTheme?: Dispatch<Theme>,
 }
 
 const MIN = 4;
 
-export function GameSetup({onStartGame, theme, setTheme}: GameSetupProps) {
+export function GameSetup({onStartGame, theme: propTheme, setTheme: propSetTheme}: GameSetupProps) {
+  const [internalTheme, setInternalTheme] = useState<Theme>('animals');
   const [familyCount, setFamilyCount] = useState([7]);
   const [gameMode, setGameMode] = useState<GameMode>('human-vs-ai');
+
+  // Use prop theme if provided, otherwise use internal state
+  const theme = propTheme ?? internalTheme;
+  const setTheme = propSetTheme ?? setInternalTheme;
 
   const handleStartGame = () => {
     onStartGame({

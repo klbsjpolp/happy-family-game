@@ -4,6 +4,7 @@ import { GameCard } from './GameCard';
 import { Family, FamilyMember } from '@/types/game';
 import { useEffect } from 'react';
 import { animationConfig } from '@/config/animationConfig';
+import {GameCardBack} from "@/components/GameCardBack.tsx";
 
 interface AnimatedCardProps {
   member: FamilyMember;
@@ -46,14 +47,12 @@ export function AnimatedCard({ member, family, size = 'medium', isRevealed = tru
             zIndex: 100,
             x: animationState.sourcePosition?.x,
             y: animationState.sourcePosition?.y,
-            opacity: animationState.animationType === 'draw' && !isRevealed ? 0.5 : 1,
-            rotateY: animationState.animationType === 'draw' && !isRevealed ? 180 : 0
+            opacity: 1
           }}
           animate={{
             x: animationState.targetPosition?.x,
             y: animationState.targetPosition?.y,
             opacity: animationState.animationType === 'complete' ? 0 : 1,
-            rotateY: isRevealed ? 0 : 180,
             scale: animationState.animationType === 'complete' ? 0.5 : 1
           }}
           exit={{ opacity: 0 }}
@@ -71,11 +70,32 @@ export function AnimatedCard({ member, family, size = 'medium', isRevealed = tru
             pointerEvents: 'none'
           }}
         >
-          <GameCard
-            member={member}
-            family={family}
-            size={size}
-          />
+          {isRevealed ? (
+            <GameCard
+              member={member}
+              family={family}
+              size={size}
+            />
+          ) : (
+            /*
+            <div 
+              className={`
+                game-card border-2 border-gray-400 bg-blue-900 
+                ${size === 'small' ? 'w-16 h-20' : size === 'medium' ? 'w-24 h-32' : 'w-32 h-44'}
+                flex items-center justify-center rounded-lg
+              `}
+            >
+              <div className="text-white text-center">
+                <div className={`${size === 'small' ? 'text-lg' : size === 'medium' ? 'text-2xl' : 'text-4xl'}`}>
+                  🎴
+                </div>
+                <div className={`${size === 'small' ? 'text-xs' : 'text-sm'} font-medium`}>
+                  Carte
+                </div>
+              </div>
+            </div>*/
+            <GameCardBack id={member.id} />
+          )}
         </motion.div>
       )}
     </AnimatePresence>
