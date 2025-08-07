@@ -5,7 +5,7 @@ import { useGameLogic } from '@/hooks/useGameLogic';
 import {GameConfig, Theme} from '@/types/game';
 
 const Index = () => {
-  const { gameState, startGame, askForCard, playAITurn, resetGame } = useGameLogic();
+  const { gameState, startGame, askForCard, playAITurn, resetGame, history } = useGameLogic();
   const [theme, setTheme] = useState<Theme>('original');
 
   const applyTheme = useCallback((theme: Theme) => {
@@ -30,6 +30,7 @@ const Index = () => {
       onAskForCard={askForCard}
       onPlayAITurn={playAITurn}
       onResetGame={resetGame}
+      history={history}
     />
   );
 };

@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import { GameState, GameConfig, Player, Family } from '@/types/game';
 import {COMPLETE_FAMILY_COUNT, FAMILIES_DATA} from '@/data/families';
 import { useToast } from '@/hooks/use-toast';
+import { useGameHistory } from '@/hooks/useGameHistory';
 import { useCardAnimation } from '@/contexts/CardAnimationContext';
 import { getCardPosition, getHandPosition, getDeckPosition, getFamilyCountPosition } from '@/lib/animationUtils';
 import { animationConfig } from '@/config/animationConfig';
@@ -9,6 +10,7 @@ import { animationConfig } from '@/config/animationConfig';
 export function useGameLogic() {
   const [gameState, setGameState] = useState<GameState | null>(null);
   const { toast } = useToast();
+  const { addHistoryEvent, clearHistory, history } = useGameHistory();
   const { startAnimation: startCardAnimation } = useCardAnimation();
 
   const shuffleArray = <T,>(array: T[]): T[] => {
@@ -48,6 +50,12 @@ export function useGameLogic() {
           toast({
             title: "🎉 Famille complétée !",
             description: `${player.name} a complété la famille ${family.name} !`,
+          });
+          addHistoryEvent('family_completed', player.name, {
+            familyName: family.name,
+            familyColor: family.color,
+            isPlayerAI: player.isAI,
+            details: `${player.name} a complété la famille ${family.name} !`
           });
         });
 
@@ -94,6 +102,10 @@ export function useGameLogic() {
         title: "🎉 Partie terminée !",
         description: `${immediateWinner.player.name} a gagné avec ${immediateWinner.totalFamilies} familles !`,
       });
+      addHistoryEvent('game_ended', immediateWinner.player.name, {
+        isPlayerAI: immediateWinner.player.isAI,
+        details: `${immediateWinner.player.name} a gagné avec ${immediateWinner.totalFamilies} familles !`
+      });
       return;
     }
 
@@ -117,6 +129,10 @@ export function useGameLogic() {
           title: "🎉 Partie terminée !",
           description: `${topPlayer.player.name} a gagné avec ${topPlayer.totalFamilies} familles ! (Deck vide)`,
         });
+        addHistoryEvent('game_ended', topPlayer.player.name, {
+          isPlayerAI: topPlayer.player.isAI,
+          details: `${topPlayer.player.name} a gagné avec ${topPlayer.totalFamilies} familles ! (Deck vide)`
+        });
       } else {
         // Handle tie - could end in tie or continue based on game rules
         setGameState(prev => prev ? {
@@ -129,9 +145,12 @@ export function useGameLogic() {
           title: "🤝 Match nul !",
           description: `Égalité avec ${topPlayer.totalFamilies} familles chacun !`,
         });
+        addHistoryEvent('game_ended', 'Égalité', {
+          details: `Égalité avec ${topPlayer.totalFamilies} familles chacun !`
+        });
       }
     }
-  }, [toast]);
+  }, [toast, addHistoryEvent]);
 
   const checkCompleteFamilies = useCallback((player: Player, families: Family[]) => {
     const completedFamilies: Family[] = [];
@@ -330,7 +349,7 @@ export function useGameLogic() {
         })();
       }, 100);
     }
-  }, [toast, checkCompleteFamilies, startCardAnimation, checkGameEnd]);
+  }, [toast, checkCompleteFamilies, startCardAnimation]);
 
   // Helper to handle empty hand rule
   const handleEmptyHandRule = useCallback(() => {
@@ -358,6 +377,11 @@ export function useGameLogic() {
           title: 'Main vide',
           description: `${currentPlayerObj.name} pioche une carte du deck.`
         });
+        addHistoryEvent('empty_hand', currentPlayerObj.name, {
+          outcome: 'draw',
+          isPlayerAI: currentPlayerObj.isAI,
+          details: `${currentPlayerObj.name} pioche une carte du deck.`
+        });
         return true; // Drew a card
       } else {
         // Deck is empty, skip turn
@@ -375,11 +399,16 @@ export function useGameLogic() {
           title: 'Main vide',
           description: `${currentPlayerObj.name} saute son tour (deck vide).`
         });
+        addHistoryEvent('empty_hand', currentPlayerObj.name, {
+          outcome: 'skip',
+          isPlayerAI: currentPlayerObj.isAI,
+          details: `${currentPlayerObj.name} saute son tour (deck vide).`
+        });
         return true; // Skipped turn
       }
     }
     return false; // No action needed
-  }, [gameState, toast, checkGameEnd]);
+  }, [gameState, toast, addHistoryEvent, checkGameEnd]);
 
   const askForCard = useCallback((targetPlayer: number, requestedFamily: Family) => {
     if (!gameState) return;
@@ -389,6 +418,7 @@ export function useGameLogic() {
       title: "🔍 Demande de carte",
       description: `Vous demandez une carte de la famille ${requestedFamily.name} à ${targetPlayerObj.name}.`,
     });
+    
     const cards = requestedFamily.members.map(m => m.id).filter(id => targetPlayerObj.cards.includes(id));
     if (cards.length) {
       // Use hand position as source since individual card positions may not be reliable
@@ -425,10 +455,25 @@ export function useGameLogic() {
           title: "✅ Carte obtenue !",
           description: `${targetPlayerObj.name} avait ${cards.length} carte${cards.length > 1 ? 's' : ''} demandée${cards.length > 1 ? 's' : ''}.`,
         });
+        
+        // Single consolidated event for successful ask
+        addHistoryEvent('ask_outcome', currentPlayerObj.name, {
+          targetPlayerName: targetPlayerObj.name,
+          familyName: requestedFamily.name,
+          familyColor: requestedFamily.color,
+          cardCount: cards.length,
+          outcome: 'success',
+          isPlayerAI: currentPlayerObj.isAI,
+          isTargetPlayerAI: targetPlayerObj.isAI,
+          details: `Ask for ${requestedFamily.name}, get ${cards.length} card${cards.length !== 1 ? 's' : ''}`
+        });
       }, animationConfig.stateUpdateDelay);
     } else {
       if (gameState.deck.length > 0) {
         const drawnCard = gameState.deck[0];
+        const drawnFamily = gameState.families.find(family => 
+          family.members.some(member => member.id === drawnCard)
+        );
         const sourcePos = getDeckPosition();
         const targetPos = getHandPosition(gameState.currentPlayer);
         startCardAnimation(drawnCard, sourcePos, targetPos, 'draw');
@@ -462,6 +507,19 @@ export function useGameLogic() {
               title: "🎴 Carte pigée !",
               description: `Vous avez pigé une carte du deck.`,
             });
+            
+            // Single consolidated event for failed ask with draw
+            addHistoryEvent('ask_outcome', currentPlayerObj.name, {
+              targetPlayerName: targetPlayerObj.name,
+              familyName: requestedFamily.name,
+              familyColor: requestedFamily.color,
+              drawnFamilyName: drawnFamily?.name,
+              drawnFamilyColor: drawnFamily?.color,
+              outcome: 'failed',
+              isPlayerAI: currentPlayerObj.isAI,
+              isTargetPlayerAI: targetPlayerObj.isAI,
+              details: `Ask for ${requestedFamily.name}, none, draw from deck, got ${drawnFamily?.name || 'card'}`
+            });
           }, 50);
         }, animationConfig.stateUpdateDelay);
       } else {
@@ -469,6 +527,18 @@ export function useGameLogic() {
           title: "❌ Pas de chance !",
           description: `${targetPlayerObj.name} n'a pas cette carte et le deck est vide.`,
         });
+        
+        // Single consolidated event for failed ask with empty deck
+        addHistoryEvent('ask_outcome', currentPlayerObj.name, {
+          targetPlayerName: targetPlayerObj.name,
+          familyName: requestedFamily.name,
+          familyColor: requestedFamily.color,
+          outcome: 'failed',
+          isPlayerAI: currentPlayerObj.isAI,
+          isTargetPlayerAI: targetPlayerObj.isAI,
+          details: `Ask for ${requestedFamily.name}, none, deck empty`
+        });
+        
         setGameState(prev => {
           if (!prev) return null;
           const newState = {
@@ -488,7 +558,7 @@ export function useGameLogic() {
         checkGameEnd(gameState);
       }
     }, 100);
-  }, [gameState, toast, startCardAnimation, checkGameEnd]);
+  }, [gameState, toast, addHistoryEvent, startCardAnimation, checkGameEnd]);
 
   // Update AI turn logic to use empty hand rule
   const playAITurn = useCallback(() => {
@@ -598,13 +668,16 @@ export function useGameLogic() {
 
   const resetGame = useCallback(() => {
     setGameState(null);
-  }, []);
+    clearHistory();
+  }, [clearHistory]);
 
   return {
     gameState,
     startGame,
     askForCard,
     playAITurn,
-    resetGame
+    resetGame,
+    history: history.events,
+    clearHistory
   };
 }

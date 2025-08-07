@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import {Family, GameState} from '@/types/game';
+import { HistoryEvent } from '@/types/history.tsx';
 import { PlayerHand } from './PlayerHand';
+import { GameHistory } from './GameHistory';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -13,9 +15,10 @@ interface GameBoardProps {
   onAskForCard: (targetPlayer: number, family: Family) => void;
   onPlayAITurn: () => void;
   onResetGame: () => void;
+  history: HistoryEvent[];
 }
 
-export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }: GameBoardProps) {
+export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame, history }: GameBoardProps) {
   const currentPlayer = gameState.players[gameState.currentPlayer];
   const otherPlayer = gameState.players[1 - gameState.currentPlayer];
   const isHumanTurn = !currentPlayer.isAI;
@@ -86,6 +89,17 @@ export function GameBoard({ gameState, onAskForCard, onPlayAITurn, onResetGame }
             </div>
           </CardHeader>
         </Card>
+
+        {/* Historique du jeu */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
+            <GameHistory 
+              events={history} 
+              maxVisibleEvents={3}
+              className="h-40"
+            />
+          </div>
+        </div>
 
         {/* Zone de jeu principale */}
         <div className="grid grid-cols-7 gap-6">

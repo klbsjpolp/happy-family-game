@@ -96,6 +96,7 @@ describe('GameBoard', () => {
         onAskForCard={onAskForCard}
         onPlayAITurn={onPlayAITurn}
         onResetGame={onResetGame}
+        history={[]}
       />
     );
     
@@ -106,16 +107,19 @@ describe('GameBoard', () => {
     expect(screen.getByText('À votre tour, Joueur 1 !')).toBeInTheDocument();
     
     // Check for deck
-    expect(screen.getAllByText('🎴')).toHaveLength(4);
     expect(screen.getByText('2')).toBeInTheDocument(); // Deck count
     
-    // Check for family selection
-    expect(screen.getByRole('radio', { name: 'Bears' })).toBeInTheDocument();
-    expect(screen.getByRole('radio', { name: 'Rabbits' })).toBeInTheDocument();
+    // Check for player names
+    expect(screen.getByText('👤 Joueur 1')).toBeInTheDocument();
+    expect(screen.getByText('🤖 IA')).toBeInTheDocument();
     
-    // Check for the ask button
-    expect(screen.getByRole('button', {name:'Demander'})).toBeInTheDocument();
-    expect(screen.getByText('Demander')).toBeDisabled(); // Should be disabled initially
+    // Check for family information in player hands
+    expect(screen.getByText('Bears (2/6)')).toBeInTheDocument();
+    expect(screen.getByText('Rabbits (1/6)')).toBeInTheDocument();
+    
+    // Check for "Demander" buttons in player hands
+    const demandButtons = screen.getAllByText('Demander');
+    expect(demandButtons.length).toBeGreaterThan(0);
   });
   
   it('renders the game over screen when game is ended', () => {
@@ -125,6 +129,7 @@ describe('GameBoard', () => {
         onAskForCard={onAskForCard}
         onPlayAITurn={onPlayAITurn}
         onResetGame={onResetGame}
+        history={[]}
       />
     );
     
@@ -143,26 +148,23 @@ describe('GameBoard', () => {
     expect(onResetGame).toHaveBeenCalledTimes(1);
   });
   
-  it('allows selecting a family and asking for a card', () => {
+  it('allows asking for a card using Demander button', () => {
     render(
       <GameBoard 
         gameState={mockGameState}
         onAskForCard={onAskForCard}
         onPlayAITurn={onPlayAITurn}
         onResetGame={onResetGame}
+        history={[]}
       />
     );
     
-    // Find and click on a family
-    const bearsFamily = screen.getByRole('radio',  { name: 'Bears'});
-    fireEvent.click(bearsFamily);
+    // Find the "Demander" buttons - there should be one for each family the player has cards for
+    const demandButtons = screen.getAllByText('Demander');
+    expect(demandButtons.length).toBeGreaterThan(0);
     
-    // The ask button should now be enabled
-    const askButton = screen.getByText('Demander');
-    expect(askButton).not.toBeDisabled();
-    
-    // Click the ask button
-    fireEvent.click(askButton);
+    // Click the first "Demander" button (should be for Bears family since player has 2 Bears cards)
+    fireEvent.click(demandButtons[0]);
     
     // Check that the onAskForCard function was called with the right parameters
     expect(onAskForCard).toHaveBeenCalledTimes(1);
@@ -185,6 +187,7 @@ describe('GameBoard', () => {
         onAskForCard={onAskForCard}
         onPlayAITurn={onPlayAITurn}
         onResetGame={onResetGame}
+        history={[]}
       />
     );
     

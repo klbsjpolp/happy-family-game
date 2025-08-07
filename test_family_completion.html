@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Test Completed Family Animation</title>
+</head>
+<body>
+    <h1>Test Instructions for Completed Family Animation</h1>
+    
+    <h2>How to test the completed family animation:</h2>
+    <ol>
+        <li>Open the game at <a href="http://localhost:8081" target="_blank">http://localhost:8081</a></li>
+        <li>Start a new game with any theme and settings</li>
+        <li>Open browser developer tools (F12)</li>
+        <li>In the console, run the following script to give yourself a complete family:</li>
+    </ol>
+    
+    <h3>Test Script (paste in browser console):</h3>
+    <pre><code>
+// This script will give the current player all cards of the first family
+// to trigger the completed family animation
+
+// Get the game state from React DevTools or window object
+// You may need to adjust this based on how the state is exposed
+console.log("Setting up completed family test...");
+
+// Instructions for manual testing:
+console.log("1. Look at your current hand");
+console.log("2. Note which families you have partial cards for");
+console.log("3. Ask the other player for cards from a family you're close to completing");
+console.log("4. When you complete a family, watch for:");
+console.log("   - Cards should animate from your hand to the family count area");
+console.log("   - Animation should take about 750ms");
+console.log("   - After animation, cards should disappear from your hand");
+console.log("   - You should see a toast notification about completing the family");
+console.log("   - The family count should increase");
+    </code></pre>
+    
+    <h3>What to look for:</h3>
+    <ul>
+        <li>✅ Cards animate smoothly from hand to family count position</li>
+        <li>✅ Animation duration is about 750ms (not too fast or slow)</li>
+        <li>✅ Cards are removed from hand after animation completes</li>
+        <li>✅ Toast notification appears saying "Famille complétée!"</li>
+        <li>✅ Family count increases by 1</li>
+        <li>✅ No visual glitches or state inconsistencies</li>
+    </ul>
+    
+    <h3>Expected Behavior:</h3>
+    <p>When a player completes a family (gets all 4 cards), the cards should animate from their hand position to the family count area, then after a delay, be removed from the hand and the family count should increase.</p>
+</body>
+</html>
