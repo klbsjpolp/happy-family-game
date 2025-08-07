@@ -20,6 +20,119 @@ export function useGameLogic() {
     return shuffled;
   };
 
+  // Comprehensive game end check that considers all scenarios
+  const checkGameEnd = useCallback((currentGameState: GameState) => {
+    if (!currentGameState || currentGameState.gamePhase === 'ended') return;
+
+    // First, check and register any completed families in players' hands
+    let stateChanged = false;
+    const updatedPlayers = currentGameState.players.map(player => {
+      const completedInHand = currentGameState.families.filter(family => {
+        const playerFamilyCards = player.cards.filter(cardId =>
+          family.members.some(member => member.id === cardId)
+        );
+        return playerFamilyCards.length === COMPLETE_FAMILY_COUNT && !player.families.includes(family.id);
+      });
+
+      if (completedInHand.length > 0) {
+        stateChanged = true;
+        const newFamilies = [...player.families, ...completedInHand.map(f => f.id)];
+        const newCards = player.cards.filter(cardId =>
+          !completedInHand.some(family =>
+            family.members.some(member => member.id === cardId)
+          )
+        );
+
+        // Show toast for completed families
+        completedInHand.forEach(family => {
+          toast({
+            title: "🎉 Famille complétée !",
+            description: `${player.name} a complété la famille ${family.name} !`,
+          });
+        });
+
+        return { ...player, families: newFamilies, cards: newCards };
+      }
+      return player;
+    });
+
+    // Update state if families were completed
+    if (stateChanged) {
+      setGameState(prev => prev ? { ...prev, players: updatedPlayers } : null);
+      // Recheck game end with updated state
+      setTimeout(() => checkGameEnd({ ...currentGameState, players: updatedPlayers }), 100);
+      return;
+    }
+
+    // Calculate total families for each player (registered + potential in hand)
+    const playerTotals = currentGameState.players.map(player => {
+      const completedInHand = currentGameState.families.filter(family => {
+        const playerFamilyCards = player.cards.filter(cardId =>
+          family.members.some(member => member.id === cardId)
+        );
+        return playerFamilyCards.length === COMPLETE_FAMILY_COUNT && !player.families.includes(family.id);
+      });
+      return {
+        player,
+        totalFamilies: player.families.length + completedInHand.length
+      };
+    });
+
+    const requiredFamiliesToWin = Math.floor(currentGameState.config.familyCount / 2) + 1;
+
+    // Check for immediate winner (has enough families)
+    const immediateWinner = playerTotals.find(p => p.totalFamilies >= requiredFamiliesToWin);
+
+    if (immediateWinner) {
+      setGameState(prev => prev ? {
+        ...prev,
+        gamePhase: 'ended',
+        winner: immediateWinner.player.id
+      } : null);
+
+      toast({
+        title: "🎉 Partie terminée !",
+        description: `${immediateWinner.player.name} a gagné avec ${immediateWinner.totalFamilies} familles !`,
+      });
+      return;
+    }
+
+    // Check if deck is empty and no more moves are possible
+    if (currentGameState.deck.length === 0) {
+      // Find player with most families
+      const sortedPlayers = [...playerTotals].sort((a, b) => b.totalFamilies - a.totalFamilies);
+      const topPlayer = sortedPlayers[0];
+
+      // Check if there's a clear winner or if it's a tie
+      const isTie = sortedPlayers.length > 1 && sortedPlayers[0].totalFamilies === sortedPlayers[1].totalFamilies;
+
+      if (!isTie) {
+        setGameState(prev => prev ? {
+          ...prev,
+          gamePhase: 'ended',
+          winner: topPlayer.player.id
+        } : null);
+
+        toast({
+          title: "🎉 Partie terminée !",
+          description: `${topPlayer.player.name} a gagné avec ${topPlayer.totalFamilies} familles ! (Deck vide)`,
+        });
+      } else {
+        // Handle tie - could end in tie or continue based on game rules
+        setGameState(prev => prev ? {
+          ...prev,
+          gamePhase: 'ended',
+          winner: undefined // No winner in case of tie
+        } : null);
+
+        toast({
+          title: "🤝 Match nul !",
+          description: `Égalité avec ${topPlayer.totalFamilies} familles chacun !`,
+        });
+      }
+    }
+  }, [toast]);
+
   const checkCompleteFamilies = useCallback((player: Player, families: Family[]) => {
     const completedFamilies: Family[] = [];
     
@@ -48,7 +161,7 @@ export function useGameLogic() {
             setGameState(prev => {
               if (!prev) return null;
               
-              return {
+              const newState = {
                 ...prev,
                 players: prev.players.map(p => {
                   if (p.id === player.id) {
@@ -63,6 +176,11 @@ export function useGameLogic() {
                   return p;
                 })
               };
+              
+              // Check for game end after family completion
+              setTimeout(() => checkGameEnd(newState), 100);
+              
+              return newState;
             });
             
             // Show completion toast
@@ -81,7 +199,7 @@ export function useGameLogic() {
       }
     });
     return completedFamilies;
-  }, [startCardAnimation, toast]);
+  }, [checkGameEnd, startCardAnimation, toast]);
 
   const startGame = useCallback((config: GameConfig) => {
     // Sélectionner les familles selon le thème et le nombre choisi
@@ -212,7 +330,7 @@ export function useGameLogic() {
         })();
       }, 100);
     }
-  }, [toast, checkCompleteFamilies, startCardAnimation]);
+  }, [toast, checkCompleteFamilies, startCardAnimation, checkGameEnd]);
 
   // Helper to handle empty hand rule
   const handleEmptyHandRule = useCallback(() => {
@@ -222,14 +340,20 @@ export function useGameLogic() {
       if (gameState.deck.length > 0) {
         // Draw one card from the deck
         const drawnCard = gameState.deck[0];
-        setGameState(prev => prev ? {
-          ...prev,
-          players: prev.players.map((p, idx) => idx === prev.currentPlayer
-            ? { ...p, cards: [...p.cards, drawnCard] }
-            : p
-          ),
-          deck: prev.deck.slice(1)
-        } : null);
+        setGameState(prev => {
+          if (!prev) return null;
+          const newState = {
+            ...prev,
+            players: prev.players.map((p, idx) => idx === prev.currentPlayer
+              ? { ...p, cards: [...p.cards, drawnCard] }
+              : p
+            ),
+            deck: prev.deck.slice(1)
+          };
+          // Check for game end after drawing card
+          setTimeout(() => checkGameEnd(newState), 100);
+          return newState;
+        });
         toast({
           title: 'Main vide',
           description: `${currentPlayerObj.name} pioche une carte du deck.`
@@ -237,10 +361,16 @@ export function useGameLogic() {
         return true; // Drew a card
       } else {
         // Deck is empty, skip turn
-        setGameState(prev => prev ? {
-          ...prev,
-          currentPlayer: (prev.currentPlayer + 1) % prev.players.length
-        } : null);
+        setGameState(prev => {
+          if (!prev) return null;
+          const newState = {
+            ...prev,
+            currentPlayer: (prev.currentPlayer + 1) % prev.players.length
+          };
+          // Check for game end when deck is empty and turn is skipped
+          setTimeout(() => checkGameEnd(newState), 100);
+          return newState;
+        });
         toast({
           title: 'Main vide',
           description: `${currentPlayerObj.name} saute son tour (deck vide).`
@@ -249,7 +379,7 @@ export function useGameLogic() {
       }
     }
     return false; // No action needed
-  }, [gameState, toast]);
+  }, [gameState, toast, checkGameEnd]);
 
   const askForCard = useCallback((targetPlayer: number, requestedFamily: Family) => {
     if (!gameState) return;
@@ -280,12 +410,15 @@ export function useGameLogic() {
           })
         } : null);
         
-        // Check for completed families after state update
+        // Check for completed families and game end after state update
         setTimeout(() => {
-          if (gameState) {
-            checkCompleteFamilies(gameState.players[gameState.currentPlayer], gameState.families);
-            checkCompleteFamilies(gameState.players[targetPlayer], gameState.families);
-          }
+          setGameState(prev => {
+            if (prev) {
+              // Check for game end with updated state
+              setTimeout(() => checkGameEnd(prev), 100);
+            }
+            return prev;
+          });
         }, 50);
         
         toast({
@@ -315,15 +448,20 @@ export function useGameLogic() {
             currentPlayer: (prev.currentPlayer + 1) % 2
           } : null);
           
-          // Check for completed families after state update
+          // Check for completed families and game end after state update
           setTimeout(() => {
-            if (gameState) {
-              const completedFamilies = checkCompleteFamilies(gameState.players[gameState.currentPlayer], gameState.families);
-              toast({
-                title: "🎴 Carte pigée !",
-                description: `Vous avez pigé une carte du deck.${completedFamilies.length ? ` Vous avez complété une famille: ${completedFamilies.map(f=>f.name).join(', ')} !` : ""}`,
-              });
-            }
+            setGameState(prev => {
+              if (prev) {
+                // Check for game end with updated state
+                setTimeout(() => checkGameEnd(prev), 100);
+              }
+              return prev;
+            });
+            
+            toast({
+              title: "🎴 Carte pigée !",
+              description: `Vous avez pigé une carte du deck.`,
+            });
           }, 50);
         }, animationConfig.stateUpdateDelay);
       } else {
@@ -331,33 +469,26 @@ export function useGameLogic() {
           title: "❌ Pas de chance !",
           description: `${targetPlayerObj.name} n'a pas cette carte et le deck est vide.`,
         });
-        setGameState(prev => prev ? {
-          ...prev,
-          currentPlayer: (prev.currentPlayer + 1) % 2
-        } : null);
+        setGameState(prev => {
+          if (!prev) return null;
+          const newState = {
+            ...prev,
+            currentPlayer: (prev.currentPlayer + 1) % 2
+          };
+          // Check for game end after turn change
+          setTimeout(() => checkGameEnd(newState), 100);
+          return newState;
+        });
       }
     }
 
-    // Vérifier les conditions de victoire
-    const winner = gameState.players.find(player =>
-      player.families.length >= Math.floor(gameState.config.familyCount / 2) + 1
-    );
-    
-    if (winner) {
-      setGameState(prev => prev ? {
-        ...prev,
-        gamePhase: 'ended',
-        winner: winner.id
-      } : null);
-      
-      toast({
-        title: "🎉 Partie terminée !",
-        description: `${winner.name} a gagné avec ${winner.families.length} familles !`,
-      });
-    }
-
-    setGameState(prev => prev ? { ...prev } : null);
-  }, [gameState, toast, startCardAnimation, checkCompleteFamilies]);
+    // Check for game end after any card exchange
+    setTimeout(() => {
+      if (gameState) {
+        checkGameEnd(gameState);
+      }
+    }, 100);
+  }, [gameState, toast, startCardAnimation, checkGameEnd]);
 
   // Update AI turn logic to use empty hand rule
   const playAITurn = useCallback(() => {
@@ -450,14 +581,20 @@ export function useGameLogic() {
       // Si l'IA n'a pas de cartes à demander, passer le tour
       console.log('AI has no cards to ask, passing turn');
       setTimeout(() => {
-        setGameState(prev => prev ? {
-          ...prev,
-          currentPlayer: (prev.currentPlayer + 1) % 2
-        } : null);
+        setGameState(prev => {
+          if (!prev) return null;
+          const newState = {
+            ...prev,
+            currentPlayer: (prev.currentPlayer + 1) % 2
+          };
+          // Check for game end after AI turn
+          setTimeout(() => checkGameEnd(newState), 100);
+          return newState;
+        });
       }, 1500);
     }
 
-  }, [gameState, handleEmptyHandRule, askForCard]);
+  }, [gameState, handleEmptyHandRule, askForCard, checkGameEnd]);
 
   const resetGame = useCallback(() => {
     setGameState(null);
