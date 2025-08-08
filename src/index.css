@@ -45,6 +45,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
+  --text-xxs: 0.625rem;
+
   --background-image-gradient-primary: var(--gradient-primary);
   --background-image-gradient-background: var(--gradient-background);
   --background-image-gradient-card: var(--gradient-card);

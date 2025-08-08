@@ -6,7 +6,11 @@ import {Slider} from '@/components/ui/slider';
 import {RadioGroup, RadioGroupItem} from '@/components/ui/radio-group';
 import {Label} from '@/components/ui/label';
 import {GameConfig, Theme, GameMode, THEMES} from '@/types/game';
-import {MAX_FAMILIES} from "@/data/families.ts";
+import {FAMILIES_DATA, MAX_FAMILIES} from "@/data/families.ts";
+import * as LucideIcons from 'lucide-react';
+import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion.tsx";
+import {AccordionHeader, Header} from "@radix-ui/react-accordion";
+import {GameCard} from "@/components/GameCard.tsx";
 
 interface GameSetupProps {
   onStartGame: (config: GameConfig) => void,
@@ -15,6 +19,16 @@ interface GameSetupProps {
 }
 
 const MIN = 4;
+
+// Function to dynamically render lucide-react icons
+function renderIcon(iconName: string, className: string) {
+  const IconComponent = LucideIcons[iconName];
+  if (IconComponent) {
+    return <IconComponent className={className} />;
+  }
+  // Fallback to Circle icon if the specified icon doesn't exist
+  return <LucideIcons.XIcon data-notfoundicon={iconName} className={className} />;
+}
 
 export function GameSetup({onStartGame, theme: propTheme, setTheme: propSetTheme}: GameSetupProps) {
   const [internalTheme, setInternalTheme] = useState<Theme>('animals');
@@ -61,12 +75,29 @@ export function GameSetup({onStartGame, theme: propTheme, setTheme: propSetTheme
                   onClick={() => setTheme(key as Theme)}
                 >
                   <CardContent className="p-6 text-center">
-                    <div className="text-4xl mb-2">{themeInfo.emoji}</div>
-                    <h4 className="font-semibold text-foreground">{themeInfo.name}</h4>
+                    <div className="flex justify-center mb-2">
+                      {renderIcon(themeInfo.icon, "w-8 h-8")}
+                    </div>
+                    <h4 className="font-semibold text-foreground justify-self-center">{themeInfo.name}</h4>
                   </CardContent>
                 </Card>
               ))}
             </div>
+            <Accordion type="single" collapsible>
+              <AccordionItem value="cards">
+                <AccordionHeader>
+                  <AccordionTrigger>
+                    Cartes
+                  </AccordionTrigger>
+                </AccordionHeader>
+                <AccordionContent className="flex flex-col gap-2 bg-background p-4 rounded-lg">
+                  {FAMILIES_DATA[theme].map(family => (<>
+                    <Header style={{color: family.color}} className="text-shadow-xs text-shadow-gray-200">{family.name}</Header>
+                    <div className="flex gap-2 flex-wrap">{family.members.map(member => (<GameCard family={family} member={member} size="small" />))}</div>
+                  </>))}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
 
           {/* Nombre de familles */}

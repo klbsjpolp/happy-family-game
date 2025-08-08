@@ -8,131 +8,131 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
     {
       id: 'family1',
       name: 'Famille Martin',
-      color: 'hsl(0 85% 55%)',
+      color: '#dc2626',
       members: [
-        {id: 'grandfather1', name: 'Grand-père', emoji: '👴'},
-        {id: 'grandmother1', name: 'Grand-mère', emoji: '👵'},
-        {id: 'father1', name: 'Père', emoji: '👨'},
-        {id: 'mother1', name: 'Mère', emoji: '👩'},
-        {id: 'son1', name: 'Fils', emoji: '👦'},
-        {id: 'daughter1', name: 'Fille', emoji: '👧'}
+        {id: 'grandfather1', name: 'Grand-père', icon: 'user'},
+        {id: 'grandmother1', name: 'Grand-mère', icon: 'user'},
+        {id: 'father1', name: 'Père', icon: 'user'},
+        {id: 'mother1', name: 'Mère', icon: 'user'},
+        {id: 'son1', name: 'Fils', icon: 'user'},
+        {id: 'daughter1', name: 'Fille', icon: 'user'}
       ]
     },
     {
       id: 'family2',
       name: 'Famille Dubois',
-      color: 'hsl(120 85% 45%)',
+      color: '#22c55e',
       members: [
-        {id: 'grandfather2', name: 'Grand-père', emoji: '👴'},
-        {id: 'grandmother2', name: 'Grand-mère', emoji: '👵'},
-        {id: 'father2', name: 'Père', emoji: '👨'},
-        {id: 'mother2', name: 'Mère', emoji: '👩'},
-        {id: 'son2', name: 'Fils', emoji: '👦'},
-        {id: 'daughter2', name: 'Fille', emoji: '👧'}
+        {id: 'grandfather2', name: 'Grand-père', icon: 'user'},
+        {id: 'grandmother2', name: 'Grand-mère', icon: 'user'},
+        {id: 'father2', name: 'Père', icon: 'user'},
+        {id: 'mother2', name: 'Mère', icon: 'user'},
+        {id: 'son2', name: 'Fils', icon: 'user'},
+        {id: 'daughter2', name: 'Fille', icon: 'user'}
       ]
     },
     {
       id: 'family3',
       name: 'Famille Bernard',
-      color: 'hsl(240 85% 55%)',
+      color: '#4f46e5',
       members: [
-        {id: 'grandfather3', name: 'Grand-père', emoji: '👴'},
-        {id: 'grandmother3', name: 'Grand-mère', emoji: '👵'},
-        {id: 'father3', name: 'Père', emoji: '👨'},
-        {id: 'mother3', name: 'Mère', emoji: '👩'},
-        {id: 'son3', name: 'Fils', emoji: '👦'},
-        {id: 'daughter3', name: 'Fille', emoji: '👧'}
+        {id: 'grandfather3', name: 'Grand-père', icon: 'user'},
+        {id: 'grandmother3', name: 'Grand-mère', icon: 'user'},
+        {id: 'father3', name: 'Père', icon: 'user'},
+        {id: 'mother3', name: 'Mère', icon: 'user'},
+        {id: 'son3', name: 'Fils', icon: 'user'},
+        {id: 'daughter3', name: 'Fille', icon: 'user'}
       ]
     },
     {
       id: 'family4',
       name: 'Famille Petit',
-      color: 'hsl(60 85% 55%)',
+      color: '#eab308',
       members: [
-        {id: 'grandfather4', name: 'Grand-père', emoji: '👴'},
-        {id: 'grandmother4', name: 'Grand-mère', emoji: '👵'},
-        {id: 'father4', name: 'Père', emoji: '👨'},
-        {id: 'mother4', name: 'Mère', emoji: '👩'},
-        {id: 'son4', name: 'Fils', emoji: '👦'},
-        {id: 'daughter4', name: 'Fille', emoji: '👧'}
+        {id: 'grandfather4', name: 'Grand-père', icon: 'user'},
+        {id: 'grandmother4', name: 'Grand-mère', icon: 'user'},
+        {id: 'father4', name: 'Père', icon: 'user'},
+        {id: 'mother4', name: 'Mère', icon: 'user'},
+        {id: 'son4', name: 'Fils', icon: 'user'},
+        {id: 'daughter4', name: 'Fille', icon: 'user'}
       ]
     },
     {
       id: 'family5',
       name: 'Famille Moreau',
-      color: 'hsl(300 85% 55%)',
+      color: '#d946ef',
       members: [
-        {id: 'grandfather5', name: 'Grand-père', emoji: '👴'},
-        {id: 'grandmother5', name: 'Grand-mère', emoji: '👵'},
-        {id: 'father5', name: 'Père', emoji: '👨'},
-        {id: 'mother5', name: 'Mère', emoji: '👩'},
-        {id: 'son5', name: 'Fils', emoji: '👦'},
-        {id: 'daughter5', name: 'Fille', emoji: '👧'}
+        {id: 'grandfather5', name: 'Grand-père', icon: 'user'},
+        {id: 'grandmother5', name: 'Grand-mère', icon: 'user'},
+        {id: 'father5', name: 'Père', icon: 'user'},
+        {id: 'mother5', name: 'Mère', icon: 'user'},
+        {id: 'son5', name: 'Fils', icon: 'user'},
+        {id: 'daughter5', name: 'Fille', icon: 'user'}
       ]
     },
     {
       id: 'family6',
       name: 'Famille Leroy',
-      color: 'hsl(180 85% 45%)',
+      color: '#06b6d4',
       members: [
-        {id: 'grandfather6', name: 'Grand-père', emoji: '👴'},
-        {id: 'grandmother6', name: 'Grand-mère', emoji: '👵'},
-        {id: 'father6', name: 'Père', emoji: '👨'},
-        {id: 'mother6', name: 'Mère', emoji: '👩'},
-        {id: 'son6', name: 'Fils', emoji: '👦'},
-        {id: 'daughter6', name: 'Fille', emoji: '👧'}
+        {id: 'grandfather6', name: 'Grand-père', icon: 'user'},
+        {id: 'grandmother6', name: 'Grand-mère', icon: 'user'},
+        {id: 'father6', name: 'Père', icon: 'user'},
+        {id: 'mother6', name: 'Mère', icon: 'user'},
+        {id: 'son6', name: 'Fils', icon: 'user'},
+        {id: 'daughter6', name: 'Fille', icon: 'user'}
       ]
     },
     {
       id: 'family7',
       name: 'Famille Fournier',
-      color: 'hsl(30 85% 55%)',
+      color: '#f97316',
       members: [
-        {id: 'grandfather7', name: 'Grand-père', emoji: '👴'},
-        {id: 'grandmother7', name: 'Grand-mère', emoji: '👵'},
-        {id: 'father7', name: 'Père', emoji: '👨'},
-        {id: 'mother7', name: 'Mère', emoji: '👩'},
-        {id: 'son7', name: 'Fils', emoji: '👦'},
-        {id: 'daughter7', name: 'Fille', emoji: '👧'}
+        {id: 'grandfather7', name: 'Grand-père', icon: 'user'},
+        {id: 'grandmother7', name: 'Grand-mère', icon: 'user'},
+        {id: 'father7', name: 'Père', icon: 'user'},
+        {id: 'mother7', name: 'Mère', icon: 'user'},
+        {id: 'son7', name: 'Fils', icon: 'user'},
+        {id: 'daughter7', name: 'Fille', icon: 'user'}
       ]
     },
     {
       id: 'family8',
       name: 'Famille Girard',
-      color: 'hsl(330 85% 55%)',
+      color: '#ec4899',
       members: [
-        {id: 'grandfather8', name: 'Grand-père', emoji: '👴'},
-        {id: 'grandmother8', name: 'Grand-mère', emoji: '👵'},
-        {id: 'father8', name: 'Père', emoji: '👨'},
-        {id: 'mother8', name: 'Mère', emoji: '👩'},
-        {id: 'son8', name: 'Fils', emoji: '👦'},
-        {id: 'daughter8', name: 'Fille', emoji: '👧'}
+        {id: 'grandfather8', name: 'Grand-père', icon: 'user'},
+        {id: 'grandmother8', name: 'Grand-mère', icon: 'user'},
+        {id: 'father8', name: 'Père', icon: 'user'},
+        {id: 'mother8', name: 'Mère', icon: 'user'},
+        {id: 'son8', name: 'Fils', icon: 'user'},
+        {id: 'daughter8', name: 'Fille', icon: 'user'}
       ]
     },
     {
       id: 'family9',
       name: 'Famille Bonnet',
-      color: 'hsl(270 85% 55%)',
+      color: '#a855f7',
       members: [
-        {id: 'grandfather9', name: 'Grand-père', emoji: '👴'},
-        {id: 'grandmother9', name: 'Grand-mère', emoji: '👵'},
-        {id: 'father9', name: 'Père', emoji: '👨'},
-        {id: 'mother9', name: 'Mère', emoji: '👩'},
-        {id: 'son9', name: 'Fils', emoji: '👦'},
-        {id: 'daughter9', name: 'Fille', emoji: '👧'}
+        {id: 'grandfather9', name: 'Grand-père', icon: 'user'},
+        {id: 'grandmother9', name: 'Grand-mère', icon: 'user'},
+        {id: 'father9', name: 'Père', icon: 'user'},
+        {id: 'mother9', name: 'Mère', icon: 'user'},
+        {id: 'son9', name: 'Fils', icon: 'user'},
+        {id: 'daughter9', name: 'Fille', icon: 'user'}
       ]
     },
     {
       id: 'family10',
       name: 'Famille Lambert',
-      color: 'hsl(90 85% 45%)',
+      color: '#84cc16',
       members: [
-        {id: 'grandfather10', name: 'Grand-père', emoji: '👴'},
-        {id: 'grandmother10', name: 'Grand-mère', emoji: '👵'},
-        {id: 'father10', name: 'Père', emoji: '👨'},
-        {id: 'mother10', name: 'Mère', emoji: '👩'},
-        {id: 'son10', name: 'Fils', emoji: '👦'},
-        {id: 'daughter10', name: 'Fille', emoji: '👧'}
+        {id: 'grandfather10', name: 'Grand-père', icon: 'user'},
+        {id: 'grandmother10', name: 'Grand-mère', icon: 'user'},
+        {id: 'father10', name: 'Père', icon: 'user'},
+        {id: 'mother10', name: 'Mère', icon: 'user'},
+        {id: 'son10', name: 'Fils', icon: 'user'},
+        {id: 'daughter10', name: 'Fille', icon: 'user'}
       ]
     }
   ],
@@ -140,131 +140,131 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
     {
       id: 'cats',
       name: 'Les Félins',
-      color: 'hsl(35 85% 55%)',
+      color: '#f59e0b',
       members: [
-        {id: 'lion', name: 'Lion', emoji: '🦁'},
-        {id: 'tiger', name: 'Tigre', emoji: '🐅'},
-        {id: 'leopard', name: 'Léopard', emoji: '🐆'},
-        {id: 'cat', name: 'Chat', emoji: '🐱'},
-        {id: 'panther', name: 'Panthère', emoji: '🐈‍⬛'},
-        {id: 'lynx', name: 'Lynx', emoji: '😺'}
+        {id: 'lion', name: 'Lion', icon: 'crown'},
+        {id: 'tiger', name: 'Tigre', icon: 'zap'},
+        {id: 'leopard', name: 'Léopard', icon: 'sparkles'},
+        {id: 'cat', name: 'Chat', icon: 'cat'},
+        {id: 'panther', name: 'Panthère', icon: 'moon'},
+        {id: 'lynx', name: 'Lynx', icon: 'smile'}
       ]
     },
     {
       id: 'birds',
       name: 'Les Oiseaux',
-      color: 'hsl(15 85% 65%)',
+      color: '#fb923c',
       members: [
-        {id: 'eagle', name: 'Aigle', emoji: '🦅'},
-        {id: 'owl', name: 'Hibou', emoji: '🦉'},
-        {id: 'parrot', name: 'Perroquet', emoji: '🦜'},
-        {id: 'penguin', name: 'Pingouin', emoji: '🐧'},
-        {id: 'flamingo', name: 'Flamant', emoji: '🦩'},
-        {id: 'peacock', name: 'Paon', emoji: '🦚'}
+        {id: 'eagle', name: 'Aigle', icon: 'bird'},
+        {id: 'owl', name: 'Hibou', icon: 'eye'},
+        {id: 'parrot', name: 'Perroquet', icon: 'message-circle'},
+        {id: 'penguin', name: 'Pingouin', icon: 'snowflake'},
+        {id: 'flamingo', name: 'Flamant', icon: 'heart'},
+        {id: 'peacock', name: 'Paon', icon: 'palette'}
       ]
     },
     {
       id: 'marine',
       name: 'Les Marins',
-      color: 'hsl(200 85% 55%)',
+      color: '#0ea5e9',
       members: [
-        {id: 'whale', name: 'Baleine', emoji: '🐋'},
-        {id: 'dolphin', name: 'Dauphin', emoji: '🐬'},
-        {id: 'shark', name: 'Requin', emoji: '🦈'},
-        {id: 'octopus', name: 'Pieuvre', emoji: '🐙'},
-        {id: 'seal', name: 'Phoque', emoji: '🦭'},
-        {id: 'crab', name: 'Crabe', emoji: '🦀'}
+        {id: 'whale', name: 'Baleine', icon: 'whale'},
+        {id: 'dolphin', name: 'Dauphin', icon: 'fish'},
+        {id: 'shark', name: 'Requin', icon: 'shark'},
+        {id: 'shrimp', name: 'Crevette', icon: 'shrimp'},
+        {id: 'narwhal', name: 'Narval', icon: 'whaleNarwhal'},
+        {id: 'crab', name: 'Crabe', icon: 'crab'}
       ]
     },
     {
       id: 'farm',
       name: 'La Ferme',
-      color: 'hsl(120 85% 45%)',
+      color: '#22c55e',
       members: [
-        {id: 'cow', name: 'Vache', emoji: '🐄'},
-        {id: 'pig', name: 'Cochon', emoji: '🐷'},
-        {id: 'chicken', name: 'Poule', emoji: '🐔'},
-        {id: 'sheep', name: 'Mouton', emoji: '🐑'},
-        {id: 'horse', name: 'Cheval', emoji: '🐎'},
-        {id: 'goat', name: 'Chèvre', emoji: '🐐'}
+        {id: 'cow', name: 'Vache', icon: 'milk'},
+        {id: 'pig', name: 'Cochon', icon: 'heart'},
+        {id: 'chicken', name: 'Poule', icon: 'egg'},
+        {id: 'sheep', name: 'Mouton', icon: 'cloud'},
+        {id: 'horse', name: 'Cheval', icon: 'zap'},
+        {id: 'goat', name: 'Chèvre', icon: 'mountain'}
       ]
     },
     {
       id: 'wild',
       name: 'Les Sauvages',
-      color: 'hsl(280 85% 55%)',
+      color: '#c026d3',
       members: [
-        {id: 'elephant', name: 'Éléphant', emoji: '🐘'},
-        {id: 'giraffe', name: 'Girafe', emoji: '🦒'},
-        {id: 'zebra', name: 'Zèbre', emoji: '🦓'},
-        {id: 'rhino', name: 'Rhinocéros', emoji: '🦏'},
-        {id: 'hippo', name: 'Hippopotame', emoji: '🦛'},
-        {id: 'gorilla', name: 'Gorille', emoji: '🦍'}
+        {id: 'elephant', name: 'Éléphant', icon: 'mountain'},
+        {id: 'giraffe', name: 'Girafe', icon: 'arrow-up'},
+        {id: 'zebra', name: 'Zèbre', icon: 'bar-chart'},
+        {id: 'rhino', name: 'Rhinocéros', icon: 'shield'},
+        {id: 'hippo', name: 'Hippopotame', icon: 'waves'},
+        {id: 'gorilla', name: 'Gorille', icon: 'grip'}
       ]
     },
     {
       id: 'insects',
       name: 'Les Insectes',
-      color: 'hsl(60 85% 55%)',
+      color: '#eab308',
       members: [
-        {id: 'bee', name: 'Abeille', emoji: '🐝'},
-        {id: 'butterfly', name: 'Papillon', emoji: '🦋'},
-        {id: 'spider', name: 'Araignée', emoji: '🕷️'},
-        {id: 'ant', name: 'Fourmi', emoji: '🐜'},
-        {id: 'ladybug', name: 'Coccinelle', emoji: '🐞'},
-        {id: 'mosquito', name: 'Moustique', emoji: '🦟'}
+        {id: 'bee', name: 'Abeille', icon: 'hexagon'},
+        {id: 'butterfly', name: 'Papillon', icon: 'flower'},
+        {id: 'spider', name: 'Araignée', icon: 'grid-3x3'},
+        {id: 'ant', name: 'Fourmi', icon: 'dot'},
+        {id: 'ladybug', name: 'Coccinelle', icon: 'shield'},
+        {id: 'mosquito', name: 'Moustique', icon: 'zap'}
       ]
     },
     {
       id: 'reptiles',
       name: 'Les Reptiles',
-      color: 'hsl(180 85% 55%)',
+      color: '#06b6d4',
       members: [
-        {id: 'snake', name: 'Serpent', emoji: '🐍'},
-        {id: 'crocodile', name: 'Crocodile', emoji: '🐊'},
-        {id: 'lizard', name: 'Lézard', emoji: '🦎'},
-        {id: 'turtle', name: 'Tortue', emoji: '🐢'},
-        {id: 'chameleon', name: 'Caméléon', emoji: '🦎'},
-        {id: 'gecko', name: 'Gecko', emoji: '🦎'}
+        {id: 'snake', name: 'Serpent', icon: 'waves'},
+        {id: 'crocodile', name: 'Crocodile', icon: 'triangle'},
+        {id: 'lizard', name: 'Lézard', icon: 'zap'},
+        {id: 'turtle', name: 'Tortue', icon: 'shield'},
+        {id: 'chameleon', name: 'Caméléon', icon: 'zap'},
+        {id: 'gecko', name: 'Gecko', icon: 'zap'}
       ]
     },
     {
       id: 'amphibians',
       name: 'Les Amphibiens',
-      color: 'hsl(240 85% 65%)',
+      color: '#6366f1',
       members: [
-        {id: 'frog', name: 'Grenouille', emoji: '🐸'},
-        {id: 'toad', name: 'Crapaud', emoji: '🐸'},
-        {id: 'salamander', name: 'Salamandre', emoji: '🦎'},
-        {id: 'newt', name: 'Triton', emoji: '🦎'},
-        {id: 'axolotl', name: 'Axolotl', emoji: '🐠'},
-        {id: 'caecilian', name: 'Cécilien', emoji: '🐍'}
+        {id: 'frog', name: 'Grenouille', icon: 'droplets'},
+        {id: 'toad', name: 'Crapaud', icon: 'droplets'},
+        {id: 'salamander', name: 'Salamandre', icon: 'zap'},
+        {id: 'newt', name: 'Triton', icon: 'zap'},
+        {id: 'axolotl', name: 'Axolotl', icon: 'fish'},
+        {id: 'caecilian', name: 'Cécilien', icon: 'waves'}
       ]
     },
     {
       id: 'rodents',
       name: 'Les Rongeurs',
-      color: 'hsl(300 85% 55%)',
+      color: '#d946ef',
       members: [
-        {id: 'mouse', name: 'Souris', emoji: '🐭'},
-        {id: 'rat', name: 'Rat', emoji: '🐀'},
-        {id: 'squirrel', name: 'Écureuil', emoji: '🐿️'},
-        {id: 'hamster', name: 'Hamster', emoji: '🐹'},
-        {id: 'guinea-pig', name: 'Cobaye', emoji: '🐹'},
-        {id: 'beaver', name: 'Castor', emoji: '🦫'}
+        {id: 'mouse', name: 'Souris', icon: 'dot'},
+        {id: 'rat', name: 'Rat', icon: 'triangle'},
+        {id: 'squirrel', name: 'Écureuil', icon: 'tree-pine'},
+        {id: 'hamster', name: 'Hamster', icon: 'heart'},
+        {id: 'guinea-pig', name: 'Cobaye', icon: 'smile'},
+        {id: 'beaver', name: 'Castor', icon: 'hammer'}
       ]
     },
     {
       id: 'bats',
       name: 'Les Chauves-souris',
-      color: 'hsl(330 85% 55%)',
+      color: '#ec4899',
       members: [
-        {id: 'fruit-bat', name: 'Chauve-souris frugivore', emoji: '🦇'},
-        {id: 'vampire-bat', name: 'Chauve-souris vampire', emoji: '🦇'},
-        {id: 'little-brown-bat', name: 'Chauve-souris brune', emoji: '🦇'},
-        {id: 'big-eared-bat', name: 'Chauve-souris aux grandes oreilles', emoji: '🦇',},
-        {id: 'pipistrelle', name: 'Pipistrelle', emoji: '🦇'},
-        {id: 'flying-fox', name: 'Renard volant', emoji: '🦇'}
+        {id: 'fruit-bat', name: 'Chauve-souris frugivore', icon: 'moon'},
+        {id: 'vampire-bat', name: 'Chauve-souris vampire', icon: 'moon'},
+        {id: 'little-brown-bat', name: 'Chauve-souris brune', icon: 'moon'},
+        {id: 'big-eared-bat', name: 'Chauve-souris aux grandes oreilles', icon: 'moon',},
+        {id: 'pipistrelle', name: 'Pipistrelle', icon: 'moon'},
+        {id: 'flying-fox', name: 'Renard volant', icon: 'moon'}
       ]
     }
   ],
@@ -272,131 +272,131 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
     {
       id: 'cars',
       name: 'Les Voitures',
-      color: 'hsl(220 85% 55%)',
+      color: '#3b82f6',
       members: [
-        {id: 'car', name: 'Voiture', emoji: '🚗'},
-        {id: 'taxi', name: 'Taxi', emoji: '🚕'},
-        {id: 'police', name: 'Police', emoji: '🚓'},
-        {id: 'ambulance', name: 'Ambulance', emoji: '🚑'},
-        {id: 'sportcar', name: 'Sportive', emoji: '🏎️'},
-        {id: 'suv', name: 'SUV', emoji: '🚙'}
+        {id: 'car', name: 'Voiture', icon: 'car'},
+        {id: 'taxi', name: 'Taxi', icon: 'car'},
+        {id: 'police', name: 'Police', icon: 'shield'},
+        {id: 'ambulance', name: 'Ambulance', icon: 'cross'},
+        {id: 'sportcar', name: 'Sportive', icon: 'zap'},
+        {id: 'suv', name: 'SUV', icon: 'car'}
       ]
     },
     {
       id: 'trucks',
       name: 'Les Camions',
-      color: 'hsl(200 85% 65%)',
+      color: '#38bdf8',
       members: [
-        {id: 'truck', name: 'Camion', emoji: '🚚'},
-        {id: 'fire', name: 'Pompiers', emoji: '🚒'},
-        {id: 'garbage', name: 'Éboueurs', emoji: '🗑️'},
-        {id: 'delivery', name: 'Livraison', emoji: '📦'},
-        {id: 'cement', name: 'Bétonneuse', emoji: '🏗️'},
-        {id: 'tow', name: 'Dépanneuse', emoji: '🚨'}
+        {id: 'truck', name: 'Camion', icon: 'truck'},
+        {id: 'fire', name: 'Pompiers', icon: 'flame'},
+        {id: 'garbage', name: 'Éboueurs', icon: 'trash-2'},
+        {id: 'delivery', name: 'Livraison', icon: 'package'},
+        {id: 'cement', name: 'Bétonneuse', icon: 'construction'},
+        {id: 'tow', name: 'Dépanneuse', icon: 'alert-triangle'}
       ]
     },
     {
       id: 'air',
       name: 'Les Aériens',
-      color: 'hsl(180 85% 55%)',
+      color: '#06b6d4',
       members: [
-        {id: 'plane', name: 'Avion', emoji: '✈️'},
-        {id: 'helicopter', name: 'Hélicoptère', emoji: '🚁'},
-        {id: 'rocket', name: 'Fusée', emoji: '🚀'},
-        {id: 'balloon', name: 'Montgolfière', emoji: '🎈'},
-        {id: 'jet', name: 'Jet privé', emoji: '🛩️'},
-        {id: 'drone', name: 'Drone', emoji: '📡'}
+        {id: 'plane', name: 'Avion', icon: 'plane'},
+        {id: 'helicopter', name: 'Hélicoptère', icon: 'rotate-ccw'},
+        {id: 'rocket', name: 'Fusée', icon: 'rocket'},
+        {id: 'balloon', name: 'Montgolfière', icon: 'cloud'},
+        {id: 'jet', name: 'Jet privé', icon: 'plane'},
+        {id: 'drone', name: 'Drone', icon: 'radio'}
       ]
     },
     {
       id: 'water',
       name: 'Les Marins',
-      color: 'hsl(240 85% 65%)',
+      color: '#6366f1',
       members: [
-        {id: 'boat', name: 'Bateau', emoji: '⛵'},
-        {id: 'ship', name: 'Navire', emoji: '🚢'},
-        {id: 'submarine', name: 'Sous-marin', emoji: '🏊'},
-        {id: 'yacht', name: 'Yacht', emoji: '🛥️'},
-        {id: 'ferry', name: 'Ferry', emoji: '⛴️'},
-        {id: 'jetski', name: 'Jet-ski', emoji: '🏄'}
+        {id: 'boat', name: 'Bateau', icon: 'sailboat'},
+        {id: 'ship', name: 'Navire', icon: 'ship'},
+        {id: 'submarine', name: 'Sous-marin', icon: 'shell'},
+        {id: 'yacht', name: 'Yacht', icon: 'anchor'},
+        {id: 'ferry', name: 'Ferry', icon: 'ship-wheel'},
+        {id: 'jetski', name: 'Jet-ski', icon: 'waves'}
       ]
     },
     {
       id: 'bikes',
       name: 'Les Cycles',
-      color: 'hsl(300 85% 55%)',
+      color: '#d946ef',
       members: [
-        {id: 'bicycle', name: 'Bicyclette', emoji: '🚲'},
-        {id: 'motorcycle', name: 'Moto', emoji: '🏍️'},
-        {id: 'scooter', name: 'Trottinette', emoji: '🛴'},
-        {id: 'skateboard', name: 'Skateboard', emoji: '🛹'},
-        {id: 'rollerblades', name: 'Rollers', emoji: '🛼'},
-        {id: 'unicycle', name: 'Monocycle', emoji: '🎪'}
+        {id: 'bicycle', name: 'Bicyclette', icon: 'bike'},
+        {id: 'motorcycle', name: 'Moto', icon: 'zap'},
+        {id: 'scooter', name: 'Trottinette', icon: 'triangle'},
+        {id: 'skateboard', name: 'Skateboard', icon: 'rectangle-horizontal'},
+        {id: 'rollerblades', name: 'Rollers', icon: 'wind'},
+        {id: 'unicycle', name: 'Monocycle', icon: 'target'}
       ]
     },
     {
       id: 'construction',
       name: 'Les Engins de Chantier',
-      color: 'hsl(60 85% 55%)',
+      color: '#eab308',
       members: [
-        {id: 'bulldozer', name: 'Bulldozer', emoji: '🚜'},
-        {id: 'crane', name: 'Grue', emoji: '🏗️'},
-        {id: 'excavator', name: 'Pelleteuse', emoji: '🚧'},
-        {id: 'dump-truck', name: 'Camion-benne', emoji: '🚛'},
-        {id: 'loader', name: 'Chargeuse', emoji: '🛠️'},
-        {id: 'grader', name: 'Niveleuse', emoji: '🛤️'}
+        {id: 'bulldozer', name: 'Bulldozer', icon: 'tractor'},
+        {id: 'crane', name: 'Grue', icon: 'construction'},
+        {id: 'excavator', name: 'Pelleteuse', icon: 'mountain'},
+        {id: 'dump-truck', name: 'Camion-benne', icon: 'truck'},
+        {id: 'loader', name: 'Chargeuse', icon: 'wrench'},
+        {id: 'grader', name: 'Niveleuse', icon: 'minus'}
       ]
     },
     {
       id: 'public-transport',
       name: 'Les Transports Publics',
-      color: 'hsl(120 85% 45%)',
+      color: '#22c55e',
       members: [
-        {id: 'bus', name: 'Bus', emoji: '🚌'},
-        {id: 'tram', name: 'Tramway', emoji: '🚊'},
-        {id: 'metro', name: 'Métro', emoji: '🚇'},
-        {id: 'train', name: 'Train', emoji: '🚆'},
-        {id: 'cable-car', name: 'Téléphérique', emoji: '🚡'},
-        {id: 'ferry-boat', name: 'Bateau-bus', emoji: '⛴️'}
+        {id: 'bus', name: 'Bus', icon: 'bus'},
+        {id: 'tram', name: 'Tramway', icon: 'minus'},
+        {id: 'metro', name: 'Métro', icon: 'train-front-tunnel'},
+        {id: 'train', name: 'Train', icon: 'train'},
+        {id: 'cable-car', name: 'Téléphérique', icon: 'cable'},
+        {id: 'ferry-boat', name: 'Bateau-bus', icon: 'ship-wheel'}
       ]
     },
     {
       id: 'space',
       name: 'Les Explorateurs de l\'Espace',
-      color: 'hsl(300 85% 65%)',
+      color: '#e879f9',
       members: [
-        {id: 'spaceship', name: 'Vaisseau spatial', emoji: '🚀'},
-        {id: 'satellite', name: 'Satellite', emoji: '🛰️'},
-        {id: 'space-station', name: 'Station spatiale', emoji: '🏠'},
-        {id: 'rover', name: 'Rover', emoji: '🚙'},
-        {id: 'space-shuttle', name: 'Navette spatiale', emoji: '🛸'},
-        {id: 'space-probe', name: 'Sonde spatiale', emoji: '🔭'}
+        {id: 'spaceship', name: 'Vaisseau spatial', icon: 'rocket'},
+        {id: 'satellite', name: 'Satellite', icon: 'satellite'},
+        {id: 'space-station', name: 'Station spatiale', icon: 'home'},
+        {id: 'rover', name: 'Rover', icon: 'car'},
+        {id: 'space-shuttle', name: 'Navette spatiale', icon: 'plane'},
+        {id: 'space-probe', name: 'Sonde spatiale', icon: 'search'}
       ]
     },
     {
       id: 'emergency',
       name: 'Les Urgences',
-      color: 'hsl(0 85% 45%)',
+      color: '#b91c1c',
       members: [
-        {id: 'fire-truck', name: 'Camion de pompiers', emoji: '🚒'},
-        {id: 'ambulance', name: 'Ambulance', emoji: '🚑'},
-        {id: 'police-car', name: 'Voiture de police', emoji: '🚓'},
-        {id: 'rescue-boat', name: 'Bateau de sauvetage', emoji: '🚤'},
-        {id: 'rescue-helicopter', name: 'Hélicoptère de sauvetage', emoji: '🚁'},
-        {id: 'rescue-plane', name: 'Avion de sauvetage', emoji: '✈️'}
+        {id: 'fire-truck', name: 'Camion de pompiers', icon: 'flame'},
+        {id: 'ambulance', name: 'Ambulance', icon: 'cross'},
+        {id: 'police-car', name: 'Voiture de police', icon: 'shield'},
+        {id: 'rescue-boat', name: 'Bateau de sauvetage', icon: 'waves'},
+        {id: 'rescue-helicopter', name: 'Hélicoptère de sauvetage', icon: 'rotate-ccw'},
+        {id: 'rescue-plane', name: 'Avion de sauvetage', icon: 'plane'}
       ]
     },
     {
       id: 'military',
       name: 'Les Militaires',
-      color: 'hsl(30 85% 55%)',
+      color: '#f97316',
       members: [
-        {id: 'tank', name: 'Char d\'assaut', emoji: '🚜'},
-        {id: 'fighter-jet', name: 'Chasseur', emoji: '✈️'},
-        {id: 'helicopter-gunship', name: 'Hélicoptère de combat', emoji: '🚁'},
-        {id: 'military-ship', name: 'Navire de guerre', emoji: '🚢'},
-        {id: 'military-transport', name: 'Transport militaire', emoji: '🚚'},
-        {id: 'drone-military', name: 'Drone militaire', emoji: '📡'}
+        {id: 'tank', name: 'Char d\'assaut', icon: 'tractor'},
+        {id: 'fighter-jet', name: 'Chasseur', icon: 'plane'},
+        {id: 'helicopter-gunship', name: 'Hélicoptère de combat', icon: 'rotate-ccw'},
+        {id: 'military-ship', name: 'Navire de guerre', icon: 'ship'},
+        {id: 'military-transport', name: 'Transport militaire', icon: 'truck'},
+        {id: 'drone-military', name: 'Drone militaire', icon: 'radio'}
       ]
     }
   ],
@@ -404,131 +404,131 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
     {
       id: 'medical',
       name: 'La Médecine',
-      color: 'hsl(280 85% 55%)',
+      color: '#c026d3',
       members: [
-        {id: 'doctor', name: 'Médecin', emoji: '👨‍⚕️'},
-        {id: 'nurse', name: 'Infirmière', emoji: '👩‍⚕️'},
-        {id: 'dentist', name: 'Dentiste', emoji: '🦷'},
-        {id: 'pharmacist', name: 'Pharmacien', emoji: '💊'},
-        {id: 'surgeon', name: 'Chirurgien', emoji: '🔪'},
-        {id: 'paramedic', name: 'Ambulancier', emoji: '🚑'}
+        {id: 'doctor', name: 'Médecin', icon: 'stethoscope'},
+        {id: 'nurse', name: 'Infirmière', icon: 'cross'},
+        {id: 'dentist', name: 'Dentiste', icon: 'smile'},
+        {id: 'pharmacist', name: 'Pharmacien', icon: 'pill'},
+        {id: 'surgeon', name: 'Chirurgien', icon: 'scissors'},
+        {id: 'paramedic', name: 'Ambulancier', icon: 'ambulance'}
       ]
     },
     {
       id: 'education',
       name: 'L\'Éducation',
-      color: 'hsl(260 85% 65%)',
+      color: '#8b5cf6',
       members: [
-        {id: 'teacher', name: 'Professeur', emoji: '👨‍🏫'},
-        {id: 'student', name: 'Élève', emoji: '👨‍🎓'},
-        {id: 'principal', name: 'Directeur', emoji: '👔'},
-        {id: 'librarian', name: 'Bibliothécaire', emoji: '📚'},
-        {id: 'researcher', name: 'Chercheur', emoji: '🔬'},
-        {id: 'coach', name: 'Coach sportif', emoji: '🏆'}
+        {id: 'teacher', name: 'Professeur', icon: 'school'},
+        {id: 'student', name: 'Élève', icon: 'graduation-cap'},
+        {id: 'principal', name: 'Directeur', icon: 'user'},
+        {id: 'librarian', name: 'Bibliothécaire', icon: 'book'},
+        {id: 'researcher', name: 'Chercheur', icon: 'microscope'},
+        {id: 'coach', name: 'Coach sportif', icon: 'trophy'}
       ]
     },
     {
       id: 'safety',
       name: 'La Sécurité',
-      color: 'hsl(340 85% 55%)',
+      color: '#e11d48',
       members: [
-        {id: 'police', name: 'Policier', emoji: '👮'},
-        {id: 'firefighter', name: 'Pompier', emoji: '👨‍🚒'},
-        {id: 'guard', name: 'Garde', emoji: '💂'},
-        {id: 'detective', name: 'Détective', emoji: '🕵️'},
-        {id: 'lifeguard', name: 'Sauveteur', emoji: '🏊‍♂️'},
-        {id: 'soldier', name: 'Soldat', emoji: '🪖'}
+        {id: 'police', name: 'Policier', icon: 'siren'},
+        {id: 'firefighter', name: 'Pompier', icon: 'flame'},
+        {id: 'guard', name: 'Garde', icon: 'shield'},
+        {id: 'detective', name: 'Détective', icon: 'search'},
+        {id: 'lifeguard', name: 'Sauveteur', icon: 'waves'},
+        {id: 'soldier', name: 'Soldat', icon: 'sword'}
       ]
     },
     {
       id: 'food',
       name: 'La Cuisine',
-      color: 'hsl(40 85% 55%)',
+      color: '#facc15',
       members: [
-        {id: 'chef', name: 'Chef', emoji: '👨‍🍳'},
-        {id: 'waiter', name: 'Serveur', emoji: '🍽️'},
-        {id: 'baker', name: 'Boulanger', emoji: '🥖'},
-        {id: 'barista', name: 'Barista', emoji: '☕'},
-        {id: 'butcher', name: 'Boucher', emoji: '🔪'},
-        {id: 'sommelier', name: 'Sommelier', emoji: '🍷'}
+        {id: 'chef', name: 'Chef', icon: 'chef-hat'},
+        {id: 'waiter', name: 'Serveur', icon: 'utensils'},
+        {id: 'baker', name: 'Boulanger', icon: 'wheat'},
+        {id: 'barista', name: 'Barista', icon: 'coffee'},
+        {id: 'butcher', name: 'Boucher', icon: 'scissors'},
+        {id: 'sommelier', name: 'Sommelier', icon: 'wine'}
       ]
     },
     {
       id: 'arts',
       name: 'Les Arts',
-      color: 'hsl(120 85% 45%)',
+      color: '#22c55e',
       members: [
-        {id: 'artist', name: 'Artiste', emoji: '🎨'},
-        {id: 'musician', name: 'Musicien', emoji: '🎶'},
-        {id: 'actor', name: 'Acteur', emoji: '🎭'},
-        {id: 'writer', name: 'Écrivain', emoji: '✍️'},
-        {id: 'dancer', name: 'Danseur', emoji: '💃'},
-        {id: 'photographer', name: 'Photographe', emoji: '📸'}
+        {id: 'artist', name: 'Artiste', icon: 'palette'},
+        {id: 'musician', name: 'Musicien', icon: 'music'},
+        {id: 'actor', name: 'Acteur', icon: 'theater'},
+        {id: 'writer', name: 'Écrivain', icon: 'pen-tool'},
+        {id: 'dancer', name: 'Danseur', icon: 'user'},
+        {id: 'photographer', name: 'Photographe', icon: 'camera'}
       ]
     },
     {
       id: 'technology',
       name: 'La Technologie',
-      color: 'hsl(200 85% 55%)',
+      color: '#0ea5e9',
       members: [
-        {id: 'developer', name: 'Développeur', emoji: '💻'},
-        {id: 'engineer', name: 'Ingénieur', emoji: '🔧'},
-        {id: 'scientist', name: 'Scientifique', emoji: '🔬'},
-        {id: 'designer', name: 'Designer', emoji: '🎨'},
-        {id: 'technician', name: 'Technicien', emoji: '🛠️'},
-        {id: 'data-analyst', name: 'Analyste de données', emoji: '📊'}
+        {id: 'developer', name: 'Développeur', icon: 'laptop'},
+        {id: 'engineer', name: 'Ingénieur', icon: 'notebook'},
+        {id: 'scientist', name: 'Scientifique', icon: 'microscope'},
+        {id: 'designer', name: 'Designer', icon: 'palette'},
+        {id: 'technician', name: 'Technicien', icon: 'wrench'},
+        {id: 'data-analyst', name: 'Analyste de données', icon: 'bar-chart'}
       ]
     },
     {
       id: 'business',
       name: 'Les Affaires',
-      color: 'hsl(280 85% 65%)',
+      color: '#d946ef',
       members: [
-        {id: 'entrepreneur', name: 'Entrepreneur', emoji: '💼'},
-        {id: 'manager', name: 'Manager', emoji: '👔'},
-        {id: 'accountant', name: 'Comptable', emoji: '💰'},
-        {id: 'marketer', name: 'Marketeur', emoji: '📈'},
-        {id: 'salesperson', name: 'Vendeur', emoji: '🛒'},
-        {id: 'consultant', name: 'Consultant', emoji: '🗣️'}
+        {id: 'entrepreneur', name: 'Entrepreneur', icon: 'briefcase'},
+        {id: 'manager', name: 'Manager', icon: 'user'},
+        {id: 'accountant', name: 'Comptable', icon: 'dollar-sign'},
+        {id: 'marketer', name: 'Marketeur', icon: 'trending-up'},
+        {id: 'salesperson', name: 'Vendeur', icon: 'shopping-cart'},
+        {id: 'consultant', name: 'Consultant', icon: 'message-circle'}
       ]
     },
     {
       id: 'service',
       name: 'Les Services',
-      color: 'hsl(240 85% 55%)',
+      color: '#4f46e5',
       members: [
-        {id: 'hairdresser', name: 'Coiffeur', emoji: '💇'},
-        {id: 'plumber', name: 'Plombier', emoji: '🚰'},
-        {id: 'electrician', name: 'Électricien', emoji: '💡'},
-        {id: 'car-mechanic', name: 'Mécanicien', emoji: '🔧'},
-        {id: 'cleaner', name: 'Agent d\'entretien', emoji: '🧹'},
-        {id: 'gardener', name: 'Jardinier', emoji: '🌱'}
+        {id: 'hairdresser', name: 'Coiffeur', icon: 'scissors'},
+        {id: 'plumber', name: 'Plombier', icon: 'droplets'},
+        {id: 'electrician', name: 'Électricien', icon: 'lightbulb'},
+        {id: 'car-mechanic', name: 'Mécanicien', icon: 'wrench'},
+        {id: 'cleaner', name: 'Agent d\'entretien', icon: 'brush-cleaning'},
+        {id: 'gardener', name: 'Jardinier', icon: 'sprout'}
       ]
     },
     {
       id: 'transport',
       name: 'Le Transport',
-      color: 'hsl(160 85% 55%)',
+      color: '#14b8a6',
       members: [
-        {id: 'driver', name: 'Chauffeur', emoji: '🚗'},
-        {id: 'pilot', name: 'Pilote', emoji: '✈️'},
-        {id: 'conductor', name: 'Conducteur de train', emoji: '🚆'},
-        {id: 'ship-captain', name: 'Capitaine de navire', emoji: '🚢'},
-        {id: 'bus-driver', name: 'Conducteur de bus', emoji: '🚌'},
-        {id: 'truck-driver', name: 'Conducteur de camion', emoji: '🚚'}
+        {id: 'driver', name: 'Chauffeur', icon: 'car'},
+        {id: 'pilot', name: 'Pilote', icon: 'plane'},
+        {id: 'conductor', name: 'Conducteur de train', icon: 'train'},
+        {id: 'ship-captain', name: 'Capitaine de navire', icon: 'ship'},
+        {id: 'bus-driver', name: 'Conducteur de bus', icon: 'bus'},
+        {id: 'truck-driver', name: 'Conducteur de camion', icon: 'truck'}
       ]
     },
     {
       id: 'hospitality',
       name: 'L\'Hôtellerie',
-      color: 'hsl(20 85% 55%)',
+      color: '#f59e0b',
       members: [
-        {id: 'hotel-manager', name: 'Directeur d\'hôtel', emoji: '🏨'},
-        {id: 'receptionist', name: 'Réceptionniste', emoji: '👩‍💼'},
-        {id: 'housekeeper', name: 'Femme de chambre', emoji: '🧹'},
-        {id: 'concierge', name: 'Concierge', emoji: '🔑'},
-        {id: 'bartender', name: 'Barman', emoji: '🍹'},
-        {id: 'waitstaff', name: 'Personnel de salle', emoji: '🍽️'}
+        {id: 'hotel-manager', name: 'Directeur d\'hôtel', icon: 'building'},
+        {id: 'receptionist', name: 'Réceptionniste', icon: 'user'},
+        {id: 'housekeeper', name: 'Femme de chambre', icon: 'brush-cleaning'},
+        {id: 'concierge', name: 'Concierge', icon: 'key'},
+        {id: 'bartender', name: 'Barman', icon: 'glass-water'},
+        {id: 'waitstaff', name: 'Personnel de salle', icon: 'utensils'}
       ]
     }
   ],
@@ -536,131 +536,131 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
     {
       id: 'trees',
       name: 'Les Arbres',
-      color: 'hsl(140 85% 45%)',
+      color: '#10b981',
       members: [
-        {id: 'oak', name: 'Chêne', emoji: '🌳'},
-        {id: 'pine', name: 'Sapin', emoji: '🌲'},
-        {id: 'palm', name: 'Palmier', emoji: '🌴'},
-        {id: 'bamboo', name: 'Bambou', emoji: '🎋'},
-        {id: 'maple', name: 'Érable', emoji: '🍁'},
-        {id: 'willow', name: 'Saule', emoji: '🌿'}
+        {id: 'oak', name: 'Chêne', icon: 'trees'},
+        {id: 'pine', name: 'Sapin', icon: 'tree-pine'},
+        {id: 'palm', name: 'Palmier', icon: 'palmtree'},
+        {id: 'bamboo', name: 'Bambou', icon: 'bar-chart-3'},
+        {id: 'maple', name: 'Érable', icon: 'leaf'},
+        {id: 'willow', name: 'Saule', icon: 'tree-deciduous'}
       ]
     },
     {
       id: 'flowers',
       name: 'Les Fleurs',
-      color: 'hsl(120 85% 55%)',
+      color: '#84cc16',
       members: [
-        {id: 'rose', name: 'Rose', emoji: '🌹'},
-        {id: 'sunflower', name: 'Tournesol', emoji: '🌻'},
-        {id: 'tulip', name: 'Tulipe', emoji: '🌷'},
-        {id: 'daisy', name: 'Marguerite', emoji: '🌼'},
-        {id: 'lily', name: 'Lys', emoji: '⚜️'},
-        {id: 'orchid', name: 'Orchidée', emoji: '🪷'}
+        {id: 'rose', name: 'Rose', icon: 'flower'},
+        {id: 'sunflower', name: 'Tournesol', icon: 'sun'},
+        {id: 'tulip', name: 'Tulipe', icon: 'lightbulb'},
+        {id: 'daisy', name: 'Marguerite', icon: 'sprout'},
+        {id: 'lily', name: 'Lys', icon: 'flower-2'},
+        {id: 'orchid', name: 'Orchidée', icon: 'leaf'}
       ]
     },
     {
       id: 'weather',
       name: 'Le Temps',
-      color: 'hsl(200 85% 55%)',
+      color: '#0ea5e9',
       members: [
-        {id: 'sun', name: 'Soleil', emoji: '☀️'},
-        {id: 'cloud', name: 'Nuage', emoji: '☁️'},
-        {id: 'rain', name: 'Pluie', emoji: '🌧️'},
-        {id: 'snow', name: 'Neige', emoji: '❄️'},
-        {id: 'lightning', name: 'Éclair', emoji: '⚡'},
-        {id: 'rainbow', name: 'Arc-en-ciel', emoji: '🌈'}
+        {id: 'sun', name: 'Soleil', icon: 'sun'},
+        {id: 'cloud', name: 'Nuage', icon: 'cloud'},
+        {id: 'rain', name: 'Pluie', icon: 'cloud-rain'},
+        {id: 'snow', name: 'Neige', icon: 'snowflake'},
+        {id: 'lightning', name: 'Éclair', icon: 'zap'},
+        {id: 'rainbow', name: 'Arc-en-ciel', icon: 'rainbow'}
       ]
     },
     {
       id: 'landscapes',
       name: 'Les Paysages',
-      color: 'hsl(100 85% 45%)',
+      color: '#65a30d',
       members: [
-        {id: 'mountain', name: 'Montagne', emoji: '⛰️'},
-        {id: 'volcano', name: 'Volcan', emoji: '🌋'},
-        {id: 'desert', name: 'Désert', emoji: '🏜️'},
-        {id: 'forest', name: 'Forêt', emoji: '🌲'},
-        {id: 'beach', name: 'Plage', emoji: '🏖️'},
-        {id: 'glacier', name: 'Glacier', emoji: '🧊'}
+        {id: 'mountain', name: 'Montagne', icon: 'mountain'},
+        {id: 'volcano', name: 'Volcan', icon: 'flame'},
+        {id: 'desert', name: 'Désert', icon: 'thermometer'},
+        {id: 'forest', name: 'Forêt', icon: 'tree-pine'},
+        {id: 'beach', name: 'Plage', icon: 'waves'},
+        {id: 'glacier', name: 'Glacier', icon: 'snowflake'}
       ]
     },
     {
       id: 'animals',
       name: 'Les Animaux',
-      color: 'hsl(60 85% 55%)',
+      color: '#eab308',
       members: [
-        {id: 'lion', name: 'Lion', emoji: '🦁'},
-        {id: 'tiger', name: 'Tigre', emoji: '🐅'},
-        {id: 'bear', name: 'Ours', emoji: '🐻'},
-        {id: 'wolf', name: 'Loup', emoji: '🐺'},
-        {id: 'fox', name: 'Renard', emoji: '🦊'},
-        {id: 'lynx', name: 'Lynx', emoji: '😺'}
+        {id: 'lion', name: 'Lion', icon: 'crown'},
+        {id: 'tiger', name: 'Tigre', icon: 'zap'},
+        {id: 'bear', name: 'Ours', icon: 'shield'},
+        {id: 'wolf', name: 'Loup', icon: 'moon'},
+        {id: 'fox', name: 'Renard', icon: 'flame'},
+        {id: 'lynx', name: 'Lynx', icon: 'eye'}
       ]
     },
     {
       id: 'rocks',
       name: 'Les Roches',
-      color: 'hsl(300 85% 55%)',
+      color: '#d946ef',
       members: [
-        {id: 'granite', name: 'Granite', emoji: '🪨'},
-        {id: 'limestone', name: 'Calcaire', emoji: '🪨'},
-        {id: 'sandstone', name: 'Grès', emoji: '🪨'},
-        {id: 'basalt', name: 'Basalte', emoji: '🪨'},
-        {id: 'marble', name: 'Marbre', emoji: '🪨'},
-        {id: 'slate', name: 'Ardoise', emoji: '🪨'}
+        {id: 'granite', name: 'Granite', icon: 'square'},
+        {id: 'limestone', name: 'Calcaire', icon: 'layers'},
+        {id: 'sandstone', name: 'Grès', icon: 'grid-3x3'},
+        {id: 'basalt', name: 'Basalte', icon: 'hexagon'},
+        {id: 'marble', name: 'Marbre', icon: 'sparkles'},
+        {id: 'slate', name: 'Ardoise', icon: 'minus'}
       ]
     },
     {
       id: 'water-bodies',
       name: 'Les Plans d\'Eau',
-      color: 'hsl(180 85% 55%)',
+      color: '#06b6d4',
       members: [
-        {id: 'river', name: 'Rivière', emoji: '🌊'},
-        {id: 'lake', name: 'Lac', emoji: '🏞️'},
-        {id: 'ocean', name: 'Océan', emoji: '🌊'},
-        {id: 'pond', name: 'Étang', emoji: '🦆'},
-        {id: 'waterfall', name: 'Chute d\'eau', emoji: '💧'},
-        {id: 'glacier-lake', name: 'Lac glaciaire', emoji: '❄️'}
+        {id: 'river', name: 'Rivière', icon: 'waves'},
+        {id: 'lake', name: 'Lac', icon: 'circle'},
+        {id: 'ocean', name: 'Océan', icon: 'droplets'},
+        {id: 'pond', name: 'Étang', icon: 'droplet'},
+        {id: 'waterfall', name: 'Chute d\'eau', icon: 'arrow-down'},
+        {id: 'glacier-lake', name: 'Lac glaciaire', icon: 'snowflake'}
       ]
     },
     {
       id: 'sky',
       name: 'Le Ciel',
-      color: 'hsl(240 85% 65%)',
+      color: '#6366f1',
       members: [
-        {id: 'cloud', name: 'Nuage', emoji: '☁️'},
-        {id: 'rainbow', name: 'Arc-en-ciel', emoji: '🌈'},
-        {id: 'star', name: 'Étoile', emoji: '⭐'},
-        {id: 'moon', name: 'Lune', emoji: '🌕'},
-        {id: 'sunset', name: 'Coucher de soleil', emoji: '🌅'},
-        {id: 'aurora-borealis', name: 'Aurore boréale', emoji: '🌌'}
+        {id: 'cloud', name: 'Nuage', icon: 'cloud'},
+        {id: 'rainbow', name: 'Arc-en-ciel', icon: 'rainbow'},
+        {id: 'star', name: 'Étoile', icon: 'star'},
+        {id: 'moon', name: 'Lune', icon: 'moon'},
+        {id: 'sunset', name: 'Coucher de soleil', icon: 'sunrise'},
+        {id: 'aurora-borealis', name: 'Aurore boréale', icon: 'stars'}
       ]
     },
     {
       id: 'ecosystems',
       name: 'Les Écosystèmes',
-      color: 'hsl(300 85% 55%)',
+      color: '#d946ef',
       members: [
-        {id: 'rainforest', name: 'Forêt tropicale', emoji: '🌴'},
-        {id: 'desert', name: 'Désert', emoji: '🏜️'},
-        {id: 'coral-reef', name: 'Récif corallien', emoji: '🐠'},
-        {id: 'tundra', name: 'Toundra', emoji: '❄️'},
-        {id: 'grassland', name: 'Prairie', emoji: '🌾'},
-        {id: 'wetland', name: 'Zone humide', emoji: '🌿'}
+        {id: 'rainforest', name: 'Forêt tropicale', icon: 'palmtree'},
+        {id: 'desert', name: 'Désert', icon: 'wind'},
+        {id: 'coral-reef', name: 'Récif corallien', icon: 'fish'},
+        {id: 'tundra', name: 'Toundra', icon: 'snowflake'},
+        {id: 'grassland', name: 'Prairie', icon: 'wheat'},
+        {id: 'wetland', name: 'Zone humide', icon: 'droplets'}
       ]
     },
     {
       id: 'insects',
       name: 'Les Insectes',
-      color: 'hsl(60 85% 55%)',
+      color: '#eab308',
       members: [
-        {id: 'butterfly', name: 'Papillon', emoji: '🦋'},
-        {id: 'bee', name: 'Abeille', emoji: '🐝'},
-        {id: 'ant', name: 'Fourmi', emoji: '🐜'},
-        {id: 'dragonfly', name: 'Libellule', emoji: '🪲'},
-        {id: 'grasshopper', name: 'Sauterelle', emoji: '🦗'},
-        {id: 'ladybug', name: 'Coccinelle', emoji: '🐞'}
+        {id: 'butterfly', name: 'Papillon', icon: 'wind'},
+        {id: 'bee', name: 'Abeille', icon: 'hexagon'},
+        {id: 'ant', name: 'Fourmi', icon: 'dot'},
+        {id: 'dragonfly', name: 'Libellule', icon: 'bug'},
+        {id: 'grasshopper', name: 'Sauterelle', icon: 'bug-play'},
+        {id: 'ladybug', name: 'Coccinelle', icon: 'shield'}
       ]
     }
   ],
@@ -668,131 +668,131 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
     {
       id: 'mythical-creatures',
       name: 'Créatures Mythiques',
-      color: 'hsl(280 85% 55%)',
+      color: '#c026d3',
       members: [
-        {id: 'dragon', name: 'Dragon', emoji: '🐉'},
-        {id: 'unicorn', name: 'Licorne', emoji: '🦄'},
-        {id: 'phoenix', name: 'Phénix', emoji: '🦅'},
-        {id: 'griffin', name: 'Griffon', emoji: '🦅'},
-        {id: 'mermaid', name: 'Sirène', emoji: '🧜‍♀️'},
-        {id: 'centaur', name: 'Centaure', emoji: '🧝‍♂️'}
+        {id: 'dragon', name: 'Dragon', icon: 'flame'},
+        {id: 'unicorn', name: 'Licorne', icon: 'unicornHead'},
+        {id: 'phoenix', name: 'Phénix', icon: 'egg'},
+        {id: 'griffin', name: 'Griffon', icon: 'bird'},
+        {id: 'mermaid', name: 'Sirène', icon: 'waves'},
+        {id: 'centaur', name: 'Centaure', icon: 'tree-pine'}
       ]
     },
     {
       id: 'magical-beings',
       name: 'Êtres Magiques',
-      color: 'hsl(260 85% 65%)',
+      color: '#8b5cf6',
       members: [
-        {id: 'wizard', name: 'Sorcier', emoji: '🧙‍♂️'},
-        {id: 'witch', name: 'Sorcière', emoji: '🧙‍♀️'},
-        {id: 'fairy', name: 'Fée', emoji: '🧚‍♀️'},
-        {id: 'elf', name: 'Elfe', emoji: '🧝‍♂️'},
-        {id: 'gnome', name: 'Gnome', emoji: '🧙‍♂️'},
-        {id: 'troll', name: 'Troll', emoji: '👹'}
+        {id: 'wizard', name: 'Sorcier', icon: 'wand-sparkles'},
+        {id: 'witch', name: 'Sorcière', icon: 'sparkles'},
+        {id: 'fairy', name: 'Fée', icon: 'wand'},
+        {id: 'elf', name: 'Elfe', icon: 'tree-pine'},
+        {id: 'gnome', name: 'Gnome', icon: 'person-standing'},
+        {id: 'troll', name: 'Troll', icon: 'skull'}
       ]
     },
     {
       id: 'fantasy-places',
       name: 'Lieux Fantastiques',
-      color: 'hsl(340 85% 55%)',
+      color: '#e11d48',
       members: [
-        {id: 'castle', name: 'Château', emoji: '🏰'},
-        {id: 'dungeon', name: 'Donjon', emoji: '🕸️'},
-        {id: 'enchanted-forest', name: 'Forêt enchantée', emoji: '🌲'},
-        {id: 'floating-island', name: 'Île flottante', emoji: '🏝️'},
-        {id: 'crystal-cave', name: 'Grotte de cristal', emoji: '🪨'},
-        {id: 'mystic-mountain', name: 'Montagne mystique', emoji: '⛰️'}
+        {id: 'castle', name: 'Château', icon: 'castle'},
+        {id: 'dungeon', name: 'Donjon', icon: 'grid-3x3'},
+        {id: 'enchanted-forest', name: 'Forêt enchantée', icon: 'tree-pine'},
+        {id: 'floating-island', name: 'Île flottante', icon: 'cloud'},
+        {id: 'crystal-cave', name: 'Grotte de cristal', icon: 'sparkle'},
+        {id: 'mystic-mountain', name: 'Montagne mystique', icon: 'mountain'}
       ]
     },
     {
       id: 'magical-items',
       name: 'Objets Magiques',
-      color: 'hsl(40 85% 55%)',
+      color: '#facc15',
       members: [
-        {id: 'magic-wand', name: 'Baguette magique', emoji: '🪄'},
-        {id: 'crystal-ball', name: 'Boule de cristal', emoji: '🔮'},
-        {id: 'enchanted-sword', name: 'Épée enchantée', emoji: '🗡️'},
-        {id: 'magic-book', name: 'Livre magique', emoji: '📖'},
-        {id: 'potion', name: 'Potion', emoji: '🧪'},
-        {id: 'amulet', name: 'Amulette', emoji: '📿'}
+        {id: 'magic-wand', name: 'Baguette magique', icon: 'wand'},
+        {id: 'crystal-ball', name: 'Boule de cristal', icon: 'eye'},
+        {id: 'enchanted-sword', name: 'Épée enchantée', icon: 'sword'},
+        {id: 'magic-book', name: 'Livre magique', icon: 'book'},
+        {id: 'potion', name: 'Potion', icon: 'test-tube'},
+        {id: 'amulet', name: 'Amulette', icon: 'star'}
       ]
     },
     {
       id: 'fantasy-animals',
       name: 'Animaux Fantastiques',
-      color: 'hsl(120 85% 45%)',
+      color: '#22c55e',
       members: [
-        {id: 'phoenix', name: 'Phénix', emoji: '🦅'},
-        {id: 'dragon', name: 'Dragon', emoji: '🐉'},
-        {id: 'unicorn', name: 'Licorne', emoji: '🦄'},
-        {id: 'basilisk', name: 'Basilic', emoji: '🐍'},
-        {id: 'chimera', name: 'Chimère', emoji: '🦁'},
-        {id: 'hydra', name: 'Hydre', emoji: '🐉'}
+        {id: 'phoenix', name: 'Phénix', icon: 'bird'},
+        {id: 'dragon', name: 'Dragon', icon: 'flame'},
+        {id: 'unicorn', name: 'Licorne', icon: 'star'},
+        {id: 'basilisk', name: 'Basilic', icon: 'waves'},
+        {id: 'chimera', name: 'Chimère', icon: 'crown'},
+        {id: 'hydra', name: 'Hydre', icon: 'worm'}
       ]
     },
     {
       id: 'dark-creatures',
       name: 'Créatures Sombres',
-      color: 'hsl(200 85% 55%)',
+      color: '#0ea5e9',
       members: [
-        {id: 'vampire', name: 'Vampire', emoji: '🧛‍♂️'},
-        {id: 'werewolf', name: 'Loup-garou', emoji: '🐺'},
-        {id: 'zombie', name: 'Zombie', emoji: '🧟‍♂️'},
-        {id: 'ghost', name: 'Fantôme', emoji: '👻'},
-        {id: 'demon', name: 'Démon', emoji: '😈'},
-        {id: 'witch', name: 'Sorcière', emoji: '🧙‍♀️'}
+        {id: 'vampire', name: 'Vampire', icon: 'moon'},
+        {id: 'werewolf', name: 'Loup-garou', icon: 'triangle'},
+        {id: 'zombie', name: 'Zombie', icon: 'skull'},
+        {id: 'ghost', name: 'Fantôme', icon: 'ghost'},
+        {id: 'demon', name: 'Démon', icon: 'flame'},
+        {id: 'witch', name: 'Sorcière', icon: 'sparkles'}
       ]
     },
     {
       id: 'legendary-heroes',
       name: 'Héros Légendaires',
-      color: 'hsl(20 85% 55%)',
+      color: '#f59e0b',
       members: [
-        {id: 'knight', name: 'Chevalier', emoji: '🤺'},
-        {id: 'archer', name: 'Archer', emoji: '🏹'},
-        {id: 'paladin', name: 'Paladin', emoji: '🛡️'},
-        {id: 'ranger', name: 'Rôdeur', emoji: '🏕️'},
-        {id: 'bard', name: 'Barde', emoji: '🎸'},
-        {id: 'assassin', name: 'Assassin', emoji: '🗡️'}
+        {id: 'knight', name: 'Chevalier', icon: 'shield-half'},
+        {id: 'archer', name: 'Archer', icon: 'bow-arrow'},
+        {id: 'paladin', name: 'Paladin', icon: 'shield'},
+        {id: 'ranger', name: 'Rôdeur', icon: 'tent'},
+        {id: 'bard', name: 'Barde', icon: 'music'},
+        {id: 'assassin', name: 'Assassin', icon: 'sword'}
       ]
     },
     {
       id: 'fantasy-lands',
       name: 'Terres Fantastiques',
-      color: 'hsl(160 85% 55%)',
+      color: '#14b8a6',
       members: [
-        {id: 'neverland', name: 'Pays Imaginaire', emoji: '🏝️'},
-        {id: 'middle-earth', name: 'Terre du Milieu', emoji: '🌍'},
-        {id: 'narnia', name: 'Narnia', emoji: '❄️'},
-        {id: 'hogwarts', name: 'Poudlard', emoji: '🏰'},
-        {id: 'atlantis', name: 'Atlantide', emoji: '🌊'},
-        {id: 'elysium', name: 'Élysée', emoji: '🌟'}
+        {id: 'neverland', name: 'Pays Imaginaire', icon: 'sparkles'},
+        {id: 'middle-earth', name: 'Terre du Milieu', icon: 'globe'},
+        {id: 'narnia', name: 'Narnia', icon: 'snowflake'},
+        {id: 'hogwarts', name: 'Poudlard', icon: 'castle'},
+        {id: 'atlantis', name: 'Atlantide', icon: 'waves'},
+        {id: 'elysium', name: 'Élysée', icon: 'star'}
       ]
     },
     {
       id: 'magical-phenomena',
       name: 'Phénomènes Magiques',
-      color: 'hsl(240 85% 65%)',
+      color: '#6366f1',
       members: [
-        {id: 'time-travel', name: 'Voyage dans le temps', emoji: '⏳'},
-        {id: 'teleportation', name: 'Téléportation', emoji: '🌀'},
-        {id: 'shape-shifting', name: 'Métamorphose', emoji: '🦎'},
-        {id: 'invisibility', name: 'Invisibilité', emoji: '👻'},
-        {id: 'mind-reading', name: 'Lecture de pensée', emoji: '🧠'},
-        {id: 'elemental-control', name: 'Contrôle des éléments', emoji: '🌪️'}
+        {id: 'time-travel', name: 'Voyage dans le temps', icon: 'clock'},
+        {id: 'teleportation', name: 'Téléportation', icon: 'rotate-cw'},
+        {id: 'shape-shifting', name: 'Métamorphose', icon: 'zap'},
+        {id: 'invisibility', name: 'Invisibilité', icon: 'ghost'},
+        {id: 'mind-reading', name: 'Lecture de pensée', icon: 'brain'},
+        {id: 'elemental-control', name: 'Contrôle des éléments', icon: 'wind'}
       ]
     },
     {
       id: 'fantasy-vehicles',
       name: 'Véhicules Fantastiques',
-      color: 'hsl(300 85% 55%)',
+      color: '#d946ef',
       members: [
-        {id: 'flying-carpet', name: 'Tapis volant', emoji: '🧞‍♂️'},
-        {id: 'dragon-rider', name: 'Cavalier de dragon', emoji: '🐉'},
-        {id: 'magic-boat', name: 'Bateau magique', emoji: '🛶'},
-        {id: 'enchanted-chariot', name: 'Char enchanté', emoji: '🚗'},
-        {id: 'spellbound-train', name: 'Train ensorcelé', emoji: '🚂'},
-        {id: 'mystic-bicycle', name: 'Vélo mystique', emoji: '🚲'}
+        {id: 'flying-carpet', name: 'Tapis volant', icon: 'cloud'},
+        {id: 'dragon-rider', name: 'Cavalier de dragon', icon: 'flame'},
+        {id: 'magic-boat', name: 'Bateau magique', icon: 'ship'},
+        {id: 'enchanted-chariot', name: 'Char enchanté', icon: 'car'},
+        {id: 'spellbound-train', name: 'Train ensorcelé', icon: 'train'},
+        {id: 'mystic-bicycle', name: 'Vélo mystique', icon: 'bike'}
       ]
     }
   ],
@@ -800,131 +800,131 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
     {
       id: 'planets',
       name: 'Les Planètes',
-      color: 'hsl(240 90% 60%)',
+      color: '#4f46e5',
       members: [
-        {id: 'mercury', name: 'Mercure', emoji: '☿️'},
-        {id: 'venus', name: 'Vénus', emoji: '♀️'},
-        {id: 'earth', name: 'Terre', emoji: '🌍'},
-        {id: 'mars', name: 'Mars', emoji: '♂️'},
-        {id: 'jupiter', name: 'Jupiter', emoji: '♃'},
-        {id: 'saturn', name: 'Saturne', emoji: '🪐'}
+        {id: 'mercury', name: 'Mercure', icon: 'zap'},
+        {id: 'venus', name: 'Vénus', icon: 'heart'},
+        {id: 'earth', name: 'Terre', icon: 'globe'},
+        {id: 'mars', name: 'Mars', icon: 'flame'},
+        {id: 'jupiter', name: 'Jupiter', icon: 'crown'},
+        {id: 'saturn', name: 'Saturne', icon: 'target'}
       ]
     },
     {
       id: 'constellations',
       name: 'Les Constellations',
-      color: 'hsl(280 85% 65%)',
+      color: '#d946ef',
       members: [
-        {id: 'orion', name: 'Orion', emoji: '⭐'},
-        {id: 'ursa-major', name: 'Grande Ourse', emoji: '🐻'},
-        {id: 'cassiopeia', name: 'Cassiopée', emoji: '👑'},
-        {id: 'leo', name: 'Lion', emoji: '🦁'},
-        {id: 'scorpius', name: 'Scorpion', emoji: '🦂'},
-        {id: 'cygnus', name: 'Cygne', emoji: '🦢'}
+        {id: 'orion', name: 'Orion', icon: 'star'},
+        {id: 'ursa-major', name: 'Grande Ourse', icon: 'panda'},
+        {id: 'cassiopeia', name: 'Cassiopée', icon: 'crown'},
+        {id: 'leo', name: 'Lion', icon: 'cat'},
+        {id: 'scorpius', name: 'Scorpion', icon: 'bug'},
+        {id: 'cygnus', name: 'Cygne', icon: 'bird'}
       ]
     },
     {
       id: 'spacecraft',
       name: 'Les Vaisseaux Spatiaux',
-      color: 'hsl(260 85% 55%)',
+      color: '#a855f7',
       members: [
-        {id: 'rocket', name: 'Fusée', emoji: '🚀'},
-        {id: 'shuttle', name: 'Navette', emoji: '🛸'},
-        {id: 'satellite', name: 'Satellite', emoji: '🛰️'},
-        {id: 'space-station', name: 'Station spatiale', emoji: '🛰️'},
-        {id: 'rover', name: 'Rover', emoji: '🚙'},
-        {id: 'probe', name: 'Sonde', emoji: '📡'}
+        {id: 'rocket', name: 'Fusée', icon: 'rocket'},
+        {id: 'shuttle', name: 'Navette', icon: 'plane'},
+        {id: 'satellite', name: 'Satellite', icon: 'satellite'},
+        {id: 'space-station', name: 'Station spatiale', icon: 'telescope'},
+        {id: 'rover', name: 'Rover', icon: 'car'},
+        {id: 'probe', name: 'Sonde', icon: 'radio'}
       ]
     },
     {
       id: 'astronauts',
       name: 'Les Astronautes',
-      color: 'hsl(220 85% 60%)',
+      color: '#2563eb',
       members: [
-        {id: 'commander', name: 'Commandant', emoji: '👨‍🚀'},
-        {id: 'pilot', name: 'Pilote', emoji: '👩‍🚀'},
-        {id: 'engineer', name: 'Ingénieur', emoji: '🔧'},
-        {id: 'scientist', name: 'Scientifique', emoji: '🔬'},
-        {id: 'medic', name: 'Médecin', emoji: '⚕️'},
-        {id: 'specialist', name: 'Spécialiste', emoji: '🧑‍💻'}
+        {id: 'commander', name: 'Commandant', icon: 'crown'},
+        {id: 'pilot', name: 'Pilote', icon: 'user'},
+        {id: 'engineer', name: 'Ingénieur', icon: 'wrench'},
+        {id: 'scientist', name: 'Scientifique', icon: 'microscope'},
+        {id: 'medic', name: 'Médecin', icon: 'cross'},
+        {id: 'specialist', name: 'Spécialiste', icon: 'laptop'}
       ]
     },
     {
       id: 'galaxies',
       name: 'Les Galaxies',
-      color: 'hsl(300 85% 55%)',
+      color: '#d946ef',
       members: [
-        {id: 'milky-way', name: 'Voie Lactée', emoji: '🌌'},
-        {id: 'andromeda', name: 'Andromède', emoji: '🌠'},
-        {id: 'whirlpool', name: 'Tourbillon', emoji: '🌪️'},
-        {id: 'sombrero', name: 'Sombrero', emoji: '👒'},
-        {id: 'cartwheel', name: 'Roue de chariot', emoji: '🎡'},
-        {id: 'pinwheel', name: 'Moulinet', emoji: '🎯'}
+        {id: 'milky-way', name: 'Voie Lactée', icon: 'stars'},
+        {id: 'andromeda', name: 'Andromède', icon: 'star'},
+        {id: 'whirlpool', name: 'Tourbillon', icon: 'wind'},
+        {id: 'sombrero', name: 'Sombrero', icon: 'mountain'},
+        {id: 'cartwheel', name: 'Roue de chariot', icon: 'rotate-cw'},
+        {id: 'pinwheel', name: 'Moulinet', icon: 'target'}
       ]
     },
     {
       id: 'space-phenomena',
       name: 'Phénomènes Spatiaux',
-      color: 'hsl(180 85% 55%)',
+      color: '#06b6d4',
       members: [
-        {id: 'black-hole', name: 'Trou noir', emoji: '⚫'},
-        {id: 'supernova', name: 'Supernova', emoji: '💥'},
-        {id: 'nebula', name: 'Nébuleuse', emoji: '☁️'},
-        {id: 'pulsar', name: 'Pulsar', emoji: '📡'},
-        {id: 'quasar', name: 'Quasar', emoji: '⚡'},
-        {id: 'asteroid', name: 'Astéroïde', emoji: '☄️'}
+        {id: 'black-hole', name: 'Trou noir', icon: 'minus'},
+        {id: 'supernova', name: 'Supernova', icon: 'bomb'},
+        {id: 'nebula', name: 'Nébuleuse', icon: 'cloud'},
+        {id: 'pulsar', name: 'Pulsar', icon: 'radio'},
+        {id: 'quasar', name: 'Quasar', icon: 'zap'},
+        {id: 'asteroid', name: 'Astéroïde', icon: 'orbit'}
       ]
     },
     {
       id: 'space-missions',
       name: 'Missions Spatiales',
-      color: 'hsl(120 85% 50%)',
+      color: '#65a30d',
       members: [
-        {id: 'apollo', name: 'Apollo', emoji: '🌙'},
-        {id: 'voyager', name: 'Voyager', emoji: '🛰️'},
-        {id: 'hubble', name: 'Hubble', emoji: '🔭'},
-        {id: 'cassini', name: 'Cassini', emoji: '🪐'},
-        {id: 'curiosity', name: 'Curiosity', emoji: '🤖'},
-        {id: 'perseverance', name: 'Perseverance', emoji: '🚗'}
+        {id: 'apollo', name: 'Apollo', icon: 'moon'},
+        {id: 'voyager', name: 'Voyager', icon: 'satellite'},
+        {id: 'hubble', name: 'Hubble', icon: 'search'},
+        {id: 'cassini', name: 'Cassini', icon: 'torus'},
+        {id: 'curiosity', name: 'Curiosity', icon: 'bot'},
+        {id: 'perseverance', name: 'Perseverance', icon: 'car'}
       ]
     },
     {
       id: 'alien-species',
       name: 'Espèces Extraterrestres',
-      color: 'hsl(160 85% 55%)',
+      color: '#14b8a6',
       members: [
-        {id: 'martian', name: 'Martien', emoji: '👽'},
-        {id: 'gray', name: 'Petit Gris', emoji: '👾'},
-        {id: 'reptilian', name: 'Reptilien', emoji: '🦎'},
-        {id: 'nordic', name: 'Nordique', emoji: '👼'},
-        {id: 'insectoid', name: 'Insectoïde', emoji: '🐛'},
-        {id: 'energy-being', name: 'Être d\'énergie', emoji: '⚡'}
+        {id: 'martian', name: 'Martien', icon: 'user'},
+        {id: 'gray', name: 'Petit Gris', icon: 'person-standing'},
+        {id: 'reptilian', name: 'Reptilien', icon: 'turtle'},
+        {id: 'nordic', name: 'Nordique', icon: 'snowflake'},
+        {id: 'insectoid', name: 'Insectoïde', icon: 'bug'},
+        {id: 'energy-being', name: 'Être d\'énergie', icon: 'zap'}
       ]
     },
     {
       id: 'space-tools',
       name: 'Outils Spatiaux',
-      color: 'hsl(340 85% 55%)',
+      color: '#e11d48',
       members: [
-        {id: 'telescope', name: 'Télescope', emoji: '🔭'},
-        {id: 'space-suit', name: 'Combinaison', emoji: '🧑‍🚀'},
-        {id: 'oxygen-tank', name: 'Réservoir d\'oxygène', emoji: '⚗️'},
-        {id: 'laser', name: 'Laser', emoji: '🔦'},
-        {id: 'communicator', name: 'Communicateur', emoji: '📻'},
-        {id: 'scanner', name: 'Scanner', emoji: '📱'}
+        {id: 'telescope', name: 'Télescope', icon: 'search'},
+        {id: 'space-suit', name: 'Combinaison', icon: 'user'},
+        {id: 'oxygen-tank', name: 'Réservoir d\'oxygène', icon: 'test-tube'},
+        {id: 'laser', name: 'Laser', icon: 'flashlight'},
+        {id: 'communicator', name: 'Communicateur', icon: 'radio'},
+        {id: 'scanner', name: 'Scanner', icon: 'smartphone'}
       ]
     },
     {
       id: 'space-colonies',
       name: 'Colonies Spatiales',
-      color: 'hsl(60 85% 50%)',
+      color: '#eab308',
       members: [
-        {id: 'moon-base', name: 'Base lunaire', emoji: '🌙'},
-        {id: 'mars-colony', name: 'Colonie martienne', emoji: '🏠'},
-        {id: 'space-city', name: 'Cité spatiale', emoji: '🏙️'},
-        {id: 'mining-station', name: 'Station minière', emoji: '⛏️'},
-        {id: 'research-outpost', name: 'Avant-poste de recherche', emoji: '🔬'},
-        {id: 'trade-hub', name: 'Hub commercial', emoji: '🏪'}
+        {id: 'moon-base', name: 'Base lunaire', icon: 'moon'},
+        {id: 'mars-colony', name: 'Colonie martienne', icon: 'home'},
+        {id: 'space-city', name: 'Cité spatiale', icon: 'building'},
+        {id: 'mining-station', name: 'Station minière', icon: 'pickaxe'},
+        {id: 'research-outpost', name: 'Avant-poste de recherche', icon: 'microscope'},
+        {id: 'trade-hub', name: 'Hub commercial', icon: 'store'}
       ]
     }
   ],
@@ -932,131 +932,131 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
     {
       id: 'fruits',
       name: 'Les Fruits',
-      color: 'hsl(25 90% 55%)',
+      color: '#f97316',
       members: [
-        {id: 'apple', name: 'Pomme', emoji: '🍎'},
-        {id: 'banana', name: 'Banane', emoji: '🍌'},
-        {id: 'orange', name: 'Orange', emoji: '🍊'},
-        {id: 'strawberry', name: 'Fraise', emoji: '🍓'},
-        {id: 'grapes', name: 'Raisins', emoji: '🍇'},
-        {id: 'watermelon', name: 'Pastèque', emoji: '🍉'}
+        {id: 'apple', name: 'Pomme', icon: 'apple'},
+        {id: 'banana', name: 'Banane', icon: 'banana'},
+        {id: 'orange', name: 'Orange', icon: 'sun'},
+        {id: 'strawberry', name: 'Fraise', icon: 'heart'},
+        {id: 'grapes', name: 'Raisins', icon: 'droplets'},
+        {id: 'watermelon', name: 'Pastèque', icon: 'waves'}
       ]
     },
     {
       id: 'vegetables',
       name: 'Les Légumes',
-      color: 'hsl(120 85% 45%)',
+      color: '#22c55e',
       members: [
-        {id: 'carrot', name: 'Carotte', emoji: '🥕'},
-        {id: 'broccoli', name: 'Brocoli', emoji: '🥦'},
-        {id: 'tomato', name: 'Tomate', emoji: '🍅'},
-        {id: 'corn', name: 'Maïs', emoji: '🌽'},
-        {id: 'potato', name: 'Pomme de terre', emoji: '🥔'},
-        {id: 'bell-pepper', name: 'Poivron', emoji: '🫑'}
+        {id: 'carrot', name: 'Carotte', icon: 'carrot'},
+        {id: 'broccoli', name: 'Brocoli', icon: 'tree-pine'},
+        {id: 'tomato', name: 'Tomate', icon: 'heart'},
+        {id: 'corn', name: 'Maïs', icon: 'wheat'},
+        {id: 'potato', name: 'Pomme de terre', icon: 'mountain'},
+        {id: 'bell-pepper', name: 'Poivron', icon: 'bell'}
       ]
     },
     {
       id: 'desserts',
       name: 'Les Desserts',
-      color: 'hsl(300 85% 60%)',
+      color: '#e879f9',
       members: [
-        {id: 'cake', name: 'Gâteau', emoji: '🍰'},
-        {id: 'ice-cream', name: 'Glace', emoji: '🍦'},
-        {id: 'cookie', name: 'Cookie', emoji: '🍪'},
-        {id: 'donut', name: 'Donut', emoji: '🍩'},
-        {id: 'chocolate', name: 'Chocolat', emoji: '🍫'},
-        {id: 'pie', name: 'Tarte', emoji: '🥧'}
+        {id: 'cake', name: 'Gâteau', icon: 'cake'},
+        {id: 'ice-cream', name: 'Glace', icon: 'ice-cream'},
+        {id: 'cookie', name: 'Cookie', icon: 'cookie'},
+        {id: 'donut', name: 'Donut', icon: 'target'},
+        {id: 'chocolate', name: 'Chocolat', icon: 'square'},
+        {id: 'pie', name: 'Tarte', icon: 'triangle'}
       ]
     },
     {
       id: 'fast-food',
       name: 'Fast Food',
-      color: 'hsl(0 85% 55%)',
+      color: '#dc2626',
       members: [
-        {id: 'hamburger', name: 'Hamburger', emoji: '🍔'},
-        {id: 'pizza', name: 'Pizza', emoji: '🍕'},
-        {id: 'hot-dog', name: 'Hot-dog', emoji: '🌭'},
-        {id: 'fries', name: 'Frites', emoji: '🍟'},
-        {id: 'taco', name: 'Taco', emoji: '🌮'},
-        {id: 'burrito', name: 'Burrito', emoji: '🌯'}
+        {id: 'hamburger', name: 'Hamburger', icon: 'hamburger'},
+        {id: 'pizza', name: 'Pizza', icon: 'pizza'},
+        {id: 'hot-dog', name: 'Hot-dog', icon: 'hotDog'},
+        {id: 'soda', name: 'Soda', icon: 'cup-soda'},
+        {id: 'taco', name: 'Taco', icon: 'pepperChilli'},
+        {id: 'burrito', name: 'Burrito', icon: 'shell'}
       ]
     },
     {
       id: 'breakfast',
       name: 'Petit Déjeuner',
-      color: 'hsl(40 85% 55%)',
+      color: '#facc15',
       members: [
-        {id: 'croissant', name: 'Croissant', emoji: '🥐'},
-        {id: 'pancake', name: 'Pancake', emoji: '🥞'},
-        {id: 'bacon', name: 'Bacon', emoji: '🥓'},
-        {id: 'egg', name: 'Œuf', emoji: '🍳'},
-        {id: 'toast', name: 'Toast', emoji: '🍞'},
-        {id: 'cereal', name: 'Céréales', emoji: '🥣'}
+        {id: 'croissant', name: 'Croissant', icon: 'croissant'},
+        {id: 'pancake', name: 'Pancake', icon: 'pancakes'},
+        {id: 'bacon', name: 'Bacon', icon: 'bacon'},
+        {id: 'egg', name: 'Œuf', icon: 'egg'},
+        {id: 'toast', name: 'Toast', icon: 'toast'},
+        {id: 'cereal', name: 'Céréales', icon: 'wheat'}
       ]
     },
     {
       id: 'seafood',
       name: 'Fruits de Mer',
-      color: 'hsl(200 85% 55%)',
+      color: '#0ea5e9',
       members: [
-        {id: 'fish', name: 'Poisson', emoji: '🐟'},
-        {id: 'shrimp', name: 'Crevette', emoji: '🦐'},
-        {id: 'crab', name: 'Crabe', emoji: '🦀'},
-        {id: 'lobster', name: 'Homard', emoji: '🦞'},
-        {id: 'oyster', name: 'Huître', emoji: '🦪'},
-        {id: 'squid', name: 'Calmar', emoji: '🦑'}
+        {id: 'fish', name: 'Poisson', icon: 'fish'},
+        {id: 'shrimp', name: 'Crevette', icon: 'shrimp'},
+        {id: 'crab', name: 'Crabe', icon: 'crab'},
+        {id: 'lobster', name: 'Homard', icon: 'scissors'},
+        {id: 'oyster', name: 'Huître', icon: 'shell'},
+        {id: 'squid', name: 'Calmar', icon: 'grip'}
       ]
     },
     {
       id: 'beverages',
       name: 'Les Boissons',
-      color: 'hsl(240 85% 60%)',
+      color: '#4f46e5',
       members: [
-        {id: 'coffee', name: 'Café', emoji: '☕'},
-        {id: 'tea', name: 'Thé', emoji: '🍵'},
-        {id: 'juice', name: 'Jus', emoji: '🧃'},
-        {id: 'soda', name: 'Soda', emoji: '🥤'},
-        {id: 'wine', name: 'Vin', emoji: '🍷'},
-        {id: 'beer', name: 'Bière', emoji: '🍺'}
+        {id: 'coffee', name: 'Café', icon: 'coffee'},
+        {id: 'tea', name: 'Thé', icon: 'mugTeabag'},
+        {id: 'juice', name: 'Jus', icon: 'package'},
+        {id: 'soda', name: 'Soda', icon: 'cup-soda'},
+        {id: 'wine', name: 'Vin', icon: 'wine'},
+        {id: 'beer', name: 'Bière', icon: 'beer'}
       ]
     },
     {
       id: 'dairy',
       name: 'Produits Laitiers',
-      color: 'hsl(60 85% 75%)',
+      color: '#fde047',
       members: [
-        {id: 'milk', name: 'Lait', emoji: '🥛'},
-        {id: 'cheese', name: 'Fromage', emoji: '🧀'},
-        {id: 'yogurt', name: 'Yaourt', emoji: '🥛'},
-        {id: 'butter', name: 'Beurre', emoji: '🧈'},
-        {id: 'cream', name: 'Crème', emoji: '🥛'},
-        {id: 'ice-cream', name: 'Glace', emoji: '🍨'}
+        {id: 'milk', name: 'Lait', icon: 'milk'},
+        {id: 'cheese', name: 'Fromage', icon: 'cheese'},
+        {id: 'yogurt', name: 'Yaourt', icon: 'milk'},
+        {id: 'butter', name: 'Beurre', icon: 'square'},
+        {id: 'cream', name: 'Crème', icon: 'milk'},
+        {id: 'ice-cream', name: 'Glace', icon: 'ice-cream'}
       ]
     },
     {
       id: 'spices',
       name: 'Les Épices',
-      color: 'hsl(30 85% 50%)',
+      color: '#ea580c',
       members: [
-        {id: 'salt', name: 'Sel', emoji: '🧂'},
-        {id: 'pepper', name: 'Poivre', emoji: '🫚'},
-        {id: 'garlic', name: 'Ail', emoji: '🧄'},
-        {id: 'ginger', name: 'Gingembre', emoji: '🫚'},
-        {id: 'basil', name: 'Basilic', emoji: '🌿'},
-        {id: 'oregano', name: 'Origan', emoji: '🌿'}
+        {id: 'salt', name: 'Sel', icon: 'beaker'},
+        {id: 'pepper', name: 'Poivre', icon: 'flask-conical'},
+        {id: 'garlic', name: 'Ail', icon: 'garlic'},
+        {id: 'ginger', name: 'Gingembre', icon: 'zap'},
+        {id: 'basil', name: 'Basilic', icon: 'leafy-green'},
+        {id: 'oregano', name: 'Origan', icon: 'sprout'}
       ]
     },
     {
       id: 'grains',
       name: 'Les Céréales',
-      color: 'hsl(45 85% 50%)',
+      color: '#eab308',
       members: [
-        {id: 'rice', name: 'Riz', emoji: '🍚'},
-        {id: 'wheat', name: 'Blé', emoji: '🌾'},
-        {id: 'oats', name: 'Avoine', emoji: '🥣'},
-        {id: 'quinoa', name: 'Quinoa', emoji: '🌾'},
-        {id: 'barley', name: 'Orge', emoji: '🌾'},
-        {id: 'pasta', name: 'Pâtes', emoji: '🍝'}
+        {id: 'rice', name: 'Riz', icon: 'bowlChopsticks'},
+        {id: 'wheat', name: 'Blé', icon: 'wheat'},
+        {id: 'oats', name: 'Avoine', icon: 'soup'},
+        {id: 'quinoa', name: 'Quinoa', icon: 'sprout'},
+        {id: 'barley', name: 'Orge', icon: 'beer'},
+        {id: 'corn', name: 'Maïs', icon: 'popcorn'}
       ]
     }
   ],
@@ -1064,131 +1064,131 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
     {
       id: 'ball-sports',
       name: 'Sports de Balle',
-      color: 'hsl(100 85% 50%)',
+      color: '#84cc16',
       members: [
-        {id: 'soccer', name: 'Football', emoji: '⚽'},
-        {id: 'basketball', name: 'Basketball', emoji: '🏀'},
-        {id: 'tennis', name: 'Tennis', emoji: '🎾'},
-        {id: 'volleyball', name: 'Volleyball', emoji: '🏐'},
-        {id: 'rugby', name: 'Rugby', emoji: '🏈'},
-        {id: 'ping-pong', name: 'Ping-pong', emoji: '🏓'}
+        {id: 'soccer', name: 'Football', icon: 'football'},
+        {id: 'basketball', name: 'Basketball', icon: 'basketball'},
+        {id: 'tennis', name: 'Tennis', icon: 'tennisRacket'},
+        {id: 'volleyball', name: 'Volleyball', icon: 'volleyball'},
+        {id: 'rugby', name: 'Rugby', icon: 'football'},
+        {id: 'ping-pong', name: 'Ping-pong', icon: 'batBall'}
       ]
     },
     {
       id: 'water-sports',
       name: 'Sports Aquatiques',
-      color: 'hsl(200 85% 55%)',
+      color: '#0ea5e9',
       members: [
-        {id: 'swimming', name: 'Natation', emoji: '🏊'},
-        {id: 'surfing', name: 'Surf', emoji: '🏄'},
-        {id: 'diving', name: 'Plongée', emoji: '🤿'},
-        {id: 'water-polo', name: 'Water-polo', emoji: '🤽'},
-        {id: 'sailing', name: 'Voile', emoji: '⛵'},
-        {id: 'rowing', name: 'Aviron', emoji: '🚣'}
+        {id: 'swimming', name: 'Natation', icon: 'waves'},
+        {id: 'surfing', name: 'Surf', icon: 'wind'},
+        {id: 'diving', name: 'Plongée', icon: 'arrow-down'},
+        {id: 'water-polo', name: 'Water-polo', icon: 'target'},
+        {id: 'sailing', name: 'Voile', icon: 'sailboat'},
+        {id: 'rowing', name: 'Aviron', icon: 'kayak'}
       ]
     },
     {
       id: 'winter-sports',
       name: 'Sports d\'Hiver',
-      color: 'hsl(240 85% 65%)',
+      color: '#6366f1',
       members: [
-        {id: 'skiing', name: 'Ski', emoji: '⛷️'},
-        {id: 'snowboarding', name: 'Snowboard', emoji: '🏂'},
-        {id: 'ice-hockey', name: 'Hockey sur glace', emoji: '🏒'},
-        {id: 'figure-skating', name: 'Patinage artistique', emoji: '⛸️'},
-        {id: 'curling', name: 'Curling', emoji: '🥌'},
-        {id: 'bobsled', name: 'Bobsleigh', emoji: '🛷'}
+        {id: 'skiing', name: 'Ski', icon: 'skis'},
+        {id: 'snowboarding', name: 'Snowboard', icon: 'snowboard'},
+        {id: 'ice-hockey', name: 'Hockey sur glace', icon: 'hockey'},
+        {id: 'figure-skating', name: 'Patinage artistique', icon: 'iceSkate'},
+        {id: 'curling', name: 'Curling', icon: 'target'},
+        {id: 'bobsled', name: 'Bobsleigh', icon: 'footprints'}
       ]
     },
     {
       id: 'track-field',
       name: 'Athlétisme',
-      color: 'hsl(50 85% 50%)',
+      color: '#facc15',
       members: [
-        {id: 'running', name: 'Course', emoji: '🏃'},
-        {id: 'jumping', name: 'Saut', emoji: '🏃‍♂️'},
-        {id: 'throwing', name: 'Lancer', emoji: '🤾'},
-        {id: 'marathon', name: 'Marathon', emoji: '🏃‍♀️'},
-        {id: 'hurdles', name: 'Haies', emoji: '🤸'},
-        {id: 'pole-vault', name: 'Saut à la perche', emoji: '🤸‍♂️'}
+        {id: 'running', name: 'Course', icon: 'footprints'},
+        {id: 'jumping', name: 'Saut', icon: 'arrow-up'},
+        {id: 'throwing', name: 'Lancer', icon: 'target'},
+        {id: 'marathon', name: 'Marathon', icon: 'timer'},
+        {id: 'hurdles', name: 'Haies', icon: 'bar-chart'},
+        {id: 'pole-vault', name: 'Saut à la perche', icon: 'trending-up'}
       ]
     },
     {
       id: 'combat-sports',
       name: 'Sports de Combat',
-      color: 'hsl(0 85% 55%)',
+      color: '#dc2626',
       members: [
-        {id: 'boxing', name: 'Boxe', emoji: '🥊'},
-        {id: 'karate', name: 'Karaté', emoji: '🥋'},
-        {id: 'judo', name: 'Judo', emoji: '🤼'},
-        {id: 'wrestling', name: 'Lutte', emoji: '🤼‍♀️'},
-        {id: 'taekwondo', name: 'Taekwondo', emoji: '🦵'},
-        {id: 'fencing', name: 'Escrime', emoji: '🤺'}
+        {id: 'boxing', name: 'Boxe', icon: 'hand'},
+        {id: 'karate', name: 'Karaté', icon: 'slash'},
+        {id: 'judo', name: 'Judo', icon: 'arrow-down-up'},
+        {id: 'wrestling', name: 'Lutte', icon: 'handshake'},
+        {id: 'taekwondo', name: 'Taekwondo', icon: 'tornado'},
+        {id: 'fencing', name: 'Escrime', icon: 'sword'}
       ]
     },
     {
       id: 'gymnastics',
       name: 'Gymnastique',
-      color: 'hsl(300 85% 55%)',
+      color: '#d946ef',
       members: [
-        {id: 'floor-exercise', name: 'Sol', emoji: '🤸'},
-        {id: 'balance-beam', name: 'Poutre', emoji: '🤸‍♀️'},
-        {id: 'uneven-bars', name: 'Barres asymétriques', emoji: '🤸‍♂️'},
-        {id: 'vault', name: 'Saut de cheval', emoji: '🤸'},
-        {id: 'rings', name: 'Anneaux', emoji: '💍'},
-        {id: 'parallel-bars', name: 'Barres parallèles', emoji: '🤸‍♂️'}
+        {id: 'floor-exercise', name: 'Sol', icon: 'square'},
+        {id: 'balance-beam', name: 'Poutre', icon: 'minus'},
+        {id: 'uneven-bars', name: 'Barres asymétriques', icon: 'bar-chart-2'},
+        {id: 'vault', name: 'Saut de cheval', icon: 'arrow-up-right'},
+        {id: 'rings', name: 'Anneaux', icon: 'circle'},
+        {id: 'parallel-bars', name: 'Barres parallèles', icon: 'equal'}
       ]
     },
     {
       id: 'cycling-sports',
       name: 'Sports Cyclistes',
-      color: 'hsl(140 85% 45%)',
+      color: '#10b981',
       members: [
-        {id: 'road-cycling', name: 'Cyclisme sur route', emoji: '🚴'},
-        {id: 'mountain-biking', name: 'VTT', emoji: '🚵'},
-        {id: 'bmx', name: 'BMX', emoji: '🚴‍♂️'},
-        {id: 'track-cycling', name: 'Cyclisme sur piste', emoji: '🚴‍♀️'},
-        {id: 'cyclocross', name: 'Cyclo-cross', emoji: '🚵‍♂️'},
-        {id: 'triathlon', name: 'Triathlon', emoji: '🏊‍♂️'}
+        {id: 'road-cycling', name: 'Cyclisme sur route', icon: 'bike'},
+        {id: 'mountain-biking', name: 'VTT', icon: 'mountain'},
+        {id: 'bmx', name: 'BMX', icon: 'zap'},
+        {id: 'track-cycling', name: 'Cyclisme sur piste', icon: 'rotate-ccw'},
+        {id: 'cyclocross', name: 'Cyclo-cross', icon: 'crosshair'},
+        {id: 'triathlon', name: 'Triathlon', icon: 'activity'}
       ]
     },
     {
       id: 'racquet-sports',
       name: 'Sports de Raquette',
-      color: 'hsl(280 85% 60%)',
+      color: '#c026d3',
       members: [
-        {id: 'tennis', name: 'Tennis', emoji: '🎾'},
-        {id: 'badminton', name: 'Badminton', emoji: '🏸'},
-        {id: 'squash', name: 'Squash', emoji: '🎾'},
-        {id: 'table-tennis', name: 'Tennis de table', emoji: '🏓'},
-        {id: 'racquetball', name: 'Racquetball', emoji: '🎾'},
-        {id: 'padel', name: 'Padel', emoji: '🎾'}
+        {id: 'tennis', name: 'Tennis', icon: 'tennisRacket'},
+        {id: 'badminton', name: 'Badminton', icon: 'feather'},
+        {id: 'squash', name: 'Squash', icon: 'square'},
+        {id: 'table-tennis', name: 'Tennis de table', icon: 'batBall'},
+        {id: 'racquetball', name: 'Racquetball', icon: 'layout-grid'},
+        {id: 'padel', name: 'Padel', icon: 'atom'}
       ]
     },
     {
       id: 'extreme-sports',
       name: 'Sports Extrêmes',
-      color: 'hsl(20 85% 55%)',
+      color: '#f59e0b',
       members: [
-        {id: 'skateboarding', name: 'Skateboard', emoji: '🛹'},
-        {id: 'rock-climbing', name: 'Escalade', emoji: '🧗'},
-        {id: 'bungee-jumping', name: 'Saut à l\'élastique', emoji: '🪂'},
-        {id: 'paragliding', name: 'Parapente', emoji: '🪂'},
-        {id: 'base-jumping', name: 'Base jump', emoji: '🪂'},
-        {id: 'wingsuit', name: 'Combinaison ailée', emoji: '🪂'}
+        {id: 'skateboarding', name: 'Skateboard', icon: 'zap'},
+        {id: 'rock-climbing', name: 'Escalade', icon: 'mountain'},
+        {id: 'bungee-jumping', name: 'Saut à l\'élastique', icon: 'arrow-down'},
+        {id: 'paragliding', name: 'Parapente', icon: 'wind'},
+        {id: 'base-jumping', name: 'Base jump', icon: 'arrow-down-circle'},
+        {id: 'wingsuit', name: 'Combinaison ailée', icon: 'plane'}
       ]
     },
     {
       id: 'team-sports',
       name: 'Sports d\'Équipe',
-      color: 'hsl(160 85% 50%)',
+      color: '#14b8a6',
       members: [
-        {id: 'soccer-team', name: 'Équipe de football', emoji: '⚽'},
-        {id: 'basketball-team', name: 'Équipe de basket', emoji: '🏀'},
-        {id: 'volleyball-team', name: 'Équipe de volley', emoji: '🏐'},
-        {id: 'rugby-team', name: 'Équipe de rugby', emoji: '🏈'},
-        {id: 'hockey-team', name: 'Équipe de hockey', emoji: '🏒'},
-        {id: 'baseball-team', name: 'Équipe de baseball', emoji: '⚾'}
+        {id: 'soccer-team', name: 'Équipe de football', icon: 'soccerBall'},
+        {id: 'basketball-team', name: 'Équipe de basket', icon: 'basketball'},
+        {id: 'volleyball-team', name: 'Équipe de volley', icon: 'volleyball'},
+        {id: 'rugby-team', name: 'Équipe de rugby', icon: 'football'},
+        {id: 'hockey-team', name: 'Équipe de hockey', icon: 'hockey'},
+        {id: 'baseball-team', name: 'Équipe de baseball', icon: 'baseball'}
       ]
     }
   ]

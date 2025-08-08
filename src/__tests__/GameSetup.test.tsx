@@ -23,7 +23,7 @@ describe('GameSetup', () => {
     // Check all themes are displayed
     Object.values(THEMES).forEach(theme => {
       expect(screen.getByText(theme.name)).toBeInTheDocument();
-      expect(screen.getByText(theme.emoji)).toBeInTheDocument();
+      // Icons are now rendered as lucide-react components, not text
     });
     
     // Check family count section

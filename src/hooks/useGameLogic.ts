@@ -577,9 +577,11 @@ export function useGameLogic() {
     }
 
     // IA améliorée : demander une carte en tenant compte des cartes déjà demandées
-    const incompleteCards: { cardId: string; familySize: number }[] = [];
+    const familiesToAsk: Family[] = [];
     
-    gameState.families.forEach(family => {
+    gameState.families
+      .filter(f => !aiPlayer.askedFamilies.includes(f))
+      .forEach(family => {
       const aiFamilyCards = aiPlayer.cards.filter(cardId =>
         family.members.some(member => member.id === cardId)
       );
@@ -588,62 +590,24 @@ export function useGameLogic() {
         // Ajouter les cartes manquantes de cette famille
         family.members.forEach(member => {
           if (!aiPlayer.cards.includes(member.id)) {
-            incompleteCards.push({ 
-              cardId: member.id, 
-              familySize: aiFamilyCards.length // Nombre de cartes que l'IA a déjà dans cette famille
-            });
+            familiesToAsk.push(family);
           }
         });
       }
     });
-    
-    if (incompleteCards.length > 0) {
-      // Filtrer les cartes déjà demandées sans succès
-      const notAskedCards = incompleteCards.filter(card => 
-        !aiPlayer.askedFamilies.some(family =>
-          family.members.some(member => member.id === card.cardId)
-        )
-      );
-      
-      let cardToAsk: string;
-      
-      if (notAskedCards.length > 0) {
-        // Prioriser les familles où l'IA a plus de cartes (plus de chances de compléter)
-        // Trier par nombre de cartes dans la famille (décroissant)
-        notAskedCards.sort((a, b) => b.familySize - a.familySize);
-        
-        // Prendre une carte parmi celles des familles les plus complètes
-        // (avec une petite part de hasard)
-        const topFamilySize = notAskedCards[0].familySize;
-        const topCards = notAskedCards.filter(card => card.familySize === topFamilySize);
-        cardToAsk = topCards[Math.floor(Math.random() * topCards.length)].cardId;
-      } else {
-        // Si toutes les cartes ont déjà été demandées, en choisir une au hasard
-        // mais avec une probabilité proportionnelle au nombre de cartes dans la famille
-        const totalWeight = incompleteCards.reduce((sum, card) => sum + card.familySize, 0);
-        let randomWeight = Math.random() * totalWeight;
-        
-        for (const card of incompleteCards) {
-          randomWeight -= card.familySize;
-          if (randomWeight <= 0) {
-            cardToAsk = card.cardId;
-            break;
-          }
-        }
-        
-        // Si par hasard on n'a pas choisi de carte (ne devrait pas arriver)
-        if (!cardToAsk) {
-          cardToAsk = incompleteCards[Math.floor(Math.random() * incompleteCards.length)].cardId;
-        }
-      }
 
-      const familyToAsk = gameState.families.find(family =>
-        family.members.some(member => member.id === cardToAsk)
-      );
+    if (familiesToAsk.length === 0 && aiPlayer.askedFamilies.length > 0) {
+      // Si aucune carte n'est disponible, demander une famille déjà demandée
+      familiesToAsk.push(aiPlayer.askedFamilies[Math.floor(Math.random() * aiPlayer.askedFamilies.length)]);
+    }
+    
+    if (familiesToAsk.length > 0) {
+      const familyToAsk = familiesToAsk[Math.floor(Math.random() * familiesToAsk.length)];
+
       // Ajouter la carte à la liste des cartes demandées
       aiPlayer.askedFamilies.push(familyToAsk);
       
-      console.log('AI is requesting card:', cardToAsk, 'from family:', familyToAsk.name);
+      console.log('AI is requesting family:', familyToAsk.name);
       setTimeout(() => {
         askForCard(1 - gameState.currentPlayer, familyToAsk);
       }, 1500); // Délai pour simuler la réflexion
