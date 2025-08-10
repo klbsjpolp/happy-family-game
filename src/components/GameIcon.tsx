@@ -1,22 +1,30 @@
 import * as LucideLab from '@lucide/lab';
 import * as Lucide from 'lucide-react';
-import {DynamicIcon, iconNames} from "lucide-react/dynamic";
+// Import the ESM build directly to avoid CJS/ESM interop issues in Vitest/CI
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import DynamicIconModule from 'lucide-react/dist/esm/DynamicIcon.js';
+import {IconNode} from "lucide-react";
+// @ts-expect-error use of unknown here is intentional
+const DynamicIcon = (DynamicIconModule as unknown).default ?? (DynamicIconModule as unknown);
 
-type BaseIcons = typeof iconNames[number];
-type LabIcons = keyof typeof LucideLab;
-export type Icons = BaseIcons | LabIcons;
+export type Icons = string;
 
-export function GameIcon({iconName, className}: {iconName: Icons, className?: string}) {
-  if (!iconName || typeof iconName !== 'string')
+export function GameIcon({ iconName, className }: { iconName: Icons; className?: string }) {
+  if (!iconName || typeof iconName !== 'string') {
     return <span className="text-destructive-foreground bg-destructive">{String(iconName)}</span>;
-  const base = iconName as unknown as BaseIcons;
-  if (iconNames.includes(base))
-    return <DynamicIcon name={base} className={className} />
-  const lowCase = iconName.toLowerCase() as unknown as BaseIcons;
-  if (iconNames.includes(lowCase))
-    return <DynamicIcon name={lowCase} className={className} />
-  const lab = LucideLab[iconName as keyof typeof LucideLab];
-  if (lab)
-    return <Lucide.Icon iconNode={lab} className={className} />
-  return <span className="text-destructive-foreground bg-destructive">{iconName}</span>;
+  }
+
+  // Try Lucide Lab icons first (names are exported from @lucide/lab)
+  const lab = (LucideLab as Record<string, IconNode>)[iconName];
+  if (lab) {
+    return <Lucide.Icon iconNode={lab} className={className} />;
+  }
+
+  // Fallback to dynamic Lucide icons (use kebab-case/lowercase name)
+  const name = iconName.toLowerCase();
+  const Fallback = () => (
+    <span className="text-destructive-foreground bg-destructive">{iconName}</span>
+  );
+  return <DynamicIcon name={name} className={className} fallback={Fallback} />;
 }
