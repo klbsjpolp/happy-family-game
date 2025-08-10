@@ -25,10 +25,10 @@ describe('GameBoard', () => {
     name: 'Bears',
     color: '#8B4513',
     members: [
-      { id: 'bear-dad', name: 'Papa Bear', emoji: ''},
-      { id: 'bear-mom', name: 'Mama Bear', emoji: '' },
-      { id: 'bear-son', name: 'Baby Bear', emoji: '' },
-      { id: 'bear-daughter', name: 'Sister Bear', emoji: '' }
+      { id: 'bear-dad', name: 'Papa Bear', icon: 'user' },
+      { id: 'bear-mom', name: 'Mama Bear', icon: 'user' },
+      { id: 'bear-son', name: 'Baby Bear', icon: 'user' },
+      { id: 'bear-daughter', name: 'Sister Bear', icon: 'user' }
     ]
   };
   
@@ -37,10 +37,10 @@ describe('GameBoard', () => {
     name: 'Rabbits',
     color: '#FFA500',
     members: [
-      { id: 'rabbit-dad', name: 'Papa Rabbit', emoji: '' },
-      { id: 'rabbit-mom', name: 'Mama Rabbit', emoji: '' },
-      { id: 'rabbit-son', name: 'Baby Rabbit', emoji: '' },
-      { id: 'rabbit-daughter', name: 'Sister Rabbit', emoji: '' }
+      { id: 'rabbit-dad', name: 'Papa Rabbit', icon: 'user' },
+      { id: 'rabbit-mom', name: 'Mama Rabbit', icon: 'user' },
+      { id: 'rabbit-son', name: 'Baby Rabbit', icon: 'user' },
+      { id: 'rabbit-daughter', name: 'Sister Rabbit', icon: 'user' }
     ]
   };
   

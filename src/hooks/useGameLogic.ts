@@ -5,7 +5,7 @@ import { useToast } from '@/hooks/use-toast';
 import { useGameHistory } from '@/hooks/useGameHistory';
 import { getCardPosition, getHandPosition, getDeckPosition, getFamilyCountPosition } from '@/lib/animationUtils';
 import { animationConfig } from '@/config/animationConfig';
-import {useCardAnimation} from "@/contexts/useCardAnimation.ts";
+import {useCardAnimation} from "@/contexts/useCardAnimation";
 
 export function useGameLogic() {
   const [gameState, setGameState] = useState<GameState | null>(null);

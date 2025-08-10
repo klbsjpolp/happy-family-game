@@ -1,5 +1,11 @@
 import { renderHook, act } from '@testing-library/react';
 import { useGameHistory } from '../useGameHistory';
+import {vi, describe, it, expect} from "vitest";
+
+// Mock the CardAnimationProvider context
+vi.mock('../contexts/CardAnimationContext', () => ({
+  CardAnimationProvider: ({ children }: { children: React.ReactNode }) => <div>{children}</div>
+}));
 
 describe('useGameHistory', () => {
   it('initializes with empty history', () => {

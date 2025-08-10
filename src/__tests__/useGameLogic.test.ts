@@ -10,7 +10,7 @@ vi.mock('../hooks/use-toast', () => ({
   })
 }));
 
-vi.mock('../contexts/CardAnimationContext', () => ({
+vi.mock('@/contexts/useCardAnimation', () => ({
   useCardAnimation: () => ({
     startAnimation: vi.fn()
   })
