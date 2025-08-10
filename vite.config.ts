@@ -4,8 +4,9 @@ import path from "path";
 import tailwindcss from "@tailwindcss/vite";
 
 // https://vitejs.dev/config/
-export default defineConfig(() => ({
-  base: process.env.NODE_ENV === 'production' ? '/happy-family-game/' : '/',
+export default defineConfig(({ mode }) => ({
+  // Ensure correct base path for GitHub Pages project site
+  base: mode === "production" ? "/happy-family-game/" : "/",
 
   plugins: [
     react(),

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting…</title>
+  <!-- GitHub Pages SPA fallback: redirect any 404 to the app's base path -->
+  <meta http-equiv="refresh" content="0; url=/happy-family-game/" />
+  <script>
+    // Preserve query and hash while redirecting to the project base path
+    (function() {
+      var base = "/happy-family-game";
+      var newUrl = base + "/" + (location.search || "") + (location.hash || "");
+      // Remove potential double slashes
+      newUrl = newUrl.replace(/\/+/, "/");
+      location.replace(newUrl);
+    })();
+  </script>
+  <style>
+    html, body { height: 100%; margin: 0; font-family: sans-serif; display: grid; place-items: center; background: #0b1020; color: #e6e6e6; }
+    .message { text-align: center; opacity: 0.85; }
+    a { color: #9fd3ff; }
+  </style>
+</head>
+<body>
+  <div class="message">
+    <p>Redirecting to <a href="/happy-family-game/">/happy-family-game/</a>…</p>
+  </div>
+</body>
+</html>
