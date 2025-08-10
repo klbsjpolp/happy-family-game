@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { GameSetup } from '../components/GameSetup';
+import { GameSetup } from '@/components/GameSetup';
 import { THEMES } from '@/types/game';
 
 describe('GameSetup', () => {

@@ -89,10 +89,16 @@ export function GameSetup({onStartGame, theme: propTheme, setTheme: propSetTheme
                   Cartes
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-2 bg-background p-4 rounded-lg">
-                  {FAMILIES_DATA[theme].map(family => (<Fragment  key={family.id}>
-                    <Header style={{color: family.color}} className="text-shadow-xs text-shadow-gray-200">{family.name}</Header>
-                    <div className="flex gap-2 flex-wrap">{family.members.map(member => (<GameCard family={family} member={member} size="small" />))}</div>
-                  </Fragment>))}
+                  {FAMILIES_DATA[theme].map(family => (
+                    <Fragment key={family.id}>
+                      <Header style={{color: family.color}} className="text-shadow-xs text-shadow-gray-200">{family.name}</Header>
+                      <div className="flex gap-2 flex-wrap">{
+                        family.members.map(member => (
+                          <GameCard key={member.id} family={family} member={member} size="small" />
+                        ))
+                      }</div>
+                    </Fragment>
+                  ))}
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
