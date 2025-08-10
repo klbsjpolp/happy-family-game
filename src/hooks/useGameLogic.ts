@@ -3,9 +3,9 @@ import { GameState, GameConfig, Player, Family } from '@/types/game';
 import {COMPLETE_FAMILY_COUNT, FAMILIES_DATA} from '@/data/families';
 import { useToast } from '@/hooks/use-toast';
 import { useGameHistory } from '@/hooks/useGameHistory';
-import { useCardAnimation } from '@/contexts/CardAnimationContext';
 import { getCardPosition, getHandPosition, getDeckPosition, getFamilyCountPosition } from '@/lib/animationUtils';
 import { animationConfig } from '@/config/animationConfig';
+import {useCardAnimation} from "@/contexts/useCardAnimation.ts";
 
 export function useGameLogic() {
   const [gameState, setGameState] = useState<GameState | null>(null);
@@ -171,7 +171,7 @@ export function useGameLogic() {
           family.members.forEach(member => {
             if (player.cards.includes(member.id)) {
               const sourcePos = getCardPosition(player.id === 'player1' ? 0 : 1, member.id);
-              startCardAnimation(member.id, sourcePos, targetPos, 'complete');
+              startCardAnimation(member.id, player.isAI, sourcePos, targetPos, 'complete');
             }
           });
           
@@ -303,13 +303,14 @@ export function useGameLogic() {
       
       // Trigger initial deal animation with proper state updates
       setTimeout(() => {
+        const player0 = players[0];
         const deckPos = getDeckPosition();
         (async () => {
           // Deal to player 0
-          for (let i = 0; i < players[0].cards.length; i++) {
-            const cardId = players[0].cards[i];
+          for (let i = 0; i < player0.cards.length; i++) {
+            const cardId = player0.cards[i];
             const targetPos = getHandPosition(0);
-            startCardAnimation(cardId, deckPos, targetPos, 'draw');
+            startCardAnimation(cardId, player0.isAI, deckPos, targetPos, 'draw');
             
             // Update state to move card from deck to player hand after animation starts
             setTimeout(() => {
@@ -325,12 +326,13 @@ export function useGameLogic() {
             
             await new Promise(resolve => setTimeout(resolve, animationConfig.initialDealStagger));
           }
-          
+
+          const player1 = players[1];
           // Deal to player 1
-          for (let i = 0; i < players[1].cards.length; i++) {
-            const cardId = players[1].cards[i];
+          for (let i = 0; i < player1.cards.length; i++) {
+            const cardId = player1.cards[i];
             const targetPos = getHandPosition(1);
-            startCardAnimation(cardId, deckPos, targetPos, 'draw');
+            startCardAnimation(cardId, player1.isAI, deckPos, targetPos, 'draw');
             
             // Update state to move card from deck to player hand after animation starts
             setTimeout(() => {
@@ -424,7 +426,7 @@ export function useGameLogic() {
       // Use hand position as source since individual card positions may not be reliable
       const sourcePos = getHandPosition(targetPlayer);
       const targetPos = getHandPosition(gameState.currentPlayer);
-      startCardAnimation(cards[0], sourcePos, targetPos, 'transfer');
+      startCardAnimation(cards[0], currentPlayerObj.isAI, sourcePos, targetPos, 'transfer');
       
       // Update state after animation completes
       setTimeout(() => {
@@ -476,7 +478,7 @@ export function useGameLogic() {
         );
         const sourcePos = getDeckPosition();
         const targetPos = getHandPosition(gameState.currentPlayer);
-        startCardAnimation(drawnCard, sourcePos, targetPos, 'draw');
+        startCardAnimation(drawnCard, currentPlayerObj.isAI, sourcePos, targetPos, 'draw');
         
         setTimeout(() => {
           setGameState(prev => prev ? {

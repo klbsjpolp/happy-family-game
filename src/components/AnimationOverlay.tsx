@@ -1,6 +1,6 @@
-import { useCardAnimation } from '@/contexts/CardAnimationContext';
 import { AnimatedCard } from './AnimatedCard';
 import {GameState} from "@/types/game.ts";
+import {useCardAnimation} from "@/contexts/useCardAnimation.ts";
 
 export function AnimationOverlay({ gameState }:{ gameState: GameState }) {
   const { animationState } = useCardAnimation();
@@ -27,7 +27,7 @@ export function AnimationOverlay({ gameState }:{ gameState: GameState }) {
 
   // Determine if the card should be revealed based on the drawing player
   const isDrawingPlayerAI = animationState.animationType === 'draw' 
-    ? gameState.players[gameState.currentPlayer].isAI
+    ? animationState.animateForAI
     : false;
   
   return (

@@ -1,10 +1,12 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, {useState} from 'react';
+import { CardAnimationContext } from "./useCardAnimation";
 
 export type AnimationState = {
   sourcePosition: { x: number, y: number } | null;
   targetPosition: { x: number, y: number } | null;
   cardId: string | null;
   animationType: 'transfer' | 'draw' | 'complete' | null;
+  animateForAI: boolean;
   isAnimating: boolean;
 };
 
@@ -12,6 +14,7 @@ export type CardAnimationContextType = {
   animationState: AnimationState;
   startAnimation: (
     cardId: string,
+    animateForAI: boolean,
     sourcePos: { x: number, y: number },
     targetPos: { x: number, y: number },
     type: 'transfer' | 'draw' | 'complete'
@@ -23,17 +26,17 @@ const initialState: AnimationState = {
   sourcePosition: null,
   targetPosition: null,
   cardId: null,
+  animateForAI: false,
   animationType: null,
   isAnimating: false,
 };
-
-const CardAnimationContext = createContext<CardAnimationContextType | undefined>(undefined);
 
 export const CardAnimationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [animationState, setAnimationState] = useState<AnimationState>(initialState);
 
   const startAnimation = (
     cardId: string,
+    animateForAI: boolean,
     sourcePos: { x: number, y: number },
     targetPos: { x: number, y: number },
     type: 'transfer' | 'draw' | 'complete'
@@ -44,6 +47,7 @@ export const CardAnimationProvider: React.FC<{ children: React.ReactNode }> = ({
       cardId,
       animationType: type,
       isAnimating: true,
+      animateForAI,
     });
   };
 
@@ -56,13 +60,5 @@ export const CardAnimationProvider: React.FC<{ children: React.ReactNode }> = ({
       {children}
     </CardAnimationContext.Provider>
   );
-};
-
-export const useCardAnimation = () => {
-  const context = useContext(CardAnimationContext);
-  if (context === undefined) {
-    throw new Error('useCardAnimation must be used within a CardAnimationProvider');
-  }
-  return context;
 };
 

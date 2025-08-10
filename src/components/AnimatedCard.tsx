@@ -1,10 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useCardAnimation } from '@/contexts/CardAnimationContext';
 import { GameCard } from './GameCard';
 import { Family, FamilyMember } from '@/types/game';
 import { useEffect } from 'react';
 import { animationConfig } from '@/config/animationConfig';
 import {GameCardBack} from "@/components/GameCardBack.tsx";
+import {useCardAnimation} from "@/contexts/useCardAnimation.ts";
 
 interface AnimatedCardProps {
   member: FamilyMember;

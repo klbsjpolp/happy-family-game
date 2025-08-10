@@ -7,6 +7,8 @@ type LabIcons = keyof typeof LucideLab;
 export type Icons = BaseIcons | LabIcons;
 
 export function GameIcon({iconName, className}: {iconName: Icons, className?: string}) {
+  if (!iconName || typeof iconName !== 'string')
+    return <span className="text-destructive-foreground bg-destructive">{String(iconName)}</span>;
   const base = iconName as unknown as BaseIcons;
   if (iconNames.includes(base))
     return <DynamicIcon name={base} className={className} />

@@ -181,11 +181,11 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
       name: 'La Ferme',
       color: '#22c55e',
       members: [
-        {id: 'cow', name: 'Vache', icon: 'milk'},
-        {id: 'pig', name: 'Cochon', icon: 'heart'},
+        {id: 'cow', name: 'Vache', icon: 'cowHead'},
+        {id: 'pig', name: 'Cochon', icon: 'pig'},
         {id: 'chicken', name: 'Poule', icon: 'egg'},
         {id: 'sheep', name: 'Mouton', icon: 'cloud'},
-        {id: 'horse', name: 'Cheval', icon: 'zap'},
+        {id: 'horse', name: 'Cheval', icon: 'horseHead'},
         {id: 'goat', name: 'Chèvre', icon: 'mountain'}
       ]
     },
@@ -194,12 +194,12 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
       name: 'Les Sauvages',
       color: '#c026d3',
       members: [
-        {id: 'elephant', name: 'Éléphant', icon: 'mountain'},
+        {id: 'elephant', name: 'Éléphant', icon: 'elephant'},
         {id: 'giraffe', name: 'Girafe', icon: 'arrow-up'},
         {id: 'zebra', name: 'Zèbre', icon: 'bar-chart'},
         {id: 'rhino', name: 'Rhinocéros', icon: 'shield'},
         {id: 'hippo', name: 'Hippopotame', icon: 'waves'},
-        {id: 'gorilla', name: 'Gorille', icon: 'grip'}
+        {id: 'gorilla', name: 'Gorille', icon: 'treesForest'}
       ]
     },
     {
@@ -207,11 +207,11 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
       name: 'Les Insectes',
       color: '#eab308',
       members: [
-        {id: 'bee', name: 'Abeille', icon: 'hexagon'},
-        {id: 'butterfly', name: 'Papillon', icon: 'flower'},
-        {id: 'spider', name: 'Araignée', icon: 'grid-3x3'},
+        {id: 'bee', name: 'Abeille', icon: 'bee'},
+        {id: 'butterfly', name: 'Papillon', icon: 'butterfly'},
+        {id: 'spider', name: 'Araignée', icon: 'spider'},
         {id: 'ant', name: 'Fourmi', icon: 'dot'},
-        {id: 'ladybug', name: 'Coccinelle', icon: 'shield'},
+        {id: 'ladybug', name: 'Coccinelle', icon: 'bug'},
         {id: 'mosquito', name: 'Moustique', icon: 'zap'}
       ]
     },
@@ -223,9 +223,9 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
         {id: 'snake', name: 'Serpent', icon: 'waves'},
         {id: 'crocodile', name: 'Crocodile', icon: 'triangle'},
         {id: 'lizard', name: 'Lézard', icon: 'zap'},
-        {id: 'turtle', name: 'Tortue', icon: 'shield'},
-        {id: 'chameleon', name: 'Caméléon', icon: 'zap'},
-        {id: 'gecko', name: 'Gecko', icon: 'zap'}
+        {id: 'turtle', name: 'Tortue', icon: 'turtle'},
+        {id: 'chameleon', name: 'Caméléon', icon: 'flower'},
+        {id: 'gecko', name: 'Gecko', icon: 'trees'}
       ]
     },
     {
@@ -233,10 +233,10 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
       name: 'Les Amphibiens',
       color: '#6366f1',
       members: [
-        {id: 'frog', name: 'Grenouille', icon: 'droplets'},
+        {id: 'frog', name: 'Grenouille', icon: 'frogFace'},
         {id: 'toad', name: 'Crapaud', icon: 'droplets'},
         {id: 'salamander', name: 'Salamandre', icon: 'zap'},
-        {id: 'newt', name: 'Triton', icon: 'zap'},
+        {id: 'newt', name: 'Triton', icon: 'square'},
         {id: 'axolotl', name: 'Axolotl', icon: 'fish'},
         {id: 'caecilian', name: 'Cécilien', icon: 'waves'}
       ]
@@ -246,12 +246,12 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
       name: 'Les Rongeurs',
       color: '#d946ef',
       members: [
-        {id: 'mouse', name: 'Souris', icon: 'dot'},
-        {id: 'rat', name: 'Rat', icon: 'triangle'},
-        {id: 'squirrel', name: 'Écureuil', icon: 'tree-pine'},
-        {id: 'hamster', name: 'Hamster', icon: 'heart'},
-        {id: 'guinea-pig', name: 'Cobaye', icon: 'smile'},
-        {id: 'beaver', name: 'Castor', icon: 'hammer'}
+        {id: 'mouse', name: 'Souris', icon: 'mouse'},
+        {id: 'rat', name: 'Rat', icon: 'rat'},
+        {id: 'squirrel', name: 'Écureuil', icon: 'squirrel'},
+        {id: 'hamster', name: 'Hamster', icon: 'wheel'},
+        {id: 'guinea-pig', name: 'Cobaye', icon: 'pig'},
+        {id: 'beaver', name: 'Castor', icon: 'dam'}
       ]
     },
     {
@@ -259,12 +259,12 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
       name: 'Les Chauves-souris',
       color: '#ec4899',
       members: [
-        {id: 'fruit-bat', name: 'Chauve-souris frugivore', icon: 'moon'},
-        {id: 'vampire-bat', name: 'Chauve-souris vampire', icon: 'moon'},
-        {id: 'little-brown-bat', name: 'Chauve-souris brune', icon: 'moon'},
-        {id: 'big-eared-bat', name: 'Chauve-souris aux grandes oreilles', icon: 'moon',},
+        {id: 'fruit-bat', name: 'Frugivore', icon: 'fruit'},
+        {id: 'vampire-bat', name: 'Vampire', icon: 'droplet'},
+        {id: 'little-brown-bat', name: 'Brune', icon: 'circle'},
+        {id: 'big-eared-bat', name: 'Grandes oreilles', icon: 'ear',},
         {id: 'pipistrelle', name: 'Pipistrelle', icon: 'moon'},
-        {id: 'flying-fox', name: 'Renard volant', icon: 'moon'}
+        {id: 'flying-fox', name: 'Renard volant', icon: 'foxFaceTail'}
       ]
     }
   ],
@@ -275,11 +275,11 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
       color: '#3b82f6',
       members: [
         {id: 'car', name: 'Voiture', icon: 'car'},
-        {id: 'taxi', name: 'Taxi', icon: 'car'},
+        {id: 'taxi', name: 'Taxi', icon: 'map-pin'},
         {id: 'police', name: 'Police', icon: 'shield'},
         {id: 'ambulance', name: 'Ambulance', icon: 'cross'},
         {id: 'sportcar', name: 'Sportive', icon: 'zap'},
-        {id: 'suv', name: 'SUV', icon: 'car'}
+        {id: 'suv', name: 'SUV', icon: 'route'}
       ]
     },
     {
@@ -304,7 +304,7 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
         {id: 'helicopter', name: 'Hélicoptère', icon: 'rotate-ccw'},
         {id: 'rocket', name: 'Fusée', icon: 'rocket'},
         {id: 'balloon', name: 'Montgolfière', icon: 'cloud'},
-        {id: 'jet', name: 'Jet privé', icon: 'plane'},
+        {id: 'jet', name: 'Jet privé', icon: 'send'},
         {id: 'drone', name: 'Drone', icon: 'radio'}
       ]
     },
@@ -883,7 +883,7 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
         {id: 'apollo', name: 'Apollo', icon: 'moon'},
         {id: 'voyager', name: 'Voyager', icon: 'satellite'},
         {id: 'hubble', name: 'Hubble', icon: 'search'},
-        {id: 'cassini', name: 'Cassini', icon: 'torus'},
+        {id: 'cassini', name: 'Cassini', icon: 'target'},
         {id: 'curiosity', name: 'Curiosity', icon: 'bot'},
         {id: 'perseverance', name: 'Perseverance', icon: 'car'}
       ]
@@ -1027,9 +1027,9 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
       members: [
         {id: 'milk', name: 'Lait', icon: 'milk'},
         {id: 'cheese', name: 'Fromage', icon: 'cheese'},
-        {id: 'yogurt', name: 'Yaourt', icon: 'milk'},
+        {id: 'yogurt', name: 'Yaourt', icon: 'cup-soda'},
         {id: 'butter', name: 'Beurre', icon: 'square'},
-        {id: 'cream', name: 'Crème', icon: 'milk'},
+        {id: 'cream', name: 'Crème', icon: 'beaker'},
         {id: 'ice-cream', name: 'Glace', icon: 'ice-cream'}
       ]
     },
@@ -1066,7 +1066,7 @@ export const FAMILIES_DATA: Record<Theme, Family[]> = {
       name: 'Sports de Balle',
       color: '#84cc16',
       members: [
-        {id: 'soccer', name: 'Football', icon: 'football'},
+        {id: 'soccer', name: 'Football', icon: 'footballGoal'},
         {id: 'basketball', name: 'Basketball', icon: 'basketball'},
         {id: 'tennis', name: 'Tennis', icon: 'tennisRacket'},
         {id: 'volleyball', name: 'Volleyball', icon: 'volleyball'},

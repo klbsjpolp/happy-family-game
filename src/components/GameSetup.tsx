@@ -1,4 +1,4 @@
-import {Dispatch, useState} from 'react';
+import {Dispatch, Fragment, useState} from 'react';
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card';
 import {Button} from '@/components/ui/button';
 import {Badge} from '@/components/ui/badge';
@@ -9,7 +9,7 @@ import {GameConfig, Theme, GameMode, THEMES} from '@/types/game';
 import {FAMILIES_DATA, MAX_FAMILIES} from "@/data/families.ts";
 import * as LucideIcons from 'lucide-react';
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion.tsx";
-import {AccordionHeader, Header} from "@radix-ui/react-accordion";
+import {Header} from "@radix-ui/react-accordion";
 import {GameCard} from "@/components/GameCard.tsx";
 
 interface GameSetupProps {
@@ -85,16 +85,14 @@ export function GameSetup({onStartGame, theme: propTheme, setTheme: propSetTheme
             </div>
             <Accordion type="single" collapsible>
               <AccordionItem value="cards">
-                <AccordionHeader>
-                  <AccordionTrigger>
-                    Cartes
-                  </AccordionTrigger>
-                </AccordionHeader>
+                <AccordionTrigger>
+                  Cartes
+                </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-2 bg-background p-4 rounded-lg">
-                  {FAMILIES_DATA[theme].map(family => (<>
+                  {FAMILIES_DATA[theme].map(family => (<Fragment  key={family.id}>
                     <Header style={{color: family.color}} className="text-shadow-xs text-shadow-gray-200">{family.name}</Header>
                     <div className="flex gap-2 flex-wrap">{family.members.map(member => (<GameCard family={family} member={member} size="small" />))}</div>
-                  </>))}
+                  </Fragment>))}
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
